@@ -1,0 +1,112 @@
+{
+  "slug": "marketing",
+  "codigo": "MARKETING",
+  "titulo": "Pomelli: o marketing do seu negócio feito por IA, grátis",
+  "destaque": "Cole o link do site e receba campanhas prontas",
+  "sub": "Como usar o Pomelli do Google Labs passo a passo, do perfil da marca às campanhas e fotos de produto, com dicas para bons resultados e onde ele está disponível.",
+  "tempo_leitura_min": 6,
+  "ferramentas": [
+    {
+      "nome": "Pomelli (Google Labs)",
+      "link": "https://labs.google.com/pomelli/about/",
+      "para_que": "Ler o site do seu negócio, entender a sua marca e criar campanhas e peças para redes sociais, site e anúncios",
+      "preco": "Gratuito no momento, segundo a central de ajuda do Google"
+    }
+  ],
+  "secoes": [
+    {
+      "titulo": "O que é o Pomelli",
+      "blocos": [
+        {"tipo": "p", "texto": "O Pomelli é uma ferramenta de marketing com IA criada pelo Google Labs com o Google DeepMind. Ele foi feito para pequenos e médios negócios criarem campanhas para redes sociais com a cara da marca, sem precisar de agência."},
+        {"tipo": "p", "texto": "A lógica tem três etapas: ele analisa o seu site, sugere ideias de campanha e cria as peças, que você edita e baixa."},
+        {"tipo": "aviso", "texto": "Por enquanto o Pomelli funciona só em inglês. Ele lê o seu site e gera conteúdo, mas a interface e o idioma oficialmente suportado são o inglês. Veja a seção de disponibilidade."}
+      ]
+    },
+    {
+      "titulo": "Antes de começar",
+      "blocos": [
+        {"tipo": "passos", "itens": [
+          "Tenha 18 anos ou mais.",
+          "Esteja em um país atendido. Brasil e Portugal estão na lista oficial.",
+          "Tenha um site do negócio. O Pomelli foi feito para qualquer negócio com site que queira gerar campanhas.",
+          "Use uma conta @gmail.com. Se a sua conta for do Google Workspace e der erro, o administrador precisa liberar o acesso."
+        ]},
+        {"tipo": "dica", "texto": "Antes de colar o link, confira se o seu site tem textos claros sobre o que você vende, fotos boas dos produtos e as cores e a logo da marca. É daí que o Pomelli tira a identidade do negócio."}
+      ]
+    },
+    {
+      "titulo": "Passo a passo: da marca à campanha",
+      "blocos": [
+        {"tipo": "passos", "itens": [
+          "Abra o Pomelli em labs.google.com/pomelli. Ele funciona no navegador, no computador e no celular.",
+          "Digite o endereço do seu site.",
+          "Espere ele montar o Business DNA, o perfil da sua marca: tom de voz, fontes, imagens e paleta de cores. Confira se está correto.",
+          "Veja as ideias de campanha que ele sugere para o seu negócio, ou escreva o seu próprio pedido.",
+          "Escolha uma ideia e deixe o Pomelli gerar as peças para redes sociais, site e anúncios.",
+          "Edite os textos e as imagens dentro da própria ferramenta.",
+          "Baixe as peças e publique nos seus canais."
+        ]},
+        {"tipo": "codigo", "rotulo": "Prompt pronto (em inglês, o idioma suportado)", "texto": "Create a 7-day Instagram campaign to promote our new weekend lunch menu. Audience: families who live nearby. Tone: warm and welcoming. Highlight the limited-time price and end each post with a call to book a table."},
+        {"tipo": "dica", "texto": "Um pedido bom diz quatro coisas: o que você quer promover, para quem, o tom e qual ação a pessoa deve fazer no final."}
+      ]
+    },
+    {
+      "titulo": "Photoshoot: fotos de estúdio a partir de uma foto simples",
+      "blocos": [
+        {"tipo": "p", "texto": "O Photoshoot transforma uma foto qualquer do seu produto em imagens com cara de estúdio ou de estilo de vida, usando a identidade da sua marca e o gerador de imagens Nano Banana."},
+        {"tipo": "passos", "itens": [
+          "Envie uma foto do produto. Não precisa estar perfeita.",
+          "Escolha um modelo de estúdio ou de estilo de vida, ou deixe o Pomelli sugerir.",
+          "Gere as imagens. Ele aplica o visual da sua marca automaticamente.",
+          "Ajuste os detalhes. Dá para trocar o fundo ou usar uma imagem de referência de estilo.",
+          "Baixe as fotos ou salve no seu Business DNA para usar nas próximas campanhas."
+        ]},
+        {"tipo": "aviso", "texto": "O próprio Google avisa: a IA pode alterar cores, logos ou texturas do produto. Confira cada imagem antes de publicar. Vender um produto com aparência diferente da real gera reclamação."}
+      ]
+    },
+    {
+      "titulo": "Dicas para tirar resultados bons",
+      "blocos": [
+        {"tipo": "tabela", "colunas": ["Faça", "Evite"], "linhas": [
+          ["Revise o Business DNA antes da primeira campanha", "Aceitar o perfil da marca sem olhar"],
+          ["Peça uma campanha com objetivo claro (lançamento, promoção, data especial)", "Pedidos vagos como \"faça posts para mim\""],
+          ["Use as melhores fotos reais do produto", "Fotos escuras, cortadas ou de baixa qualidade"],
+          ["Teste uma campanha pequena antes de gerar muitas peças", "Gastar as gerações em ideias que você não vai usar"],
+          ["Revise textos, preços e promessas antes de publicar", "Publicar direto sem ler"]
+        ]},
+        {"tipo": "dica", "texto": "Nas configurações da conta você pode ativar uma marca d'água nas imagens exportadas, avisando que foram geradas com IA. É uma boa prática de transparência."}
+      ]
+    },
+    {
+      "titulo": "Disponibilidade, idioma e limites",
+      "blocos": [
+        {"tipo": "tabela", "colunas": ["Item", "O que diz o Google"], "linhas": [
+          ["Países", "Lista oficial na central de ajuda. Brasil e Portugal estão incluídos. Os recursos podem variar conforme o país."],
+          ["Idioma", "Só inglês"],
+          ["Idade", "18 anos ou mais"],
+          ["Preço", "Gratuito no momento"],
+          ["Limite de uso", "Algumas centenas de gerações de imagem e vídeo. O Google diz que mudanças nesses limites vão aparecer na central de ajuda."],
+          ["Status", "Experimento do Google Labs em beta pública"]
+        ]},
+        {"tipo": "aviso", "texto": "Por ser um experimento, preço, limites e recursos podem mudar a qualquer momento. Confira a página oficial antes de montar a sua rotina de conteúdo em cima dele."}
+      ]
+    },
+    {
+      "titulo": "Depois de baixar: onde usar",
+      "blocos": [
+        {"tipo": "p", "texto": "As peças podem ser usadas em plataformas como Instagram, TikTok, Facebook, YouTube e LinkedIn. O Pomelli cria o material. A publicação, o horário e a resposta aos comentários continuam com você."},
+        {"tipo": "dica", "texto": "Monte um calendário simples: uma campanha por semana, com três a cinco peças. Constância vale mais do que muitas peças de uma vez só."}
+      ]
+    }
+  ],
+  "proximo_passo": "O Pomelli faz as peças. Se você quer ir além e ter o seu próprio clone de IA gravando e produzindo conteúdo por você, esse é o próximo passo.",
+  "fontes": [
+    "https://labs.google.com/pomelli/about/",
+    "https://blog.google/technology/google-labs/pomelli/",
+    "https://blog.google/innovation-and-ai/models-and-research/google-labs/pomelli-photoshoot/",
+    "https://blog.google/innovation-and-ai/models-and-research/google-labs/pomelli-in-europe/",
+    "https://support.google.com/labs/answer/16715058?hl=en",
+    "https://support.google.com/labs/answer/16945066?hl=en"
+  ],
+  "verificado_em": "2026-11-22"
+}

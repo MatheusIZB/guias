@@ -1,0 +1,128 @@
+{
+  "slug": "drama",
+  "codigo": "DRAMA",
+  "titulo": "Anúncios de drama com IA: Higgsfield + Claude passo a passo",
+  "destaque": "Seu anúncio de drama feito com IA, do roteiro à cena",
+  "sub": "Como ligar o Higgsfield ao Claude, o fluxo completo para criar um anúncio curto de drama com o mesmo personagem em todas as cenas, um prompt pronto e quanto custa em créditos.",
+  "tempo_leitura_min": 7,
+  "ferramentas": [
+    {
+      "nome": "Higgsfield",
+      "link": "https://higgsfield.ai/",
+      "para_que": "Plataforma de geração de imagem, vídeo e áudio com vários modelos, incluindo Seedance 2.5, Cinema Studio e Soul",
+      "preco": "Planos pagos com créditos (ver site); teste grátis de 3 dias que exige cartão e renova sozinho"
+    },
+    {
+      "nome": "Higgsfield MCP",
+      "link": "https://higgsfield.ai/mcp",
+      "para_que": "Conector que deixa o Claude usar os modelos e ferramentas do Higgsfield direto no chat, sem chave de API",
+      "preco": "Sem taxa extra pelo MCP: as gerações gastam créditos como no site. Segundo o blog oficial, é preciso assinatura paga ativa do Higgsfield"
+    },
+    {
+      "nome": "Claude",
+      "link": "https://claude.ai/",
+      "para_que": "Escrever o roteiro, organizar as cenas e comandar o Higgsfield",
+      "preco": "Conectores personalizados funcionam em todos os planos; no plano Free o limite é um conector personalizado"
+    },
+    {
+      "nome": "Soul ID (Higgsfield)",
+      "link": "https://higgsfield.ai/soul",
+      "para_que": "Treinar um personagem a partir de fotos para manter o mesmo rosto nas imagens",
+      "preco": "Treinar e gerar com Soul ID exige plano pago"
+    }
+  ],
+  "secoes": [
+    {
+      "titulo": "Como funciona a dupla Claude + Higgsfield",
+      "blocos": [
+        {"tipo": "p", "texto": "O Claude é o diretor: escreve o roteiro, divide em cenas e decide o que gerar. O Higgsfield é o estúdio: gera as imagens, os vídeos e o áudio. O conector MCP liga os dois, então você faz tudo de dentro do chat do Claude."},
+        {"tipo": "p", "texto": "Segundo o Higgsfield, o MCP dá acesso a mais de 35 modelos e ferramentas de imagem e vídeo, sem precisar de chave de API. Entre os fluxos prontos estão episódios de drama curto, vídeos estilo UGC e variações de anúncio."}
+      ]
+    },
+    {
+      "titulo": "Passo 1: ligar o Higgsfield ao Claude",
+      "blocos": [
+        {"tipo": "passos", "itens": [
+          "Crie sua conta no higgsfield.ai.",
+          "No claude.ai ou no Claude Desktop, vá em Customize > Connectors.",
+          "Clique em \"+ Add\" e depois em \"Add custom connector\".",
+          "Dê o nome Higgsfield e cole o endereço do servidor (abaixo). Clique em Continue, revise a autenticação, clique em Continue de novo e depois em Add.",
+          "Clique em Connect e entre na sua conta do Higgsfield na janela que abrir.",
+          "Em cada conversa, abra o menu \"+\" > Connectors e confira se o Higgsfield está ligado.",
+          "Teste perguntando ao Claude: \"What is my Higgsfield credit balance?\""
+        ]},
+        {"tipo": "codigo", "rotulo": "Endereço do servidor MCP", "texto": "https://mcp.higgsfield.ai/mcp"},
+        {"tipo": "dica", "texto": "Atalho: na página higgsfield.ai/mcp existe o botão \"Add Higgsfield to Claude\", que abre a tela de conectores do Claude com o nome e o endereço já preenchidos."},
+        {"tipo": "aviso", "texto": "No plano Free do Claude você só pode ter um conector personalizado. Em planos Team, quem adiciona o conector é o Owner, em Organization settings > Connectors. Depois cada membro conecta a própria conta."}
+      ]
+    },
+    {
+      "titulo": "Passo 2: criar o personagem que se repete",
+      "blocos": [
+        {"tipo": "p", "texto": "O que faz um drama parecer profissional é o mesmo rosto em todas as cenas. Você tem dois caminhos oficiais."},
+        {"tipo": "tabela", "colunas": ["Caminho", "Como funciona", "O que precisa"], "linhas": [
+          ["Imagem de referência", "Gere uma imagem do personagem uma vez e peça ao Claude para usar essa mesma referência em todas as cenas", "Uma imagem aprovada do personagem"],
+          ["Soul ID", "No site do Higgsfield: Soul > Train new character, envie as fotos, espere o treino e dê um nome. Depois selecione o personagem na aba Character", "20 ou mais fotos da mesma pessoa (até 80) e plano pago"]
+        ]},
+        {"tipo": "dica", "texto": "O próprio Higgsfield recomenda: trave o personagem, o produto e o visual antes de gerar o resto. O Claude também pode buscar seu histórico de gerações e reaproveitar imagens antigas como referência."}
+      ]
+    },
+    {
+      "titulo": "Passo 3: o fluxo do anúncio de drama",
+      "blocos": [
+        {"tipo": "passos", "itens": [
+          "Explique o produto ao Claude: o que é, para quem, qual a dor que resolve e qual a oferta.",
+          "Peça um roteiro curto de drama com começo (conflito), virada (o produto aparece) e fim (resolução e chamada para ação).",
+          "Peça para o Claude dividir o roteiro em cenas, com plano de câmera, cenário, fala e duração de cada uma.",
+          "Crie ou escolha o personagem (passo 2) e uma referência do cenário.",
+          "Peça para o Claude mostrar o custo em créditos de cada geração e esperar a sua aprovação.",
+          "Gere primeiro uma cena só, para conferir o visual. Se estiver bom, gere as outras.",
+          "Gere a narração ou as falas. O Higgsfield tem clonagem de voz, troca de voz e dublagem.",
+          "Monte o anúncio no formato da rede: o Ads Studio entrega em 1:1, 9:16, 16:9 ou 3:4."
+        ]},
+        {"tipo": "dica", "texto": "Para séries, use o Short Drama do Higgsfield: ele transforma um roteiro em vários episódios com o mesmo elenco, em rascunho 480p, 720p ou 1080p. Ainda está em prévia inicial, então gere um episódio antes de pedir a série toda."},
+        {"tipo": "dica", "texto": "Já tem um anúncio que funciona? O Ad Multiplier cria novas versões dele. Teste um criativo antes de pedir as variações."}
+      ]
+    },
+    {
+      "titulo": "Prompt pronto para o Claude",
+      "blocos": [
+        {"tipo": "p", "texto": "Copie, troque o que está entre colchetes e cole no Claude com o Higgsfield ligado."},
+        {"tipo": "codigo", "rotulo": "Prompt pronto", "texto": "Use o Higgsfield. Quero um anúncio curto de drama, vertical 9:16, com cerca de 30 segundos, para o produto [NOME DO PRODUTO], que [O QUE ELE FAZ] para [PÚBLICO].\n\n1. Escreva um roteiro em português com 4 cenas: conflito, tensão, virada com o produto e final com a chamada \"[CHAMADA PARA AÇÃO]\".\n2. Para cada cena, descreva: cenário, plano de câmera, ação do personagem, fala e duração.\n3. Crie UMA imagem de referência da protagonista: [IDADE, ESTILO, ROUPA]. Ela é uma pessoa fictícia, não se parece com nenhuma pessoa real. Mostre a imagem e espere minha aprovação.\n4. Depois de aprovada, use essa mesma referência em todas as cenas.\n5. Antes de cada geração, me diga quanto vai custar em créditos e espere eu confirmar.\n6. Gere primeiro só a cena 1. Só siga para as próximas depois que eu aprovar."},
+        {"tipo": "dica", "texto": "Mantenha o pedido de custo e aprovação no prompt. Segundo o Higgsfield, não existe um limite automático de gasto de créditos."}
+      ]
+    },
+    {
+      "titulo": "Quanto custa",
+      "blocos": [
+        {"tipo": "p", "texto": "Pelo MCP, os créditos são cobrados igual a uma geração normal no site, sem taxa extra. Segundo o blog oficial do Higgsfield, é preciso ter uma assinatura paga ativa para conectar e gerar pelo MCP."},
+        {"tipo": "tabela", "colunas": ["Clipe de 10 segundos no Seedance 2.5", "Créditos", "Valor aproximado"], "linhas": [
+          ["720p", "70", "cerca de US$ 3,43"],
+          ["1080p", "160", "cerca de US$ 7,84"],
+          ["4K", "280", "cerca de US$ 13,72"]
+        ]},
+        {"tipo": "p", "texto": "Esses valores são do blog oficial do Higgsfield, calculados a US$ 49 por 1.000 créditos e conferidos por eles em 19 de novembro de 2026. Preços mudam e há promoções, então confira no site antes de orçar para um cliente."},
+        {"tipo": "aviso", "texto": "O teste grátis dura 3 dias, exige cartão e renova automaticamente no fim. Se não quiser continuar, cancele a renovação antes. A maioria das gerações que falham devolve os créditos automaticamente."}
+      ]
+    },
+    {
+      "titulo": "Nota legal: transparência e rostos reais",
+      "blocos": [
+        {"tipo": "aviso", "texto": "Só use o rosto de alguém com autorização. A regra do próprio Higgsfield para o Soul ID é: envie apenas fotos suas ou de alguém que te deu permissão para usar a imagem dele. Nada de celebridades, influenciadores ou pessoas que você conhece sem consentimento por escrito."},
+        {"tipo": "aviso", "texto": "Avise que o anúncio foi feito com IA. Use o rótulo de conteúdo gerado por IA da plataforma quando existir e deixe isso claro na legenda. Anúncio de drama não pode parecer depoimento real de cliente."},
+        {"tipo": "dica", "texto": "Não invente resultados nem promessas sobre o produto no roteiro. O drama é ficção, mas o que você diz sobre o produto precisa ser verdade."}
+      ]
+    }
+  ],
+  "proximo_passo": "Personagem de IA é ótimo para anúncio. Agora imagine um clone de IA de você mesmo, produzindo conteúdo com a sua cara e a sua voz todos os dias.",
+  "fontes": [
+    "https://higgsfield.ai/",
+    "https://higgsfield.ai/mcp",
+    "https://higgsfield.ai/soul",
+    "https://higgsfield.ai/blog/Generate-AI-Videos-From-Claude-with-Higgsfield-MCP",
+    "https://higgsfield.ai/blog/claude-higgsfield-mcp-creative-studio",
+    "https://higgsfield.ai/creator-hub/help-center/ai-models/how-do-i-create-and-use-a-soul-id-character",
+    "https://support.claude.com/en/articles/11175166-getting-started-with-custom-connectors-using-remote-mcp"
+  ],
+  "verificado_em": "2026-11-22"
+}

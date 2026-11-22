@@ -1,0 +1,217 @@
+{
+  "slug": "meta",
+  "codigo": "META",
+  "titulo": "Astryx: o design system grátis da Meta no Claude Code",
+  "destaque": "O design system da Meta, grátis e pronto pra IA",
+  "sub": "O que é o Astryx, como instalar num projeto React, ligar ao Claude Code (CLI, plugin ou MCP) e o prompt para criar a sua primeira tela.",
+  "tempo_leitura_min": 6,
+  "ferramentas": [
+    {
+      "nome": "Astryx",
+      "link": "https://github.com/meta/astryx",
+      "para_que": "Design system com mais de 150 componentes React acessíveis, 7 temas, modo escuro, templates e uma CLI feita para pessoas e agentes de IA.",
+      "preco": "Gratuito, código aberto (licença MIT). Em beta"
+    },
+    {
+      "nome": "Documentação, Storybook e Sandbox",
+      "link": "https://astryx.atmeta.com",
+      "para_que": "Ver os componentes funcionando e testar sem instalar nada.",
+      "preco": "Gratuito"
+    },
+    {
+      "nome": "Claude Code",
+      "link": "https://code.claude.com/docs/en/setup",
+      "para_que": "O agente que vai montar as telas usando o Astryx.",
+      "preco": "Requer conta Pro, Max, Ultra, Team, Enterprise ou Console"
+    }
+  ],
+  "secoes": [
+    {
+      "titulo": "O que é o Astryx",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "O Astryx é o design system que cresceu dentro da Meta nos últimos oito anos. Segundo o README oficial, virou o maior e mais usado da empresa, presente em mais de 13 mil apps. Agora é código aberto, com licença MIT."
+        },
+        {
+          "tipo": "p",
+          "texto": "Ele traz mais de 150 componentes acessíveis, temas, modo escuro, templates prontos e uma CLI. Você importa o CSS pronto e usa componentes React tipados, sem plugin de build."
+        },
+        {
+          "tipo": "tabela",
+          "colunas": [
+            "O Reel disse",
+            "O que a fonte oficial diz"
+          ],
+          "linhas": [
+            [
+              "De graça",
+              "Sim. Licença MIT"
+            ],
+            [
+              "Mais de 13 mil apps",
+              "Sim. 13.000+ apps dentro da Meta"
+            ],
+            [
+              "Mais de 150 componentes",
+              "Sim. 150+ componentes"
+            ],
+            [
+              "7 temas",
+              "Sim: neutral, butter, chocolate, matcha, stone, gothic e y2k"
+            ],
+            [
+              "Servidor MCP para o Claude Code",
+              "Sim. O comando astryx mcp, e também um servidor online só de documentação"
+            ]
+          ]
+        },
+        {
+          "tipo": "aviso",
+          "texto": "O projeto está em beta. Os componentes de gráficos ainda não têm versão estável."
+        }
+      ]
+    },
+    {
+      "titulo": "Antes de começar: instale o Claude Code",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Este guia usa o Claude Code, o agente do Claude que roda no terminal. Pela documentação oficial, ele exige uma conta Pro, Max, Ultra, Team, Enterprise ou Console. O plano gratuito do claude.ai não inclui o Claude Code."
+        },
+        {
+          "tipo": "codigo",
+          "texto": "curl -fsSL https://claude.ai/install.sh | bash",
+          "rotulo": "Terminal (macOS, Linux, WSL)"
+        },
+        {
+          "tipo": "codigo",
+          "texto": "irm https://claude.ai/install.ps1 | iex",
+          "rotulo": "Windows PowerShell"
+        },
+        {
+          "tipo": "p",
+          "texto": "Quando terminar, abra um terminal novo e confira a instalação. Depois rode claude e faça login pelo navegador."
+        },
+        {
+          "tipo": "codigo",
+          "texto": "claude --version",
+          "rotulo": "Terminal"
+        },
+        {
+          "tipo": "dica",
+          "texto": "Se o terminal disser que o comando claude não foi encontrado, feche e abra o terminal de novo. Se continuar, a documentação oficial tem uma página de solução de problemas de instalação."
+        }
+      ]
+    },
+    {
+      "titulo": "Instale no seu projeto",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "O Astryx exige React 19 ou mais novo. Dentro da pasta do seu projeto React, instale o núcleo, um tema e as dependências:"
+        },
+        {
+          "tipo": "codigo",
+          "texto": "npm install @astryxdesign/core @astryxdesign/theme-neutral @stylexjs/stylex\nnpm install -D @astryxdesign/cli",
+          "rotulo": "Terminal"
+        },
+        {
+          "tipo": "p",
+          "texto": "Depois rode o init uma vez, antes de escrever qualquer tela. Ele não faz perguntas, mostra os próximos passos (estilos e tema) e salva o guia do Astryx no AGENTS.md e no CLAUDE.md. Assim o Claude Code passa a construir com o Astryx em vez de adivinhar."
+        },
+        {
+          "tipo": "codigo",
+          "texto": "npx @astryxdesign/cli init",
+          "rotulo": "Terminal"
+        },
+        {
+          "tipo": "dica",
+          "texto": "O README recomenda criar um script no package.json para chamar a CLI sem erro de caminho: \"astryx\": \"node node_modules/@astryxdesign/cli/clients/cli/bin/astryx.mjs\". Depois é só usar npm run astryx -- component --list."
+        }
+      ]
+    },
+    {
+      "titulo": "Ligue ao Claude Code",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "A documentação do Astryx diz que um agente capaz de rodar comandos, como o Claude Code, deve usar a CLI diretamente. O MCP é para ferramentas que não rodam comandos. Você tem três caminhos:"
+        },
+        {
+          "tipo": "p",
+          "texto": "Caminho 1 (recomendado): o init já fez a parte principal. Se quiser, instale também o plugin oficial, que avisa o Claude Code de que o Astryx está disponível:"
+        },
+        {
+          "tipo": "codigo",
+          "texto": "claude plugin marketplace add meta/astryx\nclaude plugin install astryx@astryx",
+          "rotulo": "Terminal"
+        },
+        {
+          "tipo": "p",
+          "texto": "Caminho 2: servidor MCP local, que responde para a versão do Astryx do seu projeto. Rode na pasta do projeto:"
+        },
+        {
+          "tipo": "codigo",
+          "texto": "claude mcp add astryx -- npx @astryxdesign/cli mcp",
+          "rotulo": "Terminal"
+        },
+        {
+          "tipo": "p",
+          "texto": "Caminho 3: servidor MCP online, sem instalar nada. Ele só lê a documentação da última versão publicada, não o seu projeto:"
+        },
+        {
+          "tipo": "codigo",
+          "texto": "claude mcp add --transport http astryx https://astryx.atmeta.com/mcp",
+          "rotulo": "Terminal"
+        }
+      ]
+    },
+    {
+      "titulo": "Crie a sua primeira tela",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Com tudo instalado, abra o Claude Code na pasta do projeto e peça algo concreto. Mandar consultar a CLI antes de escrever evita que ele invente propriedades."
+        },
+        {
+          "tipo": "codigo",
+          "texto": "Crie uma tela de login usando o Astryx. Antes de escrever o código, use o comando astryx para pesquisar os componentes e templates disponíveis. Quero campo de email, campo de senha, botão de entrar, link de 'esqueci a senha' e suporte a modo escuro. Use o tema neutral.",
+          "rotulo": "Prompt"
+        },
+        {
+          "tipo": "dica",
+          "texto": "Para ver o que existe antes de pedir, explore os componentes no Storybook e teste no Sandbox, os dois no site oficial."
+        }
+      ]
+    },
+    {
+      "titulo": "Personalize sem dor de cabeça",
+      "blocos": [
+        {
+          "tipo": "passos",
+          "itens": [
+            "Temas: um tema é um conjunto de variáveis CSS. Dá para deixar o Astryx com a cara da sua marca sem mexer no código dos componentes.",
+            "Estilo: sobrescreva com className usando Tailwind, CSS modules ou CSS puro, o que o seu projeto já usa.",
+            "Controle total: o comando swizzle copia o código-fonte de um componente para o seu projeto, para você editar à vontade."
+          ]
+        },
+        {
+          "tipo": "codigo",
+          "texto": "Troque o tema do projeto para o matcha e ajuste a cor principal para o azul da minha marca. Use o comando astryx theme para fazer isso.",
+          "rotulo": "Prompt"
+        }
+      ]
+    }
+  ],
+  "proximo_passo": "Gostou de pôr a IA pra trabalhar por você? O passo seguinte é ter o seu próprio clone de IA, que grava e produz conteúdo no seu lugar.",
+  "fontes": [
+    "https://github.com/meta/astryx",
+    "https://github.com/meta/astryx/blob/main/packages/cli/README.md",
+    "https://github.com/meta/astryx/blob/main/plugins/astryx/README.md",
+    "https://github.com/meta/astryx/blob/main/packages/cli/assets/docs/working-with-ai.doc.mjs",
+    "https://astryx.atmeta.com",
+    "https://code.claude.com/docs/en/setup"
+  ],
+  "verificado_em": "2026-11-22"
+}

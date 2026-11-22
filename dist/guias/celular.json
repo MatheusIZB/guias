@@ -1,0 +1,278 @@
+{
+  "slug": "celular",
+  "codigo": "CELULAR",
+  "titulo": "Claude no seu iPhone: guia do mirroir-mcp passo a passo",
+  "destaque": "O Claude usando o seu iPhone de verdade",
+  "sub": "O que você precisa ter, como instalar o mirroir-mcp, ligar ao Claude Code, bloquear apps sensíveis e as primeiras tarefas para testar.",
+  "tempo_leitura_min": 6,
+  "ferramentas": [
+    {
+      "nome": "mirroir-mcp",
+      "link": "https://github.com/jfarcand/mirroir-mcp",
+      "para_que": "Servidor MCP que deixa o agente ver a tela e tocar, arrastar e digitar no seu iPhone pelo Espelhamento do iPhone do Mac.",
+      "preco": "Gratuito, código aberto (licença Apache-2.0)"
+    },
+    {
+      "nome": "Espelhamento do iPhone (iPhone Mirroring)",
+      "link": "https://support.apple.com/en-us/120421",
+      "para_que": "Recurso da Apple que mostra e controla o iPhone numa janela do Mac. É por ele que o mirroir-mcp funciona.",
+      "preco": "Recurso do sistema (macOS 15 ou posterior)"
+    },
+    {
+      "nome": "Claude Code",
+      "link": "https://code.claude.com/docs/en/setup",
+      "para_que": "O agente que vai dar as ordens ao iPhone.",
+      "preco": "Requer conta Pro, Max, Ultra, Team, Enterprise ou Console"
+    }
+  ],
+  "secoes": [
+    {
+      "titulo": "O que é o mirroir-mcp",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "O mirroir-mcp é um servidor MCP de código aberto que deixa um agente de IA usar o seu iPhone real: abrir apps, tocar, arrastar, digitar e ler a tela."
+        },
+        {
+          "tipo": "p",
+          "texto": "Ele não instala nada no celular. Não precisa de Modo de Desenvolvedor, Xcode nem jailbreak. Tudo passa pelo Espelhamento do iPhone, a janela do macOS que mostra o seu iPhone no Mac. Por isso ele alcança qualquer app que você já tem, já logado na sua conta."
+        },
+        {
+          "tipo": "p",
+          "texto": "Funciona com qualquer cliente MCP (Claude Code, Codex, Cursor, Claude Desktop e outros) e oferece 42 ferramentas, segundo o README do projeto."
+        }
+      ]
+    },
+    {
+      "titulo": "O que você precisa ter",
+      "blocos": [
+        {
+          "tipo": "aviso",
+          "texto": "Não funciona só com o celular. Você precisa de um Mac. E o Espelhamento do iPhone está indisponível na União Europeia, segundo a própria Apple. Se você mora em Portugal ou noutro país da UE, este método não funciona hoje."
+        },
+        {
+          "tipo": "tabela",
+          "colunas": [
+            "Item",
+            "Requisito oficial"
+          ],
+          "linhas": [
+            [
+              "Mac",
+              "macOS 15 (Sequoia) ou posterior, com Apple silicon ou chip de segurança Apple T2"
+            ],
+            [
+              "iPhone",
+              "iOS 18 ou posterior, com código de acesso configurado"
+            ],
+            [
+              "Conta Apple",
+              "Mac e iPhone na mesma Conta Apple, com autenticação de dois fatores"
+            ],
+            [
+              "Conexão",
+              "Bluetooth e Wi-Fi ligados nos dois aparelhos"
+            ],
+            [
+              "Uso",
+              "iPhone bloqueado e perto do Mac. O Mac não pode estar compartilhando a internet nem usando AirPlay ou Sidecar"
+            ],
+            [
+              "Extra",
+              "A ferramenta listen (transcrever o áudio do celular) precisa de macOS 26"
+            ]
+          ]
+        },
+        {
+          "tipo": "dica",
+          "texto": "Antes de instalar qualquer coisa, abra o app Espelhamento do iPhone no Mac e confirme que o seu iPhone aparece na janela. Se isso não funcionar, o mirroir-mcp também não vai funcionar."
+        }
+      ]
+    },
+    {
+      "titulo": "Antes de começar: instale o Claude Code",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Este guia usa o Claude Code, o agente do Claude que roda no terminal. Pela documentação oficial, ele exige uma conta Pro, Max, Ultra, Team, Enterprise ou Console. O plano gratuito do claude.ai não inclui o Claude Code."
+        },
+        {
+          "tipo": "codigo",
+          "texto": "curl -fsSL https://claude.ai/install.sh | bash",
+          "rotulo": "Terminal (macOS, Linux, WSL)"
+        },
+        {
+          "tipo": "p",
+          "texto": "Quando terminar, abra um terminal novo e confira a instalação. Depois rode claude e faça login pelo navegador."
+        },
+        {
+          "tipo": "codigo",
+          "texto": "claude --version",
+          "rotulo": "Terminal"
+        },
+        {
+          "tipo": "dica",
+          "texto": "Se o terminal disser que o comando claude não foi encontrado, feche e abra o terminal de novo. Se continuar, a documentação oficial tem uma página de solução de problemas de instalação."
+        }
+      ]
+    },
+    {
+      "titulo": "Instale o mirroir-mcp",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "O jeito mais simples é instalar pelo terminal do Mac. Escolha uma das opções (npx ou Homebrew) e depois rode o doctor, que aponta o que ainda falta configurar."
+        },
+        {
+          "tipo": "codigo",
+          "texto": "npx -y mirroir-mcp install",
+          "rotulo": "Terminal (opção npx)"
+        },
+        {
+          "tipo": "codigo",
+          "texto": "brew tap jfarcand/tap && brew install mirroir-mcp",
+          "rotulo": "Terminal (opção Homebrew)"
+        },
+        {
+          "tipo": "codigo",
+          "texto": "npx -y mirroir-mcp doctor",
+          "rotulo": "Terminal"
+        },
+        {
+          "tipo": "p",
+          "texto": "Na primeira captura de tela, o macOS pede as permissões de Gravação de Tela e Acessibilidade. Conceda as duas. O doctor diz qual app precisa de cada permissão e qual painel dos Ajustes do Sistema abrir."
+        },
+        {
+          "tipo": "dica",
+          "texto": "Prefere que o próprio Claude Code faça a instalação? O README oficial sugere colar no agente um pedido para seguir o guia de onboarding do projeto (docs/onboarding.md) passo a passo e terminar lendo o que aparece na tela do iPhone."
+        }
+      ]
+    },
+    {
+      "titulo": "Ligue ao Claude Code",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Registre o servidor no Claude Code com o comando da documentação oficial de instalação:"
+        },
+        {
+          "tipo": "codigo",
+          "texto": "claude mcp add --transport stdio mirroir -- npx -y mirroir-mcp",
+          "rotulo": "Terminal"
+        },
+        {
+          "tipo": "p",
+          "texto": "Outra opção é instalar como plugin, de dentro do Claude Code:"
+        },
+        {
+          "tipo": "codigo",
+          "texto": "/plugin marketplace add jfarcand/mirroir-mcp\n/plugin install mirroir@mirroir",
+          "rotulo": "Dentro do Claude Code"
+        },
+        {
+          "tipo": "p",
+          "texto": "Abra o Claude Code e faça um primeiro teste só de leitura, sem mexer em nada no celular:"
+        },
+        {
+          "tipo": "codigo",
+          "texto": "Tire uma captura de tela do meu iPhone e me diga o que aparece nela.",
+          "rotulo": "Prompt"
+        }
+      ]
+    },
+    {
+      "titulo": "Segurança: você continua no controle",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "O mirroir-mcp começa fechado. Sem arquivo de configuração, o agente só enxerga as 14 ferramentas de leitura (capturar tela, descrever a tela, gravar, etc.). Tocar, digitar, abrir apps e outras ações ficam escondidas até você liberar."
+        },
+        {
+          "tipo": "p",
+          "texto": "Para liberar ações e bloquear apps sensíveis, crie o arquivo ~/.mirroir-mcp/permissions.json. Em blockedApps, escreva o nome do app exatamente como aparece embaixo do ícone no seu iPhone."
+        },
+        {
+          "tipo": "codigo",
+          "texto": "{\n  \"allow\": [\"tap\", \"swipe\", \"type_text\", \"press_key\", \"launch_app\"],\n  \"deny\": [],\n  \"blockedApps\": [\"Wallet\", \"NOME DO SEU BANCO\"]\n}",
+          "rotulo": "~/.mirroir-mcp/permissions.json"
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "allow: lista das ações que o agente pode usar. Libere só o que a tarefa precisa.",
+            "deny: bloqueia ações e vence o allow. Uma ação nas duas listas fica bloqueada.",
+            "blockedApps: apps que o mirroir se recusa a abrir, mesmo com outras ações liberadas."
+          ]
+        },
+        {
+          "tipo": "aviso",
+          "texto": "O bloqueio checa ícones com nome (Tela de Início e Busca). Ícones sem nome embaixo (Dock, pastas, Biblioteca de Apps e cartões do alternador de apps) não são verificados. Não confie só nisso para apps de banco."
+        },
+        {
+          "tipo": "p",
+          "texto": "Outras proteções do projeto: ele nunca confirma telas que pedem senha ou Touch ID, e orienta o agente a perguntar antes de enviar, comprar, apagar ou mudar ajustes."
+        },
+        {
+          "tipo": "dica",
+          "texto": "Botão de pânico: fechar o Espelhamento do iPhone, desbloquear o iPhone, bloquear a tela do Mac ou fechar o Claude Code interrompe todos os comandos na hora."
+        },
+        {
+          "tipo": "aviso",
+          "texto": "Não use a opção --dangerously-skip-permissions (ou --yolo). Ela libera todas as ferramentas e existe só para testes de desenvolvimento. E lembre: o que o agente lê na tela vai para o modelo de IA que você usa."
+        }
+      ]
+    },
+    {
+      "titulo": "Primeiras tarefas para testar",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Comece com tarefas simples e sem risco. Estes pedidos são adaptados dos exemplos do README oficial:"
+        },
+        {
+          "tipo": "codigo",
+          "texto": "Abra o Calendário e crie um evento chamado \"Dentista\" na próxima terça às 14h.",
+          "rotulo": "Prompt"
+        },
+        {
+          "tipo": "codigo",
+          "texto": "Abra o meu app no Expo Go, toque em \"LoginDemo\" e teste a tela de login com test@example.com / password123. Tire uma captura de tela depois de cada passo.",
+          "rotulo": "Prompt (testar o seu app)"
+        },
+        {
+          "tipo": "codigo",
+          "texto": "Comece a gravar, abra o Instagram, role o feed, abra o meu perfil e pare a gravação.",
+          "rotulo": "Prompt"
+        },
+        {
+          "tipo": "dica",
+          "texto": "Quando uma sequência funcionar, peça ao agente para transformar em skill. O projeto permite repetir fluxos salvos (run_steps e arquivos SKILL.md) e até rodar testes sem IA com mirroir test."
+        }
+      ]
+    },
+    {
+      "titulo": "Limites que vale saber",
+      "blocos": [
+        {
+          "tipo": "passos",
+          "itens": [
+            "Não controla Android nem o Simulador de iOS.",
+            "O Espelhamento do iPhone tem um único ponteiro, então jogos que pedem dois dedos ao mesmo tempo ficam de fora.",
+            "Toques e digitação funcionam sem trazer a janela para frente. Arrastar e gestos de dois dedos trazem a janela por um instante.",
+            "Por padrão, a única chamada de rede do mirroir é uma checagem diária de versão no npm (dá para desligar com updateCheck: false)."
+          ]
+        }
+      ]
+    }
+  ],
+  "proximo_passo": "Gostou de pôr a IA pra trabalhar por você? O passo seguinte é ter o seu próprio clone de IA, que grava e produz conteúdo no seu lugar.",
+  "fontes": [
+    "https://github.com/jfarcand/mirroir-mcp",
+    "https://github.com/jfarcand/mirroir-mcp/blob/main/docs/install.md",
+    "https://github.com/jfarcand/mirroir-mcp/blob/main/docs/permissions.md",
+    "https://mirroir.dev/",
+    "https://support.apple.com/en-us/120421",
+    "https://code.claude.com/docs/en/setup"
+  ],
+  "verificado_em": "2026-11-22"
+}
