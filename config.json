@@ -3,15 +3,18 @@
   "instagram": "matheussouza.lisboa",
   "supabase_url": "https://ghqxlycouzcvtwxojrxz.supabase.co",
   "supabase_key": "sb_publishable_i_drjCxZPceojo4tSdAFtw_shrXATCb",
-  "whatsapp": "",
+  "whatsapp": "+351932966085",
   "pixel_id": "",
-  "base_url": "",
+  "base_url": "https://matheusizb.github.io/guias/",
+  "kit_origem": "../edicao-ia-site/index.html",
   "oferta": {
-    "titulo": "Quer um clone seu produzindo conteúdo todo dia?",
-    "texto": "Todos os vídeos deste perfil são feitos por um clone de IA: mesma voz, mesmo rosto, edição pronta e postagem automática. A gente monta a mesma máquina pra você ou pro seu negócio.",
-    "bullets": ["Clone com a sua voz e o seu rosto", "Roteiros modelados nos vídeos que estão viralizando", "Edição, legenda e postagem automática", "Leads caindo direto no seu WhatsApp"],
-    "cta": "Quero o meu clone",
-    "cta2": "Quero aprender a editar vídeo com o Claude",
-    "mensagem_wa": "Oi Matheus! Vim do guia {guia} e quero saber como ter o meu clone de IA."
+    "titulo": "Quer vídeos assim no seu perfil?",
+    "texto": "Todos os vídeos deste perfil são editados por IA, com um clone que tem a minha voz e o meu rosto. Tem dois jeitos de ter isso também:",
+    "bullets": ["Você mesmo edita: o Kit Edição com IA ensina o ChatGPT ou o Claude a editar por você (R$29,90)", "A gente faz por você: pack de vídeos personalizados ou o seu próprio clone de IA"],
+    "cta": "Quero o Kit Edição com IA · R$29,90",
+    "cta_link": "../kit/",
+    "cta2": "Quero vídeos feitos por vocês",
+    "mensagem_wa": "Oi Matheus! Vim do guia {guia} e quero o Kit Edição com IA.",
+    "mensagem_wa2": "Oi Matheus! Vim do guia {guia} e quero saber do pack de vídeos personalizados / clone de IA."
   }
 }
