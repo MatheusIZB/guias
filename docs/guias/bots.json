@@ -1,0 +1,253 @@
+{
+  "slug": "bots",
+  "codigo": "BOTS",
+  "titulo": "OpenMausBot: monte o seu time de agentes de IA de graça",
+  "destaque": "Um time de bots de IA, cada um com a sua função",
+  "sub": "O que o OpenMausBot faz de verdade, como instalar, criar o primeiro bot com a conta do Claude ou do ChatGPT e usar sem riscos.",
+  "tempo_leitura_min": 7,
+  "ferramentas": [
+    {
+      "nome": "OpenMausBot",
+      "link": "https://github.com/milind-soni/OpenMausBot",
+      "para_que": "App de conversa onde cada contato é um agente de IA com personalidade, modelo, computador e apps próprios.",
+      "preco": "Gratuito, código aberto (Apache 2.0). Planos Cloud opcionais a partir de US$ 15/mês"
+    },
+    {
+      "nome": "Claude Code",
+      "link": "https://code.claude.com/docs/en/setup",
+      "para_que": "Um dos motores dos bots. O OpenMausBot usa o claude instalado e logado no seu computador.",
+      "preco": "Requer conta Pro, Max, Ultra, Team, Enterprise ou Console"
+    },
+    {
+      "nome": "Codex CLI",
+      "link": "https://github.com/openai/codex",
+      "para_que": "Outro motor possível dos bots, ligado à sua conta da OpenAI.",
+      "preco": "Usa o seu login do ChatGPT ou da OpenAI"
+    },
+    {
+      "nome": "Composio",
+      "link": "https://github.com/milind-soni/OpenMausBot/blob/main/docs/composio.md",
+      "para_que": "Liga Gmail, Slack, GitHub, Notion e outros apps aos bots.",
+      "preco": "Serviço de terceiros, com conta e termos próprios"
+    },
+    {
+      "nome": "Boat",
+      "link": "https://boat.dev",
+      "para_que": "Dá a cada bot um computador Linux na nuvem, com desktop e terminal.",
+      "preco": "Pago depois do período de teste"
+    }
+  ],
+  "secoes": [
+    {
+      "titulo": "O que é o OpenMausBot",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "O OpenMausBot (também chamado de MausBot) é um app de conversa, parecido com um mensageiro, em que cada contato da barra lateral é um agente de IA de verdade. Cada bot tem personalidade, modelo, computador e apps conectados próprios."
+        },
+        {
+          "tipo": "p",
+          "texto": "Por baixo, os bots rodam nos programas claude, codex ou grok instalados no seu computador, com o login e a assinatura que você já tem. Não há conta nova nem intermediário no meio, segundo o README."
+        },
+        {
+          "tipo": "p",
+          "texto": "Ele é local: um pequeno servidor roda em 127.0.0.1 e guarda conversas, chaves e eventos na pasta ~/.openmausbot, não numa nuvem."
+        }
+      ]
+    },
+    {
+      "titulo": "O que o Reel disse, conferido no repositório",
+      "blocos": [
+        {
+          "tipo": "tabela",
+          "colunas": [
+            "Afirmação",
+            "O que as fontes oficiais dizem"
+          ],
+          "linhas": [
+            [
+              "Grátis e código aberto",
+              "Sim. Licença Apache 2.0 (a pasta enterprise/ tem licença própria). Você paga o seu provedor de IA, e a hospedagem Cloud é opcional e paga"
+            ],
+            [
+              "+25 mil estrelas",
+              "Sim. Cerca de 26,7 mil estrelas no GitHub em 22/11/2026"
+            ],
+            [
+              "Cada bot com o próprio computador",
+              "Sim, com ressalva: o computador na nuvem vem do Boat, que é pago depois do teste. Também dá para usar uma VM local ou o seu próprio computador"
+            ],
+            [
+              "Usa o plano do Claude ou do ChatGPT",
+              "Sim. Usa os programas claude e codex logados na sua máquina (Grok também é aceito)"
+            ],
+            [
+              "Um bot cuida do email",
+              "Sim, conectando o Gmail pelo Composio"
+            ],
+            [
+              "Outro edita vídeo",
+              "Não há recurso de edição de vídeo descrito no README nem no site oficial"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "titulo": "Antes de começar: instale o Claude Code",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Este guia usa o Claude Code, o agente do Claude que roda no terminal. Pela documentação oficial, ele exige uma conta Pro, Max, Ultra, Team, Enterprise ou Console. O plano gratuito do claude.ai não inclui o Claude Code."
+        },
+        {
+          "tipo": "codigo",
+          "texto": "curl -fsSL https://claude.ai/install.sh | bash",
+          "rotulo": "Terminal (macOS, Linux, WSL)"
+        },
+        {
+          "tipo": "codigo",
+          "texto": "irm https://claude.ai/install.ps1 | iex",
+          "rotulo": "Windows PowerShell"
+        },
+        {
+          "tipo": "p",
+          "texto": "Quando terminar, abra um terminal novo e confira a instalação. Depois rode claude e faça login pelo navegador."
+        },
+        {
+          "tipo": "codigo",
+          "texto": "claude --version",
+          "rotulo": "Terminal"
+        },
+        {
+          "tipo": "dica",
+          "texto": "Se o terminal disser que o comando claude não foi encontrado, feche e abra o terminal de novo. Se continuar, a documentação oficial tem uma página de solução de problemas de instalação."
+        }
+      ]
+    },
+    {
+      "titulo": "Instale o app",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Requisitos: macOS, Windows x64 ou Ubuntu 24.04 x64, e pelo menos um agente instalado e logado: claude, codex ou grok. Eles aparecem sozinhos no seletor de modelos."
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "Abra a página de releases oficial (link nas fontes) e baixe o instalador do seu sistema: .dmg para Mac (Apple silicon ou Intel), .exe para Windows, .deb ou AppImage para Ubuntu.",
+            "Mac: arraste o app para Aplicativos e abra. O instalador é assinado e notarizado.",
+            "Windows: rode o instalador, sem precisar de administrador. Como ele ainda não tem assinatura de código, o SmartScreen mostra 'editor desconhecido'. Clique em 'Mais informações' e depois em 'Executar assim mesmo'.",
+            "Ubuntu: instale o .deb pelo APT (recomendado) ou torne o AppImage executável. O suporte a Linux ainda é beta."
+          ]
+        },
+        {
+          "tipo": "p",
+          "texto": "Prefere o terminal? Com Node 24 ou mais novo:"
+        },
+        {
+          "tipo": "codigo",
+          "texto": "npm install -g openmausbot\nopenmausbot",
+          "rotulo": "Terminal"
+        },
+        {
+          "tipo": "aviso",
+          "texto": "Baixe só pelo GitHub oficial ou pelo site oficial. Como o instalador do Windows não tem assinatura, um arquivo falso com o mesmo nome seria difícil de distinguir."
+        }
+      ]
+    },
+    {
+      "titulo": "Crie o seu primeiro bot",
+      "blocos": [
+        {
+          "tipo": "passos",
+          "itens": [
+            "Abra o OpenMausBot. Se o Claude Code ou o Codex já estiver logado, os modelos aparecem no seletor de modelos.",
+            "Escolha um modelo para o bot. Dá para trocar de modelo no meio da conversa.",
+            "Mande a primeira tarefa como se fosse uma mensagem para um contato.",
+            "Quando o bot quiser rodar um comando ou editar um arquivo, aparece um cartão com Permitir ou Negar. Leia antes de aprovar."
+          ]
+        },
+        {
+          "tipo": "codigo",
+          "texto": "Você é o meu pesquisador. Encontre 5 ferramentas de IA gratuitas lançadas este mês, com o link oficial de cada uma e uma frase sobre para que servem.",
+          "rotulo": "Primeira mensagem"
+        },
+        {
+          "tipo": "p",
+          "texto": "Para o bot cuidar de email, cole uma chave do Composio em App Settings (ícone de engrenagem no rodapé da barra lateral) e conecte o Gmail. Depois dá para criar rotinas pedindo em texto, como no exemplo abaixo."
+        },
+        {
+          "tipo": "codigo",
+          "texto": "Todo dia útil às 9h, me mande um resumo da minha caixa de entrada.",
+          "rotulo": "Rotina (gatilho)"
+        },
+        {
+          "tipo": "dica",
+          "texto": "Use canais para separar contextos (Trabalho, Pessoal, cada projeto). Cada canal tem histórico, instruções e pasta de trabalho próprios, sem precisar duplicar bots."
+        }
+      ]
+    },
+    {
+      "titulo": "O computador de cada bot",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "No painel Computer, o bot pode usar três tipos de máquina:"
+        },
+        {
+          "tipo": "tabela",
+          "colunas": [
+            "Opção",
+            "Como funciona"
+          ],
+          "linhas": [
+            [
+              "Nuvem (Boat)",
+              "Um Linux isolado na nuvem, com tela ao vivo. Precisa de chave do Boat, que é pago depois do teste"
+            ],
+            [
+              "VM local",
+              "Uma máquina virtual isolada no seu computador"
+            ],
+            [
+              "Este computador",
+              "O bot controla o seu próprio Mac ou PC. No Ubuntu, só no Xorg e depois de você ativar. No Wayland está desativado"
+            ]
+          ]
+        },
+        {
+          "tipo": "aviso",
+          "texto": "Deixar um bot controlar o seu computador de uso diário é a opção mais arriscada. Prefira a VM local ou a nuvem para tarefas que você ainda está testando."
+        }
+      ]
+    },
+    {
+      "titulo": "Segurança e boas práticas",
+      "blocos": [
+        {
+          "tipo": "passos",
+          "itens": [
+            "Aprove com calma: os cartões de aprovação existem para você decidir cada ação arriscada.",
+            "Times importados chegam com conexões desligadas e rotinas pausadas, e não trazem credenciais. Revise antes de ligar.",
+            "Ao configurar pelo terminal (openmausbot setup), as chaves de API ficam em texto puro no config.json. No app de desktop, as chaves do provedor e dos serviços são criptografadas pelo sistema.",
+            "Composio e Boat são serviços de terceiros, com termos e custos próprios.",
+            "As estatísticas de uso são anônimas e podem ser desligadas em Settings → General → Usage analytics."
+          ]
+        },
+        {
+          "tipo": "aviso",
+          "texto": "O projeto não tem criptomoeda. O README avisa que qualquer moeda com o nome OpenMausBot, Maus ou SupaMaus não tem relação com o projeto. Se alguém te oferecer um token desses, é golpe."
+        }
+      ]
+    }
+  ],
+  "proximo_passo": "Gostou de pôr a IA pra trabalhar por você? O passo seguinte é ter o seu próprio clone de IA, que grava e produz conteúdo no seu lugar.",
+  "fontes": [
+    "https://github.com/milind-soni/OpenMausBot",
+    "https://github.com/milind-soni/OpenMausBot/releases/latest",
+    "https://www.mausbot.com/",
+    "https://code.claude.com/docs/en/setup"
+  ],
+  "verificado_em": "2026-11-22"
+}

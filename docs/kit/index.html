@@ -1,0 +1,662 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#100B1C">
+<title>Kit Edição com IA</title>
+<meta property="og:title" content="Kit Edição com IA · Você dá a ordem. A IA edita.">
+<meta property="og:description" content="O guia que transforma o ChatGPT ou o Claude Code no seu editor de vídeo. R$29,90, entregue no seu WhatsApp.">
+<meta name="description" content="O guia que transforma o ChatGPT ou o Claude Code no seu editor de vídeo. Comandos prontos, modelos e checklist. R$29,90, entregue no seu WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Schibsted+Grotesk:wght@400;500;600;700&family=Martian+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Layout: ilha de edição. Blocos de cor sólida (roxo / papel / tinta) empilhados como clipes numa timeline; monitor com timecode no topo; mobile primeiro. */
+:root{
+  --violet:#6A2CFF; --violet-deep:#4A16D6; --lime:#C8F031; --ink:#100B1C; --ink-2:#1C1530; --paper:#EFEBF7;
+  --on-violet:#F7F4FF; --on-violet-dim:#DCD0FF; --on-ink-dim:#A99DC4; --on-paper-dim:#584D70; --rule-ink:rgba(239,235,247,.14); --rule-paper:rgba(16,11,28,.16);
+  --f-display:"Big Shoulders Display","Arial Narrow","Roboto Condensed",Impact,sans-serif;
+  --f-body:"Schibsted Grotesk","Helvetica Neue",Arial,sans-serif;
+  --f-mono:"Martian Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  --ease:cubic-bezier(.2,.9,.2,1);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--ink);color:var(--on-violet);font-family:var(--f-body);font-size:16px;line-height:1.55;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:70;background:var(--ink)}
+h1,h2,h3,p,ul,ol,figure{margin:0}
+ul,ol{padding:0;list-style:none}
+a{color:inherit;text-decoration:none}
+svg{display:block}
+img,video{max-width:100%;display:block}
+.wrap{max-width:1180px;margin-inline:auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.band{padding-block:72px}
+h1,h2,.display{font-family:var(--f-display);font-weight:900;text-transform:uppercase;line-height:.88;letter-spacing:-.005em;text-wrap:balance}
+h2{font-size:clamp(3rem,11vw,6.4rem)}
+h3{font-family:var(--f-body);font-size:1.15rem;font-weight:700;line-height:1.25}
+.mono{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase}
+.lede{font-size:1.06rem;max-width:58ch}
+.on-violet{background:var(--violet);color:var(--on-violet)}
+.on-ink{background:var(--ink);color:var(--on-violet)}
+.on-paper{background:var(--paper);color:var(--ink)}
+.on-violet .lede{color:var(--on-violet-dim)}
+.on-ink .lede{color:var(--on-ink-dim)}
+.on-paper .lede{color:var(--on-paper-dim)}
+.lime{color:var(--lime)}
+.slate{display:flex;align-items:center;gap:10px;margin-bottom:22px}
+.slate .tc{padding:5px 8px;border:1.5px solid currentColor;border-radius:4px}
+.slate .dot{width:9px;height:9px;border-radius:50%;background:#FF3D5A;animation:blink 1.1s steps(1) infinite}
+@keyframes blink{50%{opacity:.15}}
+
+/* CTA: botão físico, borda de tinta e sombra dura */
+.cta{display:flex;align-items:center;justify-content:center;gap:12px;width:100%;min-height:62px;padding:16px 22px;border:2.5px solid var(--ink);border-radius:14px;background:var(--lime);color:var(--ink);font-family:var(--f-body);font-weight:700;font-size:1.06rem;line-height:1.15;box-shadow:5px 5px 0 var(--ink);transition:transform .18s var(--ease),box-shadow .18s var(--ease)}
+.cta:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--ink)}
+.cta:active{transform:translate(4px,4px);box-shadow:1px 1px 0 var(--ink)}
+.cta:focus-visible{outline:3px solid var(--on-violet);outline-offset:4px}
+.cta svg{width:24px;height:24px;flex:none;fill:var(--ink)}
+.cta .sub{display:block;font-weight:500;font-size:.78rem;opacity:.72}
+.on-ink .cta{border-color:var(--lime);box-shadow:5px 5px 0 var(--violet)}
+.on-ink .cta:hover{box-shadow:7px 7px 0 var(--violet)}
+.cta-meta{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:16px;font-size:.84rem}
+.cta-meta span{display:inline-flex;align-items:center;gap:6px}
+.cta-meta span::before{content:"";width:7px;height:7px;background:var(--lime);border:1.5px solid var(--ink);border-radius:2px}
+
+/* HEADER */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:60;background:var(--ink);color:var(--on-violet);border-bottom:1px solid var(--rule-ink)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:58px;gap:12px}
+.brand{font-family:var(--f-display);font-weight:900;font-size:1.5rem;text-transform:uppercase;letter-spacing:.01em;display:flex;align-items:center;gap:8px}
+.brand i{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:6px;background:var(--lime);color:var(--ink);font-style:normal;font-size:.8rem}
+.top .right{display:flex;align-items:center;gap:14px}
+.top .tc{color:var(--on-ink-dim);font-variant-numeric:tabular-nums}
+.top .buy{display:none;padding:9px 14px;border-radius:9px;background:var(--lime);color:var(--ink);font-weight:700;font-size:.88rem;border:2px solid var(--lime)}
+.top .buy:hover{background:transparent;color:var(--lime)}
+.progress{position:absolute;left:0;bottom:-1px;height:2px;width:100%;background:var(--lime);transform-origin:left;transform:scaleX(0)}
+
+/* HERO */
+.hero{padding-block:40px 64px;overflow:hidden}
+.hero-grid{display:grid;gap:40px}
+.hero h1{font-size:clamp(4rem,19vw,8.6rem);margin-bottom:22px}
+.hero h1 .line{display:block}
+.mark{position:relative;display:inline-block;color:var(--lime)}
+.mark svg{position:absolute;left:-9%;top:-14%;width:118%;height:128%;overflow:visible;pointer-events:none}
+.mark path{fill:none;stroke:var(--ink);stroke-width:5;stroke-linecap:round;stroke-dasharray:640;stroke-dashoffset:640;animation:draw 1.1s .5s var(--ease) forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.sticker{position:absolute;right:-6px;top:-28px;transform:rotate(7deg);background:var(--paper);color:var(--ink);font-family:var(--f-mono);font-size:.62rem;letter-spacing:.04em;text-transform:uppercase;padding:7px 10px;border-radius:3px;box-shadow:0 6px 14px rgba(16,11,28,.35);white-space:nowrap}
+.sticker::before{content:"";position:absolute;left:50%;top:-8px;width:44px;height:14px;transform:translateX(-50%) rotate(-4deg);background:rgba(200,240,49,.75)}
+.hero .lede{margin-bottom:22px}
+.hero .lede b{color:var(--on-violet)}
+.price-line{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+.price-line strong{font-family:var(--f-display);font-weight:900;font-size:3rem;line-height:1;color:var(--lime)}
+.price-line span{font-size:.86rem;color:var(--on-violet-dim)}
+
+/* MONITOR */
+.monitor{position:relative;border-radius:16px;background:var(--ink);border:2.5px solid var(--ink);box-shadow:8px 8px 0 var(--violet-deep);overflow:hidden}
+.screen{position:relative;aspect-ratio:1/1;max-width:100%;overflow:hidden;background:radial-gradient(120% 80% at 50% 0%,#2A1A55,var(--ink) 70%)}
+.screen::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(239,235,247,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(239,235,247,.05) 1px,transparent 1px);background-size:33.33% 33.33%}
+.bracket{position:absolute;width:22px;height:22px;border:2px solid var(--on-violet);opacity:.8}
+.b1{top:14px;left:14px;border-right:0;border-bottom:0}.b2{top:14px;right:14px;border-left:0;border-bottom:0}
+.b3{bottom:14px;left:14px;border-right:0;border-top:0}.b4{bottom:14px;right:14px;border-left:0;border-top:0}
+.hud{position:absolute;left:44px;right:44px;top:18px;display:flex;justify-content:space-between;color:var(--on-violet);font-variant-numeric:tabular-nums}
+.hud .rec{display:flex;align-items:center;gap:6px}
+.hud .rec::before{content:"";width:8px;height:8px;border-radius:50%;background:#FF3D5A;animation:blink 1.1s steps(1) infinite}
+.term{position:absolute;inset:58px 26px 26px;font-family:var(--f-mono);font-size:.74rem;line-height:1.7;color:var(--on-violet);transition:opacity .4s}
+.term .you{color:var(--lime)}
+.term .log{color:var(--on-ink-dim)}
+.term .ok{color:var(--lime)}
+.cursor{display:inline-block;width:.55em;height:1.05em;background:var(--lime);vertical-align:-.18em;animation:blink 1s steps(1) infinite}
+.out{position:absolute;inset:0;display:grid;place-items:center;padding:30px;opacity:0;transition:opacity .4s}
+.out.on{opacity:1}
+.out .subject{position:absolute;left:50%;top:44%;width:56%;aspect-ratio:3/4;transform:translate(-50%,-50%);border-radius:48% 48% 14px 14px;background:linear-gradient(180deg,#7C4DFF,#3A12A8);opacity:.55;animation:punch 1.6s var(--ease) infinite alternate}
+@keyframes punch{to{transform:translate(-50%,-50%) scale(1.12)}}
+.caption{position:relative;margin-top:44%;text-align:center;font-family:var(--f-display);font-weight:900;font-size:clamp(2.2rem,10vw,3.4rem);line-height:.92;text-transform:uppercase;color:var(--on-violet);text-shadow:0 3px 0 var(--ink)}
+.caption .w{display:inline-block;padding:0 .08em;transition:background .15s,color .15s}
+.caption .w.hot{background:var(--lime);color:var(--ink);text-shadow:none}
+.tracks{padding:12px 14px 14px;border-top:1px solid var(--rule-ink);display:grid;gap:6px;position:relative;font-family:var(--f-mono);font-size:.56rem;color:var(--on-ink-dim)}
+.track{display:grid;grid-template-columns:22px 1fr;align-items:center;gap:8px}
+.lane{position:relative;height:16px;border-radius:3px;background:var(--ink-2);display:flex;gap:2px;overflow:hidden}
+.clip{height:100%;border-radius:3px}
+.v .clip{background:var(--violet)}
+.v .clip:nth-child(2){background:#8A5BFF}
+.t .clip{background:var(--lime)}
+.t .gap{background:transparent}
+.a .lane{align-items:center;padding-inline:2px;gap:1px}
+.a .bar{flex:1;background:#7E6FA6;border-radius:1px}
+.playhead{position:absolute;top:6px;bottom:8px;left:44px;width:2px;background:#FF3D5A;animation:play 7s linear infinite}
+.playhead::before{content:"";position:absolute;top:-4px;left:-4px;width:10px;height:8px;background:#FF3D5A;clip-path:polygon(0 0,100% 0,50% 100%)}
+@keyframes play{from{left:44px}to{left:calc(100% - 16px)}}
+
+/* TICKER */
+.ticker{background:var(--lime);color:var(--ink);border-block:2.5px solid var(--ink);overflow:hidden;padding-block:14px}
+.ticker-track{display:flex;width:max-content;animation:roll 28s linear infinite}
+.ticker span{font-family:var(--f-display);font-weight:900;font-size:1.9rem;text-transform:uppercase;line-height:1;white-space:nowrap;padding-right:28px}
+.ticker span::after{content:"/";padding-left:28px;color:var(--violet)}
+@keyframes roll{to{transform:translateX(-50%)}}
+
+/* ESTILOS */
+.sec-head{display:grid;gap:16px;margin-bottom:34px}
+.reels{display:grid;grid-auto-flow:column;grid-auto-columns:72%;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:14px;margin-right:calc(-1 * max(20px,env(safe-area-inset-right,0px)));padding-right:max(20px,env(safe-area-inset-right,0px));scrollbar-width:none}
+.reels::-webkit-scrollbar{display:none}
+.reel{scroll-snap-align:start;display:grid;gap:10px}
+.frame{position:relative;aspect-ratio:9/16;max-width:100%;border-radius:12px;overflow:hidden;background:var(--ink-2);border:1.5px solid var(--rule-ink)}
+.frame video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.frame .ph{position:absolute;inset:0;display:grid;place-items:center;background:var(--g)}
+.frame .ph::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(239,235,247,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(239,235,247,.06) 1px,transparent 1px);background-size:33.33% 33.33%}
+.frame .play{position:relative;width:58px;height:58px;border-radius:12px;background:var(--lime);border:2.5px solid var(--ink);display:grid;place-items:center;box-shadow:4px 4px 0 var(--ink);transition:transform .2s var(--ease)}
+.reel:hover .play{transform:scale(1.08) rotate(-4deg)}
+.frame .play svg{width:20px;height:20px;fill:var(--ink);margin-left:3px}
+.frame .fname{position:absolute;left:10px;top:10px;right:10px;z-index:2;display:flex;justify-content:space-between;color:var(--on-violet)}
+.frame .fname span{background:var(--ink);padding:4px 6px;border-radius:4px}
+.reel h3{font-size:1rem}
+.reel p{font-size:.86rem;color:var(--on-ink-dim)}
+.swipe-hint{display:flex;align-items:center;gap:8px;margin-top:8px;color:var(--on-ink-dim)}
+
+/* MÉTODO */
+.steps{position:relative;display:grid;gap:0;margin-top:40px;border-left:2.5px solid var(--ink);margin-left:8px}
+.step{position:relative;padding:0 0 34px 28px}
+.step:last-child{padding-bottom:0}
+.step::before{content:"";position:absolute;left:-9px;top:4px;width:14px;height:14px;border-radius:3px;background:var(--lime);border:2.5px solid var(--ink)}
+.step .mono{color:var(--violet);font-weight:500}
+.step h3{font-family:var(--f-display);font-size:2.4rem;font-weight:900;text-transform:uppercase;line-height:1;margin:4px 0 6px}
+.step p{color:var(--on-paper-dim);max-width:46ch}
+.command{margin-top:44px;border-radius:14px;background:var(--ink);color:var(--on-violet);border:2.5px solid var(--ink);box-shadow:8px 8px 0 var(--violet);overflow:hidden}
+.command header{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid var(--rule-ink);color:var(--on-ink-dim)}
+.copy{font:inherit;color:var(--ink);background:var(--lime);border:0;border-radius:6px;padding:6px 10px;cursor:pointer}
+.copy:focus-visible{outline:2px solid var(--on-violet);outline-offset:2px}
+.command pre{margin:0;padding:20px 16px 22px;font-family:var(--f-mono);font-size:.74rem;line-height:1.85;white-space:pre-wrap;overflow-wrap:anywhere}
+.command pre .k{color:var(--lime)}
+.command pre .c{color:var(--on-ink-dim)}
+
+/* ANTES / AGORA */
+.versus{display:grid;gap:18px;margin-top:38px}
+.vcol{border-radius:14px;padding:24px 22px;border:2.5px solid var(--ink)}
+.vcol.before{background:var(--violet-deep);color:var(--on-violet-dim)}
+.vcol.after{background:var(--paper);color:var(--ink);box-shadow:8px 8px 0 var(--ink)}
+.vcol .mono{display:block;margin-bottom:14px}
+.vcol li{display:grid;grid-template-columns:24px 1fr;gap:10px;padding-block:11px;border-top:1px solid rgba(247,244,255,.18);font-size:1.02rem}
+.vcol.after li{border-top-color:var(--rule-paper)}
+.vcol.before li span{text-decoration:line-through;text-decoration-color:#FF3D5A;text-decoration-thickness:2px}
+.vcol .ico{width:22px;height:22px;border-radius:5px;display:grid;place-items:center;font-weight:700;font-size:.8rem}
+.vcol.before .ico{background:rgba(255,61,90,.2);color:#FF8DA0}
+.vcol.after .ico{background:var(--lime);color:var(--ink);border:1.5px solid var(--ink)}
+
+/* PRA QUEM */
+.who{display:grid;gap:0;margin-top:36px;border-top:1px solid var(--rule-ink)}
+.who-item{display:grid;gap:12px;padding-block:28px;border-bottom:1px solid var(--rule-ink)}
+.who-item .tag{justify-self:start;padding:5px 9px;border-radius:5px;background:var(--ink-2);color:var(--lime);border:1px solid rgba(200,240,49,.35)}
+.who-item blockquote{margin:0;font-family:var(--f-display);font-weight:800;font-size:clamp(1.9rem,7.6vw,3rem);line-height:.98;text-transform:uppercase}
+.who-item p{color:var(--on-ink-dim);max-width:54ch}
+
+/* O QUE VEM */
+.files{margin-top:36px;border:2.5px solid var(--ink);border-radius:14px;overflow:hidden;background:#F8F6FC}
+.files header{display:grid;grid-template-columns:1fr auto;padding:12px 16px;background:var(--ink);color:var(--on-ink-dim)}
+.file{display:grid;grid-template-columns:34px minmax(0,1fr);gap:12px;padding:16px;border-top:1px solid var(--rule-paper);align-items:start}
+.file:first-of-type{border-top:0}
+.file .fi{width:34px;height:40px;position:relative;border:2px solid var(--ink);border-radius:4px;background:var(--paper)}
+.file .fi::after{content:"";position:absolute;right:-2px;top:-2px;width:11px;height:11px;background:var(--violet);border-left:2px solid var(--ink);border-bottom:2px solid var(--ink)}
+.file b{display:block;font-family:var(--f-mono);font-size:.78rem;font-weight:500;word-break:break-word}
+.file p{font-size:.94rem;color:var(--on-paper-dim);margin-top:4px}
+.files footer{padding:12px 16px;border-top:2.5px solid var(--ink);display:flex;justify-content:space-between;background:var(--lime);color:var(--ink)}
+
+/* OFERTA */
+.ticket{position:relative;margin-top:38px;background:var(--paper);color:var(--ink);border-radius:18px;border:2.5px solid var(--ink);box-shadow:10px 10px 0 var(--ink)}
+.ticket .top-half{padding:26px 22px 24px}
+.ticket .tear{position:relative;height:0;border-top:2.5px dashed var(--ink);margin-inline:22px}
+.ticket .tear::before,.ticket .tear::after{content:"";position:absolute;top:-16px;width:30px;height:30px;border-radius:50%;background:var(--violet);border:2.5px solid var(--ink)}
+.ticket .tear::before{left:-40px;clip-path:inset(0 0 0 50%)}
+.ticket .tear::after{right:-40px;clip-path:inset(0 50% 0 0)}
+.ticket .bottom-half{padding:24px 22px 26px}
+.ticket .row{display:flex;justify-content:space-between;align-items:center;gap:10px;color:var(--on-paper-dim)}
+.big{display:flex;align-items:flex-start;gap:6px;margin:12px 0 6px;font-family:var(--f-display);font-weight:900;line-height:.82}
+.big sup{font-size:2rem;margin-top:10px}
+.big b{font-size:clamp(6.4rem,30vw,9.5rem);letter-spacing:-.02em}
+.big small{font-size:3rem;margin-top:10px}
+.ticket ul{display:grid;gap:10px;margin-top:18px}
+.ticket li{display:grid;grid-template-columns:22px 1fr;gap:10px;font-size:1rem}
+.ticket li::before{content:"✓";display:grid;place-items:center;width:22px;height:22px;border-radius:5px;background:var(--lime);border:1.5px solid var(--ink);font-weight:700;font-size:.75rem}
+.how{display:grid;gap:8px;margin-bottom:20px}
+.how div{display:grid;grid-template-columns:34px 1fr;gap:10px;align-items:center;font-size:.94rem}
+.how .n{display:grid;place-items:center;width:34px;height:34px;border-radius:8px;background:var(--ink);color:var(--lime);font-family:var(--f-display);font-weight:900;font-size:1.3rem}
+.fine{margin-top:14px;font-size:.78rem;color:var(--on-paper-dim)}
+
+/* GARANTIA */
+.guarantee{display:grid;gap:22px;align-items:center;justify-items:start;margin-top:56px}
+.stamp{position:relative;width:150px;height:150px;flex:none}
+.stamp svg{position:absolute;inset:0;width:100%;height:100%;animation:spin 18s linear infinite}
+.stamp text{font-family:var(--f-mono);font-size:10.5px;letter-spacing:2.6px;fill:var(--on-violet);text-transform:uppercase}
+.stamp .core{position:absolute;inset:26px;border-radius:50%;background:var(--lime);border:2.5px solid var(--ink);display:grid;place-content:center;text-align:center;color:var(--ink);box-shadow:4px 4px 0 var(--ink)}
+.stamp .core b{font-family:var(--f-display);font-weight:900;font-size:3.4rem;line-height:.8}
+.stamp .core span{font-family:var(--f-mono);font-size:.6rem;text-transform:uppercase}
+@keyframes spin{to{transform:rotate(360deg)}}
+.guarantee h3{font-family:var(--f-display);font-weight:900;font-size:2.2rem;text-transform:uppercase;line-height:1;margin-bottom:8px}
+.guarantee p{color:var(--on-violet-dim);max-width:52ch}
+
+/* FAQ */
+.faq{margin-top:30px;border-top:2.5px solid var(--ink)}
+.faq details{border-bottom:1px solid var(--rule-paper)}
+.faq summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:1fr 36px;gap:14px;align-items:center;padding-block:20px;font-weight:700;font-size:1.06rem}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";display:grid;place-items:center;width:36px;height:36px;border-radius:9px;border:2px solid var(--ink);font-size:1.3rem;font-weight:500;transition:transform .25s var(--ease),background .2s}
+.faq details[open] summary::after{transform:rotate(45deg);background:var(--lime)}
+.faq summary:focus-visible{outline:2px solid var(--violet);outline-offset:4px}
+.faq details p{padding-bottom:22px;color:var(--on-paper-dim);max-width:62ch}
+
+/* FINAL */
+.final h2{font-size:clamp(3.6rem,15vw,8.4rem);margin-bottom:22px}
+.final .lede{margin-bottom:26px}
+footer.site{padding-block:30px 120px;border-top:1px solid var(--rule-ink);color:var(--on-ink-dim);font-size:.8rem}
+footer.site .wrap{display:grid;gap:8px}
+
+/* BARRA MOBILE + BOTÃO DESKTOP */
+.dock{position:fixed;left:0;right:0;bottom:0;z-index:65;padding:10px max(12px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(12px,env(safe-area-inset-left,0px));background:linear-gradient(to top,var(--ink) 65%,rgba(16,11,28,0));transform:translateY(110%);transition:transform .35s var(--ease)}
+.dock.show{transform:none}
+.dock .cta{min-height:56px;box-shadow:4px 4px 0 var(--violet);border-color:var(--lime)}
+.dock .cta .price{margin-left:auto;font-family:var(--f-display);font-weight:900;font-size:1.5rem}
+.fab{display:none}
+
+@media (min-width:760px){
+  .band{padding-block:110px}
+  .sec-head{grid-template-columns:1.2fr 1fr;align-items:end}
+  .reels{grid-auto-flow:row;grid-template-columns:repeat(4,1fr);overflow:visible;margin-right:0;padding-right:0}
+  .reel:nth-child(even){transform:translateY(36px)}
+  .swipe-hint{display:none}
+  .versus{grid-template-columns:1fr 1fr}
+  .who{grid-template-columns:repeat(3,1fr);gap:28px;border-top:0}
+  .who-item{border-top:2.5px solid var(--lime);border-bottom:0}
+  .guarantee{grid-template-columns:auto 1fr;gap:40px}
+  .stamp{width:180px;height:180px}
+  .stamp .core{inset:32px}
+  .file{grid-template-columns:34px minmax(0,1fr) minmax(0,1.3fr);gap:20px;align-items:center}
+  .file p{margin-top:0}
+  .cta{width:auto;padding-inline:30px}
+  .ticket .cta{width:100%}
+  .top .buy{display:inline-block}
+  .dock{display:none}
+  .fab{display:grid;place-items:center;position:fixed;right:calc(22px + env(safe-area-inset-right,0px));bottom:calc(22px + env(safe-area-inset-bottom,0px));z-index:65;width:60px;height:60px;border-radius:14px;background:var(--lime);border:2.5px solid var(--ink);box-shadow:4px 4px 0 var(--violet);transition:transform .18s var(--ease)}
+  .fab:hover{transform:translate(-2px,-2px) rotate(-4deg)}
+  .fab svg{width:30px;height:30px;fill:var(--ink)}
+  footer.site{padding-bottom:40px}
+  footer.site .wrap{grid-template-columns:1fr auto}
+}
+@media (min-width:1000px){
+  .hero{padding-block:70px 100px}
+  .hero-grid{grid-template-columns:1.15fr .85fr;align-items:center;gap:64px}
+  .hero h1{font-size:clamp(6rem,9vw,9.4rem)}
+  .screen{aspect-ratio:4/5}
+  .steps-wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:64px;align-items:start}
+  .command{margin-top:40px;position:sticky;top:100px}
+  .offer-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+  .ticket{margin-top:0}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .mark path{stroke-dashoffset:0}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="wa" viewBox="0 0 24 24"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.19 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.5h-.01a9.4 9.4 0 0 1-4.8-1.31l-.34-.2-3.57.93.95-3.48-.22-.36a9.42 9.42 0 0 1-1.45-5.02c0-5.2 4.24-9.44 9.45-9.44 2.52 0 4.89.99 6.67 2.77a9.37 9.37 0 0 1 2.76 6.68c0 5.2-4.24 9.43-9.44 9.43zm8.03-17.47A11.3 11.3 0 0 0 12.05.7C5.79.7.7 5.79.7 12.04c0 2 .52 3.95 1.52 5.67L.6 23.6l6.04-1.58a11.33 11.33 0 0 0 5.41 1.38h.01c6.25 0 11.34-5.09 11.35-11.34a11.27 11.27 0 0 0-3.33-8.03z"/></symbol>
+  <symbol id="play" viewBox="0 0 24 24"><path d="M6 3.5l14 8.5-14 8.5z"/></symbol>
+</svg>
+
+<header class="top">
+  <div class="wrap">
+    <a href="#inicio" class="brand"><i>▶</i>Edição/IA</a>
+    <div class="right">
+      <span class="tc mono" id="tc">TC 00:00:00:00</span>
+      <a class="buy" data-wa="menu" href="#">Quero o kit · R$29,90</a>
+    </div>
+  </div>
+  <div class="progress" id="progress"></div>
+</header>
+
+<main id="inicio">
+
+<!-- HERO -->
+<section class="hero on-violet">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="slate mono"><span class="dot"></span><span class="tc">Kit Edição com IA</span><span>ChatGPT · Claude Code</span></div>
+      <h1>
+        <span class="line">Você dá</span>
+        <span class="line">a ordem.</span>
+        <span class="line">A IA <span class="mark">edita.<svg viewBox="0 0 220 90" preserveAspectRatio="none" aria-hidden="true"><path d="M18 52 C8 22 120 4 196 18 C232 26 214 70 150 80 C88 90 14 82 10 58 C7 40 40 24 74 20"/></svg></span></span>
+      </h1>
+      <p class="lede">Um guia passo a passo que transforma o <b>ChatGPT</b> ou o <b>Claude Code</b> no seu editor de vídeo. Você escreve o que quer: legenda, cortes, zoom, ritmo. A IA monta o vídeo.</p>
+      <div class="price-line"><strong>R$29,90</strong><span>pagamento único · o kit chega no seu WhatsApp</span></div>
+      <a class="cta" data-wa="hero" href="#"><svg><use href="#wa"/></svg><span>Quero editar com IA<span class="sub">Falar no WhatsApp agora</span></span></a>
+      <div class="cta-meta"><span>Pix na hora</span><span>Entrega no WhatsApp</span><span>7 dias de garantia</span></div>
+    </div>
+
+    <div class="monitor" aria-label="Demonstração: um comando escrito vira um vídeo editado">
+      <span class="sticker" style="top:10px;right:12px;z-index:3">sem abrir editor</span>
+      <div class="screen">
+        <span class="bracket b1"></span><span class="bracket b2"></span><span class="bracket b3"></span><span class="bracket b4"></span>
+        <div class="hud mono"><span class="rec" id="hudTc">00:00:00:00</span><span>9:16 · 30fps</span></div>
+        <div class="term" id="term"><span class="you">você › </span>edita o video.mp4 em 9:16, legenda palavra a palavra e zoom nos momentos fortes</div>
+        <div class="out" id="out"><div class="subject"></div><div class="caption" id="caption"></div></div>
+      </div>
+      <div class="tracks" aria-hidden="true">
+        <div class="track v"><span>V1</span><div class="lane"><i class="clip" style="width:28%"></i><i class="clip" style="width:18%"></i><i class="clip" style="width:34%"></i><i class="clip" style="width:20%"></i></div></div>
+        <div class="track t"><span>T1</span><div class="lane"><i class="clip" style="width:14%"></i><i class="clip gap" style="width:6%"></i><i class="clip" style="width:22%"></i><i class="clip gap" style="width:8%"></i><i class="clip" style="width:18%"></i><i class="clip gap" style="width:5%"></i><i class="clip" style="width:27%"></i></div></div>
+        <div class="track a"><span>A1</span><div class="lane" id="wave"></div></div>
+        <span class="playhead"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span>Legenda palavra a palavra</span><span>Cortes secos</span><span>Zoom no momento forte</span><span>Corte de podcast</span><span>Anúncio UGC</span><span>Texto animado</span>
+    <span>Legenda palavra a palavra</span><span>Cortes secos</span><span>Zoom no momento forte</span><span>Corte de podcast</span><span>Anúncio UGC</span><span>Texto animado</span>
+  </div>
+</div>
+
+<!-- ESTILOS -->
+<section class="band on-ink" id="estilos">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Peça em<br><span class="lime">português.</span></h2>
+      <p class="lede">Trechos reais de vídeos do nosso perfil. Cada um saiu de um pedido escrito para a IA, sem abrir timeline.</p>
+    </div>
+    <div class="reels">
+      <article class="reel">
+        <div class="frame"><video src="estilos/estilo-01.mp4" poster="estilos/estilo-01.jpg" muted loop playsinline autoplay preload="metadata" width="360" height="640"></video><div class="fname mono"><span>Estilo_01.mp4</span><span>00:06</span></div></div>
+        <h3>Legenda palavra a palavra</h3><p>O formato que segura o dedo no Reels.</p>
+      </article>
+      <article class="reel">
+        <div class="frame"><video src="estilos/estilo-02.mp4" poster="estilos/estilo-02.jpg" muted loop playsinline autoplay preload="metadata" width="360" height="640"></video><div class="fname mono"><span>Estilo_02.mp4</span><span>00:06</span></div></div>
+        <h3>Cortes secos + zoom</h3><p>Sem silêncio, sem respiro morto.</p>
+      </article>
+      <article class="reel">
+        <div class="frame"><video src="estilos/estilo-03.mp4" poster="estilos/estilo-03.jpg" muted loop playsinline autoplay preload="metadata" width="360" height="640"></video><div class="fname mono"><span>Estilo_03.mp4</span><span>00:06</span></div></div>
+        <h3>Tela dividida com print</h3><p>O site ou o app em cima, quem fala embaixo.</p>
+      </article>
+      <article class="reel">
+        <div class="frame"><video src="estilos/estilo-04.mp4" poster="estilos/estilo-04.jpg" muted loop playsinline autoplay preload="metadata" width="360" height="640"></video><div class="fname mono"><span>Estilo_04.mp4</span><span>00:06</span></div></div>
+        <h3>Texto animado</h3><p>Títulos que entram no ritmo da fala.</p>
+      </article>
+    </div>
+    <div class="swipe-hint mono">Arraste para o lado →</div>
+  </div>
+</section>
+
+<!-- MÉTODO -->
+<section class="band on-paper" id="metodo">
+  <div class="wrap steps-wrap">
+    <div>
+      <h2>Do celular<br>ao post em<br><span style="color:var(--violet)">4 cortes.</span></h2>
+      <ol class="steps">
+        <li class="step"><span class="mono">00:00 · passo 1</span><h3>Grave</h3><p>Vídeo bruto do celular numa pasta. O kit mostra como organizar para a IA achar tudo.</p></li>
+        <li class="step"><span class="mono">00:30 · passo 2</span><h3>Peça</h3><p>Cole um comando pronto e diga o que quer: estilo, ritmo, legenda, duração.</p></li>
+        <li class="step"><span class="mono">01:00 · passo 3</span><h3>Revise</h3><p>Confira com o checklist e peça ajustes certeiros, sem refazer tudo.</p></li>
+        <li class="step"><span class="mono">01:30 · passo 4</span><h3>Repita</h3><p>Salve o estilo que funcionou e gere o próximo vídeo igual.</p></li>
+      </ol>
+    </div>
+    <div class="command">
+      <header class="mono"><span>comando_07_reels.txt</span><button class="copy mono" id="copyBtn" type="button">Copiar</button></header>
+<pre id="cmd"><span class="c"># Um dos comandos que vêm no kit</span>
+<span class="k">Arquivo:</span> /gravacoes/aula-01.mp4
+<span class="k">Formato:</span> vertical 9:16, até 45 segundos
+<span class="k">Ritmo:</span> corta silêncios acima de 0,4s
+<span class="k">Legenda:</span> palavra a palavra, caixa alta,
+         palavra falada em destaque
+<span class="k">Zoom:</span> 110% nas frases com números
+<span class="k">Gancho:</span> a frase mais forte nos 3 primeiros segundos
+<span class="k">Entrega:</span> salvar em /prontos e me mostrar o resumo</pre>
+    </div>
+  </div>
+</section>
+
+<!-- ANTES / AGORA -->
+<section class="band on-violet">
+  <div class="wrap">
+    <h2>Pare de editar.<br><span class="lime">Comece a dirigir.</span></h2>
+    <p class="lede" style="margin-top:18px">Você não precisa aprender Premiere, CapCut ou After Effects. Precisa saber pedir. Dar direção se aprende, e é isso que o kit ensina.</p>
+    <div class="versus">
+      <div class="vcol before">
+        <span class="mono">Antes</span>
+        <ul>
+          <li><span class="ico">✕</span><span>Horas arrastando cortes</span></li>
+          <li><span class="ico">✕</span><span>Legenda digitada na mão</span></li>
+          <li><span class="ico">✕</span><span>Vídeo gravado e esquecido</span></li>
+          <li><span class="ico">✕</span><span>Pagar editor a cada vídeo</span></li>
+        </ul>
+      </div>
+      <div class="vcol after">
+        <span class="mono">Com o kit</span>
+        <ul>
+          <li><span class="ico">✓</span><span>Um comando descreve o vídeo inteiro</span></li>
+          <li><span class="ico">✓</span><span>Legenda e cortes automáticos</span></li>
+          <li><span class="ico">✓</span><span>Gravou hoje, postou hoje</span></li>
+          <li><span class="ico">✓</span><span>R$29,90 uma vez, usa pra sempre</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRA QUEM -->
+<section class="band on-ink" id="pra-quem">
+  <div class="wrap">
+    <h2>Se você já<br>disse isso,<br><span class="lime">é pra você.</span></h2>
+    <div class="who">
+      <div class="who-item"><span class="tag mono">Criador de conteúdo</span><blockquote>“Tenho 40 vídeos na galeria e nenhum postado.”</blockquote><p>A ideia e a gravação existem. O que trava é a edição. Com o kit, o vídeo bruto vira post sem abrir editor.</p></div>
+      <div class="who-item"><span class="tag mono">Quem anuncia</span><blockquote>“Preciso de 10 variações do anúncio pra amanhã.”</blockquote><p>Troque gancho, legenda e ritmo por comando e teste mais criativos com o mesmo material.</p></div>
+      <div class="who-item"><span class="tag mono">Dono de negócio</span><blockquote>“Não sei mostrar o que eu vendo em vídeo.”</blockquote><p>Fotos e gravações simples do seu produto viram vídeos que explicam e vendem.</p></div>
+    </div>
+    <div style="margin-top:36px"><a class="cta" data-wa="publico" href="#"><svg><use href="#wa"/></svg><span>Esse sou eu. Quero o kit</span></a></div>
+  </div>
+</section>
+
+<!-- O QUE VEM -->
+<section class="band on-paper" id="conteudo">
+  <div class="wrap">
+    <h2>O que chega<br>no seu <span style="color:var(--violet)">WhatsApp.</span></h2>
+    <div class="files">
+      <header class="mono"><span>Kit_Edicao_com_IA /</span><span>6 itens</span></header>
+      <div class="file"><span class="fi"></span><b>01_configuracao.pdf</b><p>Como deixar o ChatGPT ou o Claude Code prontos para editar vídeo, mesmo sem saber programar.</p></div>
+      <div class="file"><span class="fi"></span><b>02_comandos_prontos.txt</b><p>Legenda, cortes, zoom, B-roll, ritmo, formato vertical e anúncio. Copiar e colar.</p></div>
+      <div class="file"><span class="fi"></span><b>03_modelo_briefing.pdf</b><p>Descreva o vídeo que quer em 2 minutos e a IA entende de primeira.</p></div>
+      <div class="file"><span class="fi"></span><b>04_estrutura_pastas.zip</b><p>A organização de arquivos que deixa a IA achar e usar cada material.</p></div>
+      <div class="file"><span class="fi"></span><b>05_checklist_revisao.pdf</b><p>O que conferir antes de postar e como pedir ajustes sem refazer tudo.</p></div>
+      <div class="file"><span class="fi"></span><b>06_guia_de_estilos.pdf</b><p>Salve o estilo que funcionou e repita em todo vídeo novo.</p></div>
+      <footer class="mono"><span>Acesso pra sempre</span><span>R$29,90</span></footer>
+    </div>
+  </div>
+</section>
+
+<!-- OFERTA -->
+<section class="band on-violet" id="oferta">
+  <div class="wrap offer-grid">
+    <div>
+      <h2>Menos que<br>uma pizza.<br><span class="lime">Edição pra<br>sempre.</span></h2>
+      <div class="guarantee">
+        <div class="stamp" aria-hidden="true">
+          <svg viewBox="0 0 160 160"><defs><path id="circ" d="M80,80 m-64,0 a64,64 0 1,1 128,0 a64,64 0 1,1 -128,0"/></defs><text><textPath href="#circ">Garantia · 7 dias · Dinheiro de volta ·</textPath></text></svg>
+          <div class="core"><b>7</b><span>dias</span></div>
+        </div>
+        <div>
+          <h3>Garantia de 7 dias</h3>
+          <p>Recebeu o kit e achou que não é pra você? Mande uma mensagem no mesmo WhatsApp em até 7 dias e devolvemos os R$29,90 no Pix. Sem pergunta.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="ticket">
+      <div class="top-half">
+        <div class="row mono"><span>Kit Edição com IA</span><span>Nº 0001</span></div>
+        <div class="big"><sup>R$</sup><b>29</b><small>,90</small></div>
+        <div class="row mono"><span>Pagamento único</span><span>Sem mensalidade</span></div>
+        <ul>
+          <li>Guia completo, da configuração ao vídeo pronto</li>
+          <li>Comandos prontos para ChatGPT e Claude Code</li>
+          <li>Modelo de briefing e estrutura de pastas</li>
+          <li>Checklist de revisão e guia de estilos</li>
+        </ul>
+      </div>
+      <div class="tear"></div>
+      <div class="bottom-half">
+        <div class="how">
+          <div><span class="n">1</span><span>Toque no botão e o WhatsApp abre com a mensagem pronta</span></div>
+          <div><span class="n">2</span><span>Pague o Pix de R$29,90 na conversa</span></div>
+          <div><span class="n">3</span><span>Receba o kit na mesma conversa</span></div>
+        </div>
+        <a class="cta" data-wa="oferta" href="#"><svg><use href="#wa"/></svg><span>Quero o kit por R$29,90</span></a>
+        <p class="fine">Assinaturas do ChatGPT ou do Claude não estão incluídas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="band on-paper" id="faq">
+  <div class="wrap" style="max-width:860px">
+    <h2>Dúvidas</h2>
+    <div class="faq">
+      <details><summary>Preciso saber editar vídeo?</summary><p>Não. O kit foi feito para quem nunca abriu um editor. Você descreve o que quer e a IA faz a parte técnica.</p></details>
+      <details><summary>Funciona com qual IA?</summary><p>Com o ChatGPT (Codex) e com o Claude (Claude Code). O kit mostra a configuração das duas.</p></details>
+      <details><summary>Preciso de computador potente?</summary><p>Não. Um computador comum que rode o navegador e a ferramenta de IA já resolve.</p></details>
+      <details><summary>Como recebo o kit?</summary><p>Você toca no botão, fala com a gente no WhatsApp, paga o Pix de R$29,90 e recebe os arquivos na mesma conversa.</p></details>
+      <details><summary>E se eu não gostar?</summary><p>Você tem 7 dias de garantia. É só pedir no WhatsApp e o valor volta inteiro pelo Pix.</p></details>
+      <details><summary>As ferramentas de IA estão incluídas?</summary><p>Não. O kit ensina a usar o ChatGPT ou o Claude. A assinatura é contratada à parte, direto com eles.</p></details>
+      <details><summary>Posso usar em vídeos de clientes?</summary><p>Pode. Os vídeos que você criar com o método são seus, inclusive para trabalhos pagos.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL -->
+<section class="band on-ink final">
+  <div class="wrap">
+    <div class="slate mono"><span class="dot"></span><span class="tc">Último take</span></div>
+    <h2>Seu próximo<br>vídeo já está<br><span class="lime">gravado.</span></h2>
+    <p class="lede">Falta pedir para a IA editar. R$29,90, uma vez.</p>
+    <a class="cta" data-wa="final" href="#"><svg><use href="#wa"/></svg><span>Chamar no WhatsApp</span></a>
+    <div class="cta-meta" style="color:var(--on-ink-dim)"><span>Pix</span><span>Entrega no WhatsApp</span><span>7 dias de garantia</span></div>
+  </div>
+</section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <span>© 2026 Kit Edição com IA</span>
+    <span>ChatGPT e Claude são marcas de seus donos. Este produto não tem vínculo com eles.</span>
+  </div>
+</footer>
+
+<div class="dock" id="dock"><a class="cta" data-wa="barra" href="#"><svg><use href="#wa"/></svg><span>Quero o kit</span><span class="price">R$29,90</span></a></div>
+<a class="fab" data-wa="flutuante" href="#" aria-label="Falar no WhatsApp"><svg><use href="#wa"/></svg></a>
+
+<script>
+(() => {
+  const WA_NUMBER = "351932966085";
+  const ORIGINS = { menu:"menu do topo", hero:"topo da página", publico:"seção Pra quem é", oferta:"seção da oferta", final:"chamada final", barra:"barra do celular", flutuante:"botão flutuante" };
+  const message = (k) => `Olá! Vim pelo site do *Kit Edição com IA* e quero garantir o meu por *R$29,90*. 🎬\n(cliquei em: ${ORIGINS[k] || "site"})`;
+  document.querySelectorAll("[data-wa]").forEach((el) => {
+    el.href = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(message(el.dataset.wa))}`;
+    el.target = "_blank";
+    el.rel = "noopener";
+  });
+
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const pad = (n) => String(n).padStart(2, "0");
+  const toTc = (frames) => `${pad(Math.floor(frames / 108000))}:${pad(Math.floor(frames / 1800) % 60)}:${pad(Math.floor(frames / 30) % 60)}:${pad(frames % 30)}`;
+
+  // Timecode + barra de progresso seguem o scroll
+  const tc = document.getElementById("tc");
+  const progress = document.getElementById("progress");
+  const dock = document.getElementById("dock");
+  const hero = document.querySelector(".hero");
+  const offer = document.getElementById("oferta");
+  const onScroll = () => {
+    const max = document.documentElement.scrollHeight - innerHeight;
+    const f = max > 0 ? Math.min(1, scrollY / max) : 0;
+    progress.style.transform = `scaleX(${f})`;
+    tc.textContent = "TC " + toTc(Math.round(f * 90 * 30));
+    const pastHero = hero.getBoundingClientRect().bottom < 0;
+    const o = offer.getBoundingClientRect();
+    const onOffer = o.top < innerHeight && o.bottom > 0;
+    dock.classList.toggle("show", pastHero && !onOffer);
+  };
+  addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  // Onda de áudio da trilha A1
+  const wave = document.getElementById("wave");
+  for (let i = 0; i < 64; i++) {
+    const b = document.createElement("i");
+    b.className = "bar";
+    b.style.height = `${25 + Math.abs(Math.sin(i * 1.7) * Math.cos(i * .45)) * 75}%`;
+    wave.appendChild(b);
+  }
+
+  // Monitor: comando -> vídeo legendado
+  const term = document.getElementById("term");
+  const out = document.getElementById("out");
+  const caption = document.getElementById("caption");
+  const hudTc = document.getElementById("hudTc");
+  let frame = 0;
+  if (!reduced) setInterval(() => { frame += 1; hudTc.textContent = toTc(frame); }, 1000 / 30);
+
+  const scenes = [
+    { cmd: "edita o video.mp4 em 9:16, legenda palavra a palavra e zoom nos momentos fortes", words: ["ISSO", "MUDOU", "MEU", "JOGO"] },
+    { cmd: "corta os silêncios, ritmo rápido e coloca o gancho nos 3 primeiros segundos", words: ["PARA", "DE", "EDITAR", "NA MÃO"] },
+    { cmd: "transforma esse podcast em 5 cortes verticais com título animado", words: ["5", "CORTES", "EM 1", "COMANDO"] }
+  ];
+  const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+  const esc = (s) => s.replace(/[&<>]/g, (c) => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;" }[c]));
+
+  const playScene = async (s) => {
+    out.classList.remove("on");
+    term.style.opacity = 1;
+    for (let i = 1; i <= s.cmd.length; i++) {
+      term.innerHTML = `<span class="you">você › </span>${esc(s.cmd.slice(0, i))}<span class="cursor"></span>`;
+      await wait(32);
+    }
+    let log = term.innerHTML.replace('<span class="cursor"></span>', "");
+    for (const line of ["› lendo o vídeo", "› cortando silêncios", "› gerando legenda", "› aplicando zoom"]) {
+      await wait(380);
+      log += `<div class="log">${line}</div>`;
+      term.innerHTML = log;
+    }
+    await wait(320);
+    term.innerHTML = log + '<div class="ok">✓ vídeo pronto</div>';
+    await wait(700);
+    term.style.opacity = 0;
+    caption.innerHTML = s.words.map((w) => `<span class="w">${esc(w)}</span>`).join(" ");
+    out.classList.add("on");
+    const spans = caption.querySelectorAll(".w");
+    for (let round = 0; round < 2; round++) {
+      for (const sp of spans) {
+        spans.forEach((x) => x.classList.remove("hot"));
+        sp.classList.add("hot");
+        await wait(420);
+      }
+    }
+    await wait(500);
+  };
+
+  if (reduced) {
+    term.style.opacity = 0;
+    caption.innerHTML = scenes[0].words.map((w, i) => `<span class="w${i === 1 ? " hot" : ""}">${w}</span>`).join(" ");
+    out.classList.add("on");
+  } else {
+    (async () => { for (let n = 0; ; n = (n + 1) % scenes.length) await playScene(scenes[n]); })();
+  }
+
+  // Copiar comando
+  const copyBtn = document.getElementById("copyBtn");
+  const cmd = document.getElementById("cmd");
+  copyBtn.addEventListener("click", () => {
+    const done = () => { copyBtn.textContent = "Copiado"; setTimeout(() => (copyBtn.textContent = "Copiar"), 1800); };
+    const fallback = () => { const r = document.createRange(); r.selectNodeContents(cmd); const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r); copyBtn.textContent = "Selecionado"; };
+    try { navigator.clipboard.writeText(cmd.innerText).then(done, fallback); } catch { fallback(); }
+  });
+})();
+</script>
+</body>
+</html>
