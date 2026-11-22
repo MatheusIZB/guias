@@ -1,6 +1,6 @@
-"""Gera o site estático em dist/ a partir de config.json + guias/*.json.
+"""Gera o site estático em docs/ a partir de config.json + guias/*.json.
     python build.py
-Estrutura: dist/index.html (código do vídeo) · dist/<slug>/index.html (captura + guia) · dist/guias/<slug>.json
+Estrutura: docs/index.html (código do vídeo) · docs/<slug>/index.html (captura + guia) · docs/guias/<slug>.json
 """
 from __future__ import annotations
 
@@ -11,7 +11,7 @@ from pathlib import Path
 from urllib.parse import quote
 
 AQUI = Path(__file__).resolve().parent
-DIST = AQUI / "dist"
+DIST = AQUI / "docs"  # o GitHub Pages serve /docs
 CFG = json.loads((AQUI / "config.json").read_text(encoding="utf-8"))
 E = html.escape
 FONTES = ('<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
