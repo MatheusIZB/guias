@@ -1,0 +1,219 @@
+{
+  "slug": "repo",
+  "codigo": "REPO",
+  "titulo": "9 assinaturas que você pode trocar por versões grátis do GitHub",
+  "destaque": "9 trocas: pago → grátis no GitHub",
+  "sub": "O link oficial de cada ferramenta open source, como instalar do jeito mais simples e onde fica a pegadinha (o que continua pago).",
+  "tempo_leitura_min": 8,
+  "ferramentas": [
+    {
+      "nome": "ComfyUI",
+      "link": "https://github.com/Comfy-Org/ComfyUI",
+      "para_que": "No lugar do Midjourney: gerar imagem e vídeo com IA no seu PC",
+      "preco": "grátis; precisa de placa de vídeo boa"
+    },
+    {
+      "nome": "Chatterbox",
+      "link": "https://github.com/resemble-ai/chatterbox",
+      "para_que": "No lugar do ElevenLabs: voz com IA rodando no seu computador",
+      "preco": "grátis"
+    },
+    {
+      "nome": "n8n",
+      "link": "https://github.com/n8n-io/n8n",
+      "para_que": "No lugar do Zapier: automações ligando suas ferramentas",
+      "preco": "grátis instalado por você; a nuvem deles é paga"
+    },
+    {
+      "nome": "AppFlowy",
+      "link": "https://github.com/AppFlowy-IO/AppFlowy",
+      "para_que": "No lugar do Notion: notas, documentos e quadros",
+      "preco": "grátis"
+    },
+    {
+      "nome": "NocoDB",
+      "link": "https://github.com/nocodb/nocodb",
+      "para_que": "No lugar do Airtable: planilha que vira banco de dados",
+      "preco": "grátis instalado por você"
+    },
+    {
+      "nome": "Plane",
+      "link": "https://github.com/makeplane/plane",
+      "para_que": "No lugar do Asana: gestão de projetos e tarefas",
+      "preco": "grátis instalado por você"
+    },
+    {
+      "nome": "Cal.diy",
+      "link": "https://github.com/calcom/cal.diy",
+      "para_que": "No lugar do Calendly: link de agendamento",
+      "preco": "grátis instalado por você"
+    },
+    {
+      "nome": "Chatwoot",
+      "link": "https://github.com/chatwoot/chatwoot",
+      "para_que": "No lugar do Intercom: chat de atendimento no site e WhatsApp",
+      "preco": "grátis instalado por você"
+    },
+    {
+      "nome": "Cap",
+      "link": "https://github.com/CapSoftware/Cap",
+      "para_que": "No lugar do Loom: gravar a tela e compartilhar o link",
+      "preco": "app grátis; tem plano pago opcional"
+    }
+  ],
+  "secoes": [
+    {
+      "titulo": "O mapa das 9 trocas",
+      "blocos": [
+        {
+          "tipo": "tabela",
+          "colunas": [
+            "Você paga",
+            "Troca por",
+            "O que faz"
+          ],
+          "linhas": [
+            [
+              "Midjourney (US$ 10/mês)",
+              "ComfyUI",
+              "Imagem e vídeo com IA"
+            ],
+            [
+              "ElevenLabs (US$ 5/mês)",
+              "Chatterbox",
+              "Voz com IA"
+            ],
+            [
+              "Zapier (US$ 29,99/mês)",
+              "n8n",
+              "Automação"
+            ],
+            [
+              "Notion (US$ 12/mês)",
+              "AppFlowy",
+              "Notas e documentos"
+            ],
+            [
+              "Airtable (US$ 24/mês)",
+              "NocoDB",
+              "Banco de dados em planilha"
+            ],
+            [
+              "Asana (US$ 13,49/mês)",
+              "Plane",
+              "Gestão de projetos"
+            ],
+            [
+              "Calendly (US$ 12/mês)",
+              "Cal.diy",
+              "Agendamento"
+            ],
+            [
+              "Intercom (US$ 39/mês)",
+              "Chatwoot",
+              "Atendimento"
+            ],
+            [
+              "Loom (US$ 18/mês)",
+              "Cap",
+              "Gravar a tela"
+            ]
+          ]
+        },
+        {
+          "tipo": "aviso",
+          "texto": "Os preços são dos planos de entrada pagos, por mês, e mudam com o tempo. Confira no site de cada ferramenta antes de cancelar a sua assinatura."
+        }
+      ]
+    },
+    {
+      "titulo": "Os mais fáceis: é só baixar e abrir",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "AppFlowy, Cap e ComfyUI têm instalador pronto para Windows e Mac. Você baixa, instala e usa, sem servidor e sem linha de comando."
+        },
+        {
+          "tipo": "passos",
+          "itens": [
+            "Abra o link do GitHub da ferramenta (lista acima).",
+            "Procure 'Releases' na lateral direita ou o link 'Download' no README.",
+            "Baixe o instalador do seu sistema (Windows .exe, Mac .dmg).",
+            "Instale e abra como qualquer programa."
+          ]
+        },
+        {
+          "tipo": "dica",
+          "texto": "O ComfyUI precisa de uma placa de vídeo (GPU) boa para gerar imagem e vídeo rápido. Sem GPU, ele até roda, mas fica lento; aí muita gente aluga GPU na nuvem, e essa parte é paga."
+        }
+      ]
+    },
+    {
+      "titulo": "Voz com IA no seu PC: Chatterbox",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "O Chatterbox é instalado pelo Python. Com ele você gera narração e até clona uma voz a partir de um áudio curto (use só a sua voz ou com autorização)."
+        },
+        {
+          "tipo": "codigo",
+          "rotulo": "Terminal",
+          "texto": "pip install chatterbox-tts"
+        },
+        {
+          "tipo": "dica",
+          "texto": "Não sabe usar terminal? Peça ao ChatGPT ou ao Claude: 'me guia passo a passo para instalar o Chatterbox no Windows'. Ele explica cada comando."
+        }
+      ]
+    },
+    {
+      "titulo": "Os que rodam num servidor: n8n, NocoDB, Plane, Cal.diy e Chatwoot",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Essas cinco são 'self-hosted': o software é grátis, mas precisa ficar ligado num computador ou servidor. Para testar, dá para rodar no seu próprio PC."
+        },
+        {
+          "tipo": "codigo",
+          "rotulo": "Testar o n8n no seu PC (precisa do Node.js instalado)",
+          "texto": "npx n8n"
+        },
+        {
+          "tipo": "p",
+          "texto": "Depois de rodar, abra http://localhost:5678 no navegador. Para deixar ligado 24 horas, o caminho mais comum é um servidor barato (VPS) com Docker. Cada repositório tem a seção 'Self-hosting' ou 'Docker' no README com o passo a passo oficial."
+        },
+        {
+          "tipo": "aviso",
+          "texto": "O n8n é grátis instalado por você. O n8n Cloud, a versão hospedada pela empresa, cobra mensalidade. O mesmo vale para Plane, NocoDB, Cal e Chatwoot: a versão na nuvem deles é paga."
+        }
+      ]
+    },
+    {
+      "titulo": "A regra que vale para qualquer ferramenta",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Antes de assinar qualquer ferramenta, procure no GitHub o nome dela mais 'open source alternative'. Ordene pelos mais estrelados e veja se o projeto teve atualização recente."
+        },
+        {
+          "tipo": "codigo",
+          "rotulo": "Busca no GitHub",
+          "texto": "notion open source alternative"
+        }
+      ]
+    }
+  ],
+  "proximo_passo": "Quer conteúdo como este no seu perfil, editado por IA com o seu próprio clone? Fala comigo no WhatsApp.",
+  "fontes": [
+    "https://github.com/Comfy-Org/ComfyUI",
+    "https://github.com/resemble-ai/chatterbox",
+    "https://github.com/n8n-io/n8n",
+    "https://github.com/AppFlowy-IO/AppFlowy",
+    "https://github.com/nocodb/nocodb",
+    "https://github.com/makeplane/plane",
+    "https://github.com/calcom/cal.diy",
+    "https://github.com/chatwoot/chatwoot",
+    "https://github.com/CapSoftware/Cap"
+  ],
+  "verificado_em": "2026-11-23"
+}

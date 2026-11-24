@@ -1,0 +1,225 @@
+{
+  "slug": "caixa",
+  "codigo": "CAIXA",
+  "titulo": "21 coisas para saber antes de financiar seu primeiro imóvel pela Caixa",
+  "destaque": "Checklist: 21 coisas antes de financiar pela Caixa",
+  "sub": "O checklist completo do vídeo (com a 21.ª, a que mais derruba gente), explicado item por item, mais as perguntas para levar ao banco.",
+  "tempo_leitura_min": 9,
+  "ferramentas": [
+    {
+      "nome": "Simulador Habitacional Caixa",
+      "link": "https://habitacao.caixa.gov.br/",
+      "para_que": "Simular parcelas, prazo e valor de entrada",
+      "preco": "grátis"
+    },
+    {
+      "nome": "FGTS: site oficial",
+      "link": "https://www.fgts.gov.br/",
+      "para_que": "Ver o saldo e as regras de uso do FGTS na compra",
+      "preco": "grátis"
+    },
+    {
+      "nome": "Minha Casa Minha Vida (gov.br)",
+      "link": "https://www.gov.br/cidades/pt-br/assuntos/habitacao/minha-casa-minha-vida",
+      "para_que": "Faixas de renda e regras atualizadas do programa",
+      "preco": "grátis"
+    }
+  ],
+  "secoes": [
+    {
+      "titulo": "Antes de começar",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Este é um material educativo, feito para você chegar ao banco sabendo o que perguntar. Regras, taxas e limites mudam: confirme sempre com a Caixa ou com um correspondente bancário antes de assinar."
+        },
+        {
+          "tipo": "aviso",
+          "texto": "Ninguém pode garantir aprovação de crédito. Desconfie de quem cobra para 'aprovar' o seu financiamento."
+        }
+      ]
+    },
+    {
+      "titulo": "Crédito e aprovação (1 a 5)",
+      "blocos": [
+        {
+          "tipo": "tabela",
+          "colunas": [
+            "#",
+            "O que saber",
+            "Na prática"
+          ],
+          "linhas": [
+            [
+              "1",
+              "Simulação não é aprovação",
+              "A simulação só estima parcelas. Aprovação exige análise de renda, documentos e do seu CPF."
+            ],
+            [
+              "2",
+              "Aprove o crédito antes de visitar imóveis",
+              "Saber quanto o banco libera evita se apaixonar por um imóvel que não cabe no seu crédito."
+            ],
+            [
+              "3",
+              "Sem entrada até dá, mas é raro",
+              "O banco financia só uma parte do valor. Zerar a entrada costuma depender de subsídio do Minha Casa Minha Vida somado ao FGTS."
+            ],
+            [
+              "4",
+              "Quem compõe renda fica preso ao contrato",
+              "Quem soma renda com você vira devedor junto até o fim, e isso pesa no crédito dessa pessoa para outros financiamentos."
+            ],
+            [
+              "5",
+              "Casado em comunhão parcial: o cônjuge entra",
+              "O cônjuge participa do processo e assina o contrato, mesmo que não componha renda."
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "titulo": "Prazo e custos (6 a 9)",
+      "blocos": [
+        {
+          "tipo": "tabela",
+          "colunas": [
+            "#",
+            "O que saber",
+            "Na prática"
+          ],
+          "linhas": [
+            [
+              "6",
+              "A idade limita o prazo",
+              "Na Caixa, a sua idade somada ao prazo não pode passar de 80 anos e 6 meses. O prazo máximo é de 35 anos."
+            ],
+            [
+              "7",
+              "A entrada não é o único custo",
+              "Separe dinheiro para ITBI (imposto da prefeitura), taxa de avaliação do imóvel e registro no cartório."
+            ],
+            [
+              "8",
+              "Desconto no registro do 1.º imóvel",
+              "Na primeira aquisição residencial financiada pelo Sistema Financeiro de Habitação, a lei dá 50% de desconto nos emolumentos do registro (Lei 6.015/73, art. 290). Peça no cartório."
+            ],
+            [
+              "9",
+              "Avaliação abaixo do preço = diferença do seu bolso",
+              "O banco financia sobre o valor que o engenheiro avaliou. Se avaliar abaixo do preço combinado, a diferença entra na sua parte."
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "titulo": "Programa, FGTS e regras do banco (10 a 15)",
+      "blocos": [
+        {
+          "tipo": "tabela",
+          "colunas": [
+            "#",
+            "O que saber",
+            "Na prática"
+          ],
+          "linhas": [
+            [
+              "10",
+              "Minha Casa Minha Vida também financia imóvel usado",
+              "Confira a faixa de renda e o valor máximo de imóvel da sua cidade."
+            ],
+            [
+              "11",
+              "FGTS na entrada tem regras",
+              "Em geral: pelo menos 3 anos de trabalho com FGTS (somando empregos), não ter imóvel residencial na cidade onde mora ou trabalha e não ter outro financiamento ativo no SFH."
+            ],
+            [
+              "12",
+              "Você não é obrigado a contratar produto extra",
+              "Cartão, conta premium, previdência ou capitalização como condição é venda casada, proibida pelo Código de Defesa do Consumidor. Os seguros habitacionais (MIP e DFI) são obrigatórios por lei."
+            ],
+            [
+              "13",
+              "Na entrevista, nunca minta sobre a renda",
+              "Informação falsa pode cancelar a análise e virar problema sério depois."
+            ],
+            [
+              "14",
+              "Crédito aprovado ainda pode cair",
+              "Até a assinatura, uma nova consulta ao seu CPF ou uma mudança de renda pode derrubar a aprovação."
+            ],
+            [
+              "15",
+              "Descumprir regra do programa pode custar o subsídio",
+              "Quem recebeu subsídio do Minha Casa Minha Vida e descumpre as regras do contrato pode ter que devolver o valor."
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "titulo": "Parcela, juros e quitação (16 a 20)",
+      "blocos": [
+        {
+          "tipo": "tabela",
+          "colunas": [
+            "#",
+            "O que saber",
+            "Na prática"
+          ],
+          "linhas": [
+            [
+              "16",
+              "A parcela pode subir: depende do indexador",
+              "Contratos corrigidos por TR, IPCA ou poupança mudam com esses índices. Pergunte qual é o seu e simule o pior cenário."
+            ],
+            [
+              "17",
+              "SAC ou Price muda o total pago",
+              "No SAC a parcela começa maior e vai caindo, e você paga menos juros no total. Na Price a parcela é igual do início ao fim."
+            ],
+            [
+              "18",
+              "Amortizar tira anos da dívida",
+              "Todo valor extra que você paga vai direto no saldo devedor."
+            ],
+            [
+              "19",
+              "Amortize no prazo, não na parcela",
+              "Reduzir o prazo costuma economizar mais juros do que reduzir o valor da parcela."
+            ],
+            [
+              "20",
+              "Quitou? Dê baixa na alienação",
+              "O banco entrega o termo de quitação e você leva ao cartório de registro de imóveis para cancelar a alienação fiduciária. Sem isso, o imóvel continua alienado ao banco na matrícula."
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "titulo": "A 21.ª: a que mais derruba gente",
+      "blocos": [
+        {
+          "tipo": "p",
+          "texto": "Não faça nenhuma dívida nova entre a aprovação e a assinatura do contrato: nada de financiar carro, parcelar compra grande no cartão ou pegar empréstimo. O banco pode reconsultar o seu CPF antes de assinar, e uma parcela nova muda a sua capacidade de pagamento. É assim que muita aprovação cai na reta final."
+        },
+        {
+          "tipo": "dica",
+          "texto": "Leve ao banco: 1) qual é o CET (custo efetivo total)? 2) qual é o indexador? 3) SAC ou Price? 4) quanto de entrada e custos de cartório preciso separar? 5) posso amortizar com FGTS depois?"
+        }
+      ]
+    }
+  ],
+  "proximo_passo": "Salvou o checklist? Me segue no Instagram para não perder a parte 2.",
+  "fontes": [
+    "https://habitacao.caixa.gov.br/",
+    "https://www.fgts.gov.br/",
+    "https://www.planalto.gov.br/ccivil_03/leis/l6015compilada.htm",
+    "https://www.planalto.gov.br/ccivil_03/leis/l8078compilado.htm",
+    "https://www.gov.br/cidades/pt-br/assuntos/habitacao/minha-casa-minha-vida"
+  ],
+  "verificado_em": "2026-11-23"
+}
