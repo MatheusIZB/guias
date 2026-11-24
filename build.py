@@ -71,17 +71,28 @@ def rodape(raiz: str) -> str:
             f'Nomes e marcas pertencem aos respectivos donos. · <a href="{raiz}privacidade/">Privacidade</a></div></footer>')
 
 
+def botao_oferta(texto: str, link: str | None, msg: str | None, guia: dict, cls: str, ident: str = "") -> str:
+    """Botão da oferta: link interno (ex.: ../kit/) ou WhatsApp com a mensagem pronta."""
+    if not texto:
+        return ""
+    idt = f' id="{ident}"' if ident else ""
+    if link:
+        return f'<a{idt} class="{cls}" href="{E(link)}">{E(texto)} →</a>'
+    return (f'<a{idt} class="{cls}" href="{E(wa_link((msg or "").replace("{guia}", guia["codigo"])))}" target="_blank" '
+            f'rel="noopener">{ICONE_WA}{E(texto)}</a>')
+
+
 def oferta(guia: dict) -> str:
-    o = CFG["oferta"]
+    o = {**CFG["oferta"], **guia.get("oferta", {})}  # o guia pode trocar a oferta do fim (ex.: CLONE → Pack Clone)
+    if "oferta" in guia and "cta_link" not in guia["oferta"]:
+        o.pop("cta_link", None)
     itens = "".join(f"<li>{E(b)}</li>" for b in o["bullets"])
-    msg = o["mensagem_wa"].replace("{guia}", guia["codigo"])
-    seg = (f'<a class="btn sec" href="{E(wa_link(o["mensagem_wa2"].replace("{guia}", guia["codigo"])))}" target="_blank" '
-           f'rel="noopener">{E(o["cta2"])}</a>' if o.get("cta2") else "")
+    botoes = (botao_oferta(o["cta"], o.get("cta_link"), o.get("mensagem_wa"), guia, "btn", "cta-oferta")
+              + botao_oferta(o.get("cta2", ""), o.get("cta2_link"), o.get("mensagem_wa2"), guia, "btn sec")
+              + botao_oferta(o.get("cta3", ""), o.get("cta3_link"), o.get("mensagem_wa3"), guia, "btn sec"))
     return (f'<aside id="oferta" class="oferta oculto"><span class="selo"><span class="dot"></span><b>Próximo passo</b></span>'
             f'<h2>{E(o["titulo"])}</h2><p id="ponte"></p><p>{E(o["texto"])}</p><ul>{itens}</ul>'
-            + (f'<a id="cta-oferta" class="btn" href="{E(o["cta_link"])}">{E(o["cta"])} →</a>' if o.get("cta_link") else
-               f'<a id="cta-oferta" class="btn" href="{E(wa_link(msg))}" target="_blank" rel="noopener">{ICONE_WA}{E(o["cta"])}</a>')
-            + f'{seg}<p class="seguro">O segundo botão abre o WhatsApp com a mensagem pronta</p></aside>')
+            f'{botoes}<p class="seguro">Os botões de WhatsApp abrem a conversa com a mensagem pronta</p></aside>')
 
 
 def pagina_guia(g: dict) -> str:
@@ -107,23 +118,107 @@ def pagina_guia(g: dict) -> str:
             f'<script id="cfg" type="application/json">{cfg_publico()}</script><script src="../app.js" defer></script></body></html>')
 
 
+HUB_FONTES = ('<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
+              '<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600'
+              '&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">')
+
+
+def hub_pack(p: dict) -> str:
+    itens = "".join(f"<li>{E(i)}</li>" for i in p["itens"])
+    selo = f'<span class="pk-selo">{E(p["selo"])}</span>' if p.get("selo") else ""
+    nota = f'<p class="pk-nota">{E(p["nota"])}</p>' if p.get("nota") else ""
+    return (f'<article class="pk pk-{E(p["id"])}"><header class="pk-top"><span class="pk-qtd">{E(p["qtd"])}</span>{selo}</header>'
+            f'<h3>{E(p["nome"])}</h3><p class="pk-resumo">{E(p["resumo"])}</p><ul class="pk-lista">{itens}</ul>'
+            f'<div class="pk-preco"><b>{E(p["preco"])}</b><small>pagamento único via Pix</small></div>'
+            f'<a class="cta wa" data-ev="pack_{E(p["id"])}" href="{E(wa_link(p["msg"]))}" target="_blank" rel="noopener">'
+            f'{ICONE_WA}{E(p["cta"])}</a>{nota}</article>')
+
+
+def hub_guias(guias: list[dict]) -> str:
+    h = CFG["hub"]
+    vis = [g for g in guias if g["slug"] not in h.get("ocultar", [])]
+    ordem = {s: i for i, s in enumerate(h.get("destaque_guias", []))}
+    vis.sort(key=lambda g: ordem.get(g["slug"], 99))
+    return "".join(f'<a class="gd" href="{E(g["slug"])}/"><small>{E(g["codigo"])}</small><b>{E(g["destaque"])}</b></a>' for g in vis)
+
+
+def hub_cabeca() -> str:
+    titulo = f'{CFG["marca"]} IA · Vídeo todo dia, sem ligar a câmera'
+    desc = "Vídeos prontos para o seu negócio, o curso de edição com Claude Code e o clone de IA. Escolha o seu caminho."
+    return (f'<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
+            f'<title>{E(titulo)}</title><meta name="description" content="{E(desc)}"><meta property="og:title" content="{E(titulo)}">'
+            f'<meta property="og:description" content="{E(desc)}"><meta property="og:image" content="{E(CFG["base_url"])}hub/clone.jpg">'
+            f'<meta name="theme-color" content="#0A0F1C">{HUB_FONTES}<link rel="stylesheet" href="hub.css">{pixel()}</head>')
+
+
 def pagina_inicio(guias: list[dict]) -> str:
-    raiz = "./"
     codigos = json.dumps({g["codigo"].upper(): g["slug"] for g in guias})
-    lista = "".join(f'<a href="{E(g["slug"])}/"><b>{E(g["destaque"])}</b><span>{E(g["sub"])}</span><small>{E(g["codigo"])}</small></a>'
-                    for g in guias)
-    return (cabeca(f'Guias gratuitos de IA | {CFG["marca"]}', "Os materiais dos vídeos: links, comandos e passo a passo.", raiz) +
-            '<body>' + topo(raiz) + '<main><section class="hero"><div class="wrap">'
-            '<span class="selo"><span class="dot"></span><b>Guias grátis</b>Dos vídeos do Instagram</span>'
-            '<h1>Digite o <em>código</em> do vídeo.</h1><p class="sub">Cada vídeo tem um código: é a palavra que você comenta. '
-            'Coloca ele aqui pra liberar o material completo: links, comandos e passo a passo.</p>'
-            '<form id="form-codigo" class="cartao"><label for="codigo">Código do vídeo</label><div class="codigo">'
-            '<input id="codigo" placeholder="EX: APAGAR" autocomplete="off" autocapitalize="characters" required>'
-            '<button class="btn" type="submit">Abrir →</button></div><div id="erro-codigo" class="erro" role="alert"></div></form>'
-            '</div></section>' + ticker() +
-            f'<section class="banda"><div class="wrap"><h2 class="grande">Todos os <span class="lime">guias.</span></h2>'
-            f'<div class="ferr">{lista}</div></div></section></main>'
-            + rodape(raiz) + f'<script id="codigos" type="application/json">{codigos}</script>'
+    ig = E(CFG["instagram"])
+    packs = "".join(hub_pack(p) for p in CFG["hub"]["packs"])
+    estilos = "".join(f'<img src="kit/estilos/estilo-0{i}.jpg" alt="" width="180" height="320" loading="lazy">' for i in range(1, 5))
+    return (hub_cabeca() + '<body class="hub">'
+            f'<header class="h-top"><a class="h-marca" href="./">matheussouza<i aria-hidden="true"></i>ia</a>'
+            f'<a class="h-ig" href="https://instagram.com/{ig}" target="_blank" rel="noopener">@{ig}</a></header><main>'
+            # herói: a tese (o clone a falar) + os 3 caminhos
+            '<section class="h-hero"><div class="h-tese">'
+            '<p class="h-status"><span class="rec" aria-hidden="true"></span>A fábrica roda no meu PC, todas as noites</p>'
+            '<h1>Vídeo todo dia, <span>sem ligar a câmera.</span></h1>'
+            '<p class="h-sub">Meu clone de IA apresenta, a fábrica edita e agenda. Faço isso para o meu perfil e para o seu negócio, '
+            'ou te ensino a editar com o Claude Code.</p>'
+            '<nav class="h-rotas" aria-label="Escolha o seu caminho">'
+            '<a href="#negocio"><b>Quero vídeos prontos</b><small>para o meu negócio · R$197</small></a>'
+            '<a href="#curso"><b>Quero aprender a editar</b><small>curso com Claude Code · R$29,90</small></a>'
+            '<a href="#clone"><b>Quero o meu próprio clone</b><small>lista de espera</small></a></nav></div>'
+            '<figure class="h-tela"><div class="h-frame"><span class="ia-selo">Vídeo com avatar de IA</span>'
+            '<video src="hub/clone.mp4" poster="hub/clone.jpg" autoplay muted loop playsinline preload="metadata" width="360" height="640" '
+            'aria-label="Trecho de um Reels do perfil apresentado pelo clone de IA do Matheus"></video></div>'
+            '<figcaption>Não fui eu que gravei. É o meu clone, num Reels real do perfil.</figcaption></figure></section>'
+            # (a) packs para negócio
+            '<section id="negocio" class="h-bloco"><p class="h-rot">Para donos de negócio</p>'
+            '<h2>Seu negócio em vídeo, sem você virar editor.</h2>'
+            '<p class="h-lead">Os vídeos saem da mesma fábrica que faz os meus. Escolha o pack e chame no WhatsApp: a mensagem já vai pronta.</p>'
+            f'<div class="pks">{packs}</div><a class="h-mais" href="video/">Como funciona, passo a passo →</a></section>'
+            # (b) curso
+            '<section id="curso" class="h-bloco h-curso"><p class="h-rot">Para quem cria conteúdo</p>'
+            '<div class="cs"><div><h2>Edição de Vídeo com Claude Code</h2>'
+            '<p class="h-lead">Você escreve o que quer em português. A IA corta, legenda, dá zoom e exporta em 9:16.</p>'
+            '<ul class="cs-lista"><li>Instalação passo a passo, Windows e Mac</li><li>Pasta modelo com 6 estilos prontos</li>'
+            '<li>Comandos prontos: legenda, cortes, zoom, música, lote</li><li>Funciona no Claude Code e no Codex</li></ul></div>'
+            '<div class="cs-compra"><b class="cs-preco">R$29,90</b><small>pagamento único · 7 dias de garantia · chega no WhatsApp</small>'
+            '<a class="cta" data-ev="curso" href="kit/">Ver o curso →</a></div></div>'
+            f'<div class="cs-estilos" aria-label="Estilos ensinados no curso">{estilos}</div></section>'
+            # (c) lista de espera do clone
+            '<section id="clone" class="h-bloco h-espera"><p class="h-rot">Para quem quer o próprio clone</p>'
+            '<h2>Quero o meu próprio clone de IA.</h2>'
+            '<p class="h-lead">Estou preparando uma turma pequena para ensinar a montar o clone no seu PC (precisa de placa NVIDIA com 12 GB '
+            'ou mais). Quem está na lista fica sabendo primeiro.</p>'
+            '<form id="form-espera" class="fe" novalidate><div id="fe-campos">'
+            '<label for="e-nome">Nome</label><input id="e-nome" autocomplete="given-name" placeholder="Seu nome" required>'
+            '<label for="e-tel">WhatsApp</label><div class="fe-tel"><select id="e-ddi" aria-label="Código do país"></select>'
+            '<input id="e-tel" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="(11) 99999-9999" required></div>'
+            '<label for="e-email">E-mail</label><input id="e-email" type="email" autocomplete="email" placeholder="seu@email.com" required>'
+            '<input id="e-site" tabindex="-1" autocomplete="off" class="oculto" aria-hidden="true">'
+            '<label class="fe-ok"><input id="e-consent" type="checkbox"> Aceito receber avisos sobre o clone por WhatsApp e e-mail. '
+            'Posso sair quando quiser. <a href="privacidade/">Privacidade</a></label>'
+            '<button id="e-bt" class="cta" type="submit">Entrar na lista de espera</button>'
+            '<p id="e-erro" class="fe-erro" role="alert"></p></div>'
+            '<div id="fe-feito" class="fe-feito oculto" role="status"><b>Você está na lista.</b> '
+            'Enquanto isso, leia <a href="clone/">como o clone é feito</a>.</div></form></section>'
+            # prova real
+            '<section class="h-bloco h-prova"><p class="h-rot">Bastidores reais</p><h2>Não é mágica, é fábrica.</h2>'
+            '<figure><img src="hub/fabrica.jpg" alt="Painel da Fábrica de Clones: campo para colar links de virais, escolher a marca e a duração" '
+            'width="900" height="422" loading="lazy"><figcaption>O painel da fábrica, no meu computador: colo o link de um viral e ela roteiriza, '
+            'gera a voz, o clone e a edição. <a href="fabrica/">Ver o mapa completo →</a></figcaption></figure></section>'
+            # guias grátis + código do vídeo (secundário)
+            f'<section class="h-bloco h-guias"><p class="h-rot">Guias grátis</p><h2>Os materiais dos vídeos.</h2><div class="gds">{hub_guias(guias)}</div>'
+            '<form id="form-codigo" class="h-cod"><label for="codigo">Viu um código no vídeo?</label><div>'
+            '<input id="codigo" placeholder="EX: CLONE" autocomplete="off" autocapitalize="characters" required>'
+            '<button type="submit">Abrir</button></div><p id="erro-codigo" class="fe-erro" role="alert"></p></form></section></main>'
+            '<footer class="h-rodape"><p><b>Aviso de IA:</b> vários vídeos deste perfil são feitos com o meu clone de IA '
+            '(rosto e voz gerados a partir de gravações minhas) e são identificados com o aviso "Vídeo com avatar de IA". '
+            'Clones de clientes só com consentimento por escrito. Não prometemos ganhos nem resultados.</p>'
+            f'<p>© 2026 {E(CFG["marca"])} · <a href="privacidade/">Privacidade</a></p></footer>'
+            f'<script id="codigos" type="application/json">{codigos}</script>'
             f'<script id="cfg" type="application/json">{cfg_publico()}</script><script src="app.js" defer></script></body></html>')
 
 
@@ -152,8 +247,9 @@ def main() -> None:
     if DIST.exists():
         shutil.rmtree(DIST)
     (DIST / "guias").mkdir(parents=True)
-    for nome in ("style.css", "app.js"):
+    for nome in ("style.css", "hub.css", "app.js"):
         shutil.copy(AQUI / "src" / nome, DIST / nome)
+    shutil.copytree(AQUI / "src" / "hub", DIST / "hub")  # prova real do hub: trecho do clone + print do painel
     (DIST / "index.html").write_text(pagina_inicio(guias), encoding="utf-8")
     (DIST / "privacidade").mkdir()
     (DIST / "privacidade" / "index.html").write_text(pagina_privacidade(), encoding="utf-8")

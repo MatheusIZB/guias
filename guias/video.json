@@ -1,0 +1,90 @@
+{
+  "slug": "video",
+  "codigo": "VIDEO",
+  "titulo": "Vídeos prontos para o seu negócio, sem você editar",
+  "destaque": "Seu negócio em vídeo, sem virar editor",
+  "sub": "Para donos de negócio: o que vem no Pack Edição e no Pack Clone, como funciona do primeiro contato à entrega, o que a gente precisa de você e as regras de consentimento.",
+  "tempo_leitura_min": 5,
+  "ferramentas": [
+    {
+      "nome": "Exemplos reais de edição",
+      "link": "https://matheusizb.github.io/guias/kit/",
+      "para_que": "Trechos de vídeos do nosso perfil nos estilos que entregamos: legenda palavra a palavra, cortes secos com zoom, tela dividida e texto animado",
+      "preco": "Página com os exemplos"
+    }
+  ],
+  "secoes": [
+    {
+      "titulo": "Para quem é",
+      "blocos": [
+        {"tipo": "p", "texto": "Para quem tem um negócio e sabe que precisa aparecer em vídeo, mas não tem tempo para editar, não tem jeito para gravar ou simplesmente não quer passar a noite no CapCut. Clínica, consultório, personal, corretor, restaurante, loja, prestador de serviço."},
+        {"tipo": "p", "texto": "Os vídeos saem da mesma fábrica que produz os vídeos do meu perfil: roteiro, edição, legenda e ritmo pensados para segurar quem está rolando o feed."}
+      ]
+    },
+    {
+      "titulo": "Os dois packs",
+      "blocos": [
+        {"tipo": "tabela", "colunas": ["", "Pack Edição", "Pack Clone"], "linhas": [
+          ["O que é", "Você grava, a gente edita", "A gente faz o seu clone de IA e ele apresenta os vídeos"],
+          ["Quantidade", "6 Reels", "4 Reels"],
+          ["Preço", "R$197", "R$197 (preço de fundador, 5 vagas)"],
+          ["O que você faz", "Grava no celular (ou lê os roteiros que mandamos)", "Uma gravação guiada, uma vez só, e assina o termo de consentimento"],
+          ["O que vem", "Legenda palavra a palavra, cortes, zoom, música, capa", "Roteiro, voz e rosto do clone, edição completa e o aviso de IA"],
+          ["Ajustes", "1 revisão por vídeo", "Você aprova cada vídeo antes de postar"]
+        ]},
+        {"tipo": "dica", "texto": "Não sabe o que falar? A gente manda os roteiros. Você só lê no celular, cerca de 1 minuto por vídeo."}
+      ]
+    },
+    {
+      "titulo": "Como funciona, passo a passo",
+      "blocos": [
+        {"tipo": "passos", "itens": [
+          "Você chama no WhatsApp e conta qual é o seu negócio.",
+          "A gente combina os temas dos vídeos e manda os roteiros, se você precisar.",
+          "Pagamento por Pix; os dados de pagamento vão só pelo WhatsApp.",
+          "Pack Edição: você manda os vídeos brutos. Pack Clone: fazemos a gravação guiada e montamos o seu clone.",
+          "A gente edita e te manda os vídeos para aprovar.",
+          "Você pede os ajustes, aprova e posta (ou a gente te diz o melhor horário)."
+        ]}
+      ]
+    },
+    {
+      "titulo": "Clone: as regras que protegem você",
+      "blocos": [
+        {"tipo": "passos", "itens": [
+          "Só clonamos quem assina o termo de consentimento, escrito e específico: para que o clone será usado, em quais canais e por quanto tempo.",
+          "Nunca clonamos funcionários sem termo próprio, terceiros ou menores.",
+          "Todo vídeo leva o aviso \"Vídeo com avatar de IA\".",
+          "O seu clone fica guardado no nosso computador, não numa plataforma pública, e é apagado quando o trabalho termina.",
+          "Você pode cancelar a autorização quando quiser."
+        ]},
+        {"tipo": "aviso", "texto": "Rosto e voz são dados biométricos: dados sensíveis pela LGPD (art. 11) e pelo RGPD (art. 9). Por isso o consentimento é por escrito, antes de qualquer gravação."}
+      ]
+    },
+    {
+      "titulo": "O que a gente não faz",
+      "blocos": [
+        {"tipo": "passos", "itens": [
+          "Não prometemos seguidores, vendas ou viralização. Prometemos vídeos bem feitos, no padrão que segura a atenção, aprovados por você.",
+          "Não fazemos depoimento falso, nem com clone nem sem clone.",
+          "Não colocamos na boca do clone promessa de saúde, emagrecimento ou ganho financeiro."
+        ]}
+      ]
+    }
+  ],
+  "proximo_passo": "Quer vídeos assim no perfil do seu negócio? Chama no WhatsApp, conta o que você faz e a gente te diz qual pack faz mais sentido.",
+  "oferta": {
+    "titulo": "Vídeos prontos para o seu negócio",
+    "texto": "Escolha o pack e chame no WhatsApp. A mensagem já vai pronta.",
+    "bullets": ["Pack Edição: 6 Reels editados por R$197", "Pack Clone: 4 Reels com o seu clone de IA por R$197 (5 vagas de fundador)"],
+    "cta": "Quero o Pack Edição · 6 Reels",
+    "mensagem_wa": "Oi Matheus! Vim do guia VIDEO e quero o Pack Edição (6 Reels editados, R$197). Meu negócio é: ",
+    "cta2": "Quero o Pack Clone · 4 Reels",
+    "mensagem_wa2": "Oi Matheus! Vim do guia VIDEO e quero uma vaga de fundador do Pack Clone (4 Reels com meu clone de IA, R$197). Meu negócio é: "
+  },
+  "fontes": [
+    "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm",
+    "https://artificialintelligenceact.eu/article/50/"
+  ],
+  "verificado_em": "2026-11-24"
+}

@@ -1,0 +1,105 @@
+{
+  "slug": "clone",
+  "codigo": "CLONE",
+  "titulo": "Como funciona o meu clone de IA (e como ter o seu)",
+  "destaque": "Esse vídeo não fui eu que gravei",
+  "sub": "Como o clone com o meu rosto e a minha voz é feito no meu próprio PC, o que ele faz bem, o que ainda não faz, e as regras para clonar alguém dentro da lei.",
+  "tempo_leitura_min": 6,
+  "ferramentas": [
+    {
+      "nome": "LongCat-Video-Avatar",
+      "link": "https://github.com/meituan-longcat/LongCat-Video",
+      "para_que": "Modelo aberto que anima o rosto a partir de uma foto ou vídeo de referência e do áudio da fala",
+      "preco": "Grátis (código aberto); exige placa NVIDIA com bastante memória"
+    },
+    {
+      "nome": "Chatterbox",
+      "link": "https://github.com/resemble-ai/chatterbox",
+      "para_que": "Gera a fala a partir do texto, imitando uma voz de referência; tem versão para português do Brasil",
+      "preco": "Grátis, licença MIT; desde agosto de 2026 o projeto não recebe atualizações"
+    }
+  ],
+  "secoes": [
+    {
+      "titulo": "O que é o clone",
+      "blocos": [
+        {"tipo": "p", "texto": "O clone é um vídeo meu falando um roteiro que eu nunca gravei. O rosto e a voz são gerados por IA a partir de gravações reais minhas. Ele aparece no gancho e nos trechos em que eu falo para a câmera; o resto do vídeo é edição (telas, textos, prints)."},
+        {"tipo": "p", "texto": "Tudo roda no meu computador, numa placa de vídeo NVIDIA. Não pago assinatura de avatar por minuto e as minhas gravações não ficam numa plataforma de terceiros."},
+        {"tipo": "aviso", "texto": "Todo vídeo feito com o clone leva o aviso \"Vídeo com avatar de IA\". Isso não é detalhe: a lei europeia de IA (AI Act, art. 50) exige transparência para conteúdo sintético, e é o certo a fazer com quem assiste."}
+      ]
+    },
+    {
+      "titulo": "Como ele é feito, em 4 etapas",
+      "blocos": [
+        {"tipo": "passos", "itens": [
+          "Gravação de referência: alguns minutos de vídeo do rosto, com boa luz, e alguns minutos de áudio limpo da voz. É feita uma vez só.",
+          "Voz: o roteiro vira áudio com a minha voz. Na minha fábrica isso é feito com o Chatterbox, rodando local, usando as minhas gravações como referência.",
+          "Rosto: o LongCat-Video-Avatar anima o rosto sincronizado com esse áudio, com movimento de cabeça e boca.",
+          "Edição: o clone entra só nos trechos de rosto; por cima vêm legenda palavra a palavra, cortes, telas e textos. Depois, controle de qualidade e o aviso de IA."
+        ]},
+        {"tipo": "dica", "texto": "O rosto é a etapa cara. Na minha máquina, cada segundo de rosto custa cerca de 1 minuto de GPU. Por isso o clone fala só no gancho e nos trechos de história, e não o vídeo inteiro."}
+      ]
+    },
+    {
+      "titulo": "O que ele faz bem e o que ainda não faz",
+      "blocos": [
+        {"tipo": "tabela", "colunas": ["Faz bem", "Ainda não faz bem"], "linhas": [
+          ["Falar um roteiro com a sua voz e o seu jeito de falar", "Movimentos muito rápidos ou viradas fortes de cabeça"],
+          ["Plano de rosto e ombros, olhando para a câmera", "Mãos em close e objetos sendo segurados"],
+          ["Vídeos curtos, de 15 a 60 segundos", "Plano aberto, andando, em cenário que muda"],
+          ["Manter a frequência sem você gravar todo dia", "Substituir uma gravação real quando a emoção do momento importa"]
+        ]},
+        {"tipo": "p", "texto": "Na prática: o clone resolve o \"tenho que aparecer todo dia e não consigo\". Ele não substitui você nos momentos em que só você pode estar."}
+      ]
+    },
+    {
+      "titulo": "O que é preciso para fazer um clone em casa",
+      "blocos": [
+        {"tipo": "passos", "itens": [
+          "Placa de vídeo NVIDIA com 12 GB de memória ou mais. Com menos, os modelos de rosto não cabem ou ficam lentos demais.",
+          "Paciência com instalação: Python, PyTorch, drivers e modelos de vários GB.",
+          "Gravações de referência limpas: luz de frente, fundo simples, áudio sem eco.",
+          "Tempo de GPU: um vídeo de 30 segundos com rosto o tempo todo leva perto de meia hora de processamento."
+        ]},
+        {"tipo": "aviso", "texto": "Modelos de rosto pesados exigem muito da máquina. Aqui o PC já desligou sozinho rodando a versão mais pesada; comece pelas versões leves e vigie a temperatura."}
+      ]
+    },
+    {
+      "titulo": "As regras: clone só com consentimento",
+      "blocos": [
+        {"tipo": "passos", "itens": [
+          "Só clonamos a pessoa que assina o termo. Nunca funcionários sem termo próprio, nunca terceiros, nunca menores.",
+          "O termo é escrito e específico: finalidade (vídeos do próprio negócio), canais, duração e direito de cancelar. Rosto e voz são dados biométricos, sensíveis pela LGPD (art. 11) e pelo RGPD (art. 9).",
+          "Você aprova cada vídeo antes de ir ao ar.",
+          "Todo vídeo leva o aviso \"Vídeo com avatar de IA\".",
+          "O modelo e as gravações ficam guardados no PC local e são apagados quando o trabalho termina."
+        ]},
+        {"tipo": "aviso", "texto": "Não fazemos clone para enganar, para depoimento falso, nem para promessa de saúde, emagrecimento ou ganho financeiro."}
+      ]
+    },
+    {
+      "titulo": "Lista de espera: você já está nela",
+      "blocos": [
+        {"tipo": "p", "texto": "Ao abrir este guia, o seu nome entrou na lista de espera do clone. Quando abrirmos uma turma para ensinar a montar o seu clone (ou novas vagas para fazermos o seu), quem está na lista fica sabendo primeiro."},
+        {"tipo": "p", "texto": "Não quer esperar nem montar nada? Temos o Pack Clone: a gente faz o seu clone e entrega 4 Reels com ele. São 5 vagas a preço de fundador."}
+      ]
+    }
+  ],
+  "proximo_passo": "Quer o seu clone sem instalar nada? No Pack Clone a gente grava você uma vez, monta o clone e entrega 4 Reels prontos, com o aviso de IA e a sua aprovação em cada um.",
+  "oferta": {
+    "titulo": "Pack Clone: 4 Reels com o seu clone de IA",
+    "texto": "Preço de fundador, só para as 5 primeiras vagas: R$197.",
+    "bullets": ["Uma gravação guiada, feita uma vez só", "Seu clone com rosto e voz, rodando no nosso PC, nunca numa plataforma pública", "4 Reels prontos com roteiro, edição e o aviso de IA", "Termo de consentimento assinado e aprovação de cada vídeo antes de postar"],
+    "cta": "Quero uma vaga do Pack Clone",
+    "mensagem_wa": "Oi Matheus! Vim do guia CLONE e quero uma vaga de fundador do Pack Clone (4 Reels com meu clone de IA, R$197). Meu negócio é: ",
+    "cta2": "Prefiro só edição (Pack Edição)",
+    "mensagem_wa2": "Oi Matheus! Vim do guia CLONE e quero saber do Pack Edição (6 Reels editados, R$197). Meu negócio é: "
+  },
+  "fontes": [
+    "https://github.com/meituan-longcat/LongCat-Video",
+    "https://github.com/resemble-ai/chatterbox",
+    "https://artificialintelligenceact.eu/article/50/",
+    "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm"
+  ],
+  "verificado_em": "2026-11-24"
+}

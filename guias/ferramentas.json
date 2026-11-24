@@ -1,0 +1,108 @@
+{
+  "slug": "ferramentas",
+  "codigo": "FERRAMENTAS",
+  "titulo": "5 ferramentas grátis para editar e criar vídeo com IA",
+  "destaque": "5 ferramentas grátis que substituem assinatura",
+  "sub": "Auto-Editor, Whisper, DaVinci Resolve, Chatterbox e ComfyUI: o que cada uma faz, como instalar e os limites que ninguém conta.",
+  "tempo_leitura_min": 8,
+  "ferramentas": [
+    {"nome": "Auto-Editor", "link": "https://github.com/WyattBlue/auto-editor", "para_que": "Corta silêncio e trechos parados automaticamente", "preco": "Grátis, domínio público (Unlicense)"},
+    {"nome": "OpenAI Whisper", "link": "https://github.com/openai/whisper", "para_que": "Transcreve a fala e gera legenda", "preco": "Grátis, licença MIT"},
+    {"nome": "DaVinci Resolve", "link": "https://www.blackmagicdesign.com/products/davinciresolve", "para_que": "Editor profissional com timeline, cor e áudio", "preco": "Versão gratuita; a Studio é paga"},
+    {"nome": "Chatterbox", "link": "https://github.com/resemble-ai/chatterbox", "para_que": "Gera voz a partir de texto e imita uma voz de referência", "preco": "Grátis, licença MIT; sem manutenção desde agosto de 2026"},
+    {"nome": "ComfyUI", "link": "https://github.com/Comfy-Org/ComfyUI", "para_que": "Monta fluxos de geração de imagem e vídeo com IA no seu PC", "preco": "Grátis, licença GPL-3.0"}
+  ],
+  "secoes": [
+    {
+      "titulo": "Auto-Editor: corta os silêncios por você",
+      "blocos": [
+        {"tipo": "p", "texto": "Ele analisa o volume do áudio e tira os trechos mudos do vídeo. É o primeiro passe de qualquer edição: em vez de cortar respiração por respiração, você roda um comando."},
+        {"tipo": "p", "texto": "Instalação: baixe o executável do seu sistema na página de Releases do GitHub (no Windows, auto-editor-windows-x86_64.exe) ou instale pelo pip. A versão do pip costuma vir atrás da do GitHub."},
+        {"tipo": "codigo", "texto": "pip install auto-editor", "rotulo": "Instalação pelo pip"},
+        {"tipo": "codigo", "texto": "auto-editor video.mp4 --margin 0.2sec", "rotulo": "Cortar silêncios (com 0,2 s de respiro)"},
+        {"tipo": "codigo", "texto": "auto-editor video.mp4 --export resolve", "rotulo": "Mandar os cortes para o DaVinci Resolve"},
+        {"tipo": "aviso", "texto": "Ele decide pelo volume. Com música de fundo ou barulho ambiente, os cortes erram; ajuste o limite com --edit audio:-19dB ou grave em lugar silencioso."}
+      ]
+    },
+    {
+      "titulo": "Whisper: transcrição e legenda no seu PC",
+      "blocos": [
+        {"tipo": "p", "texto": "O modelo de transcrição da OpenAI, aberto. Entende português, gera o texto com o tempo de cada trecho e exporta legenda em .srt. Precisa do FFmpeg instalado."},
+        {"tipo": "codigo", "texto": "pip install -U openai-whisper", "rotulo": "Instalação"},
+        {"tipo": "codigo", "texto": "whisper video.mp4 --model turbo --language Portuguese --output_format srt", "rotulo": "Gerar legenda .srt"},
+        {"tipo": "tabela", "colunas": ["Modelo", "Memória de vídeo (aprox.)", "Quando usar"], "linhas": [
+          ["small", "~2 GB", "PC sem placa forte"],
+          ["turbo", "~6 GB", "O melhor equilíbrio entre velocidade e precisão"],
+          ["large", "~10 GB", "Máxima precisão, mais lento"]
+        ]},
+        {"tipo": "aviso", "texto": "Sem placa de vídeo ele roda, mas fica lento. O modelo turbo não traduz: para traduzir, use medium ou large. Nomes próprios e termos técnicos às vezes saem errados; revise antes de publicar."}
+      ]
+    },
+    {
+      "titulo": "DaVinci Resolve: o editor profissional grátis",
+      "blocos": [
+        {"tipo": "p", "texto": "Timeline, correção de cor, áudio e efeitos num programa só, usado em produções de cinema. A versão gratuita resolve a edição de Reels com folga. Baixe no site da Blackmagic Design (pede um cadastro rápido)."},
+        {"tipo": "passos", "itens": [
+          "Rode o Auto-Editor com --export resolve para gerar o arquivo de cortes.",
+          "No Resolve, importe a timeline gerada (File > Import > Timeline).",
+          "Ajuste o que precisar, aplique a legenda .srt do Whisper e exporte em 1080x1920."
+        ]},
+        {"tipo": "aviso", "texto": "É pesado: pede placa de vídeo decente e bastante memória RAM. Vários recursos de IA (como o Magic Mask e o Voice Isolation) ficam só na versão Studio, que é paga."}
+      ]
+    },
+    {
+      "titulo": "Chatterbox: voz com IA, rodando local",
+      "blocos": [
+        {"tipo": "p", "texto": "Transforma texto em fala e pode imitar uma voz a partir de um áudio de referência. A versão multilíngue fala português e existe um modelo dedicado ao português do Brasil. É o que a minha fábrica usa para a voz."},
+        {"tipo": "codigo", "texto": "pip install chatterbox-tts", "rotulo": "Instalação (testado pelos autores no Python 3.11)"},
+        {"tipo": "codigo", "texto": "import torchaudio as ta\nfrom chatterbox.mtl_tts import ChatterboxMultilingualTTS\n\nmodelo = ChatterboxMultilingualTTS.from_pretrained(device=\"cuda\", t3_model=\"v3\")\nwav = modelo.generate(\"Esse áudio foi gerado no meu computador.\", language_id=\"pt\", audio_prompt_path=\"minha_voz.wav\")\nta.save(\"teste.wav\", wav, modelo.sr)", "rotulo": "Python: gerar uma fala em português"},
+        {"tipo": "aviso", "texto": "Desde agosto de 2026 o projeto está aposentado: o código continua aberto, mas sem atualizações nem suporte. Todo áudio gerado leva uma marca d'água inaudível (Perth). E só clone a sua própria voz, ou a de quem autorizou por escrito."}
+      ]
+    },
+    {
+      "titulo": "ComfyUI: fluxos de imagem e vídeo com IA",
+      "blocos": [
+        {"tipo": "p", "texto": "Uma interface de blocos ligados por fios, onde você monta o fluxo de geração (modelo, prompt, imagem de referência, vídeo). Roda os modelos abertos de imagem e vídeo no seu PC, sem pagar por geração."},
+        {"tipo": "passos", "itens": [
+          "Jeito mais fácil: o Comfy Desktop, instalador normal para Windows e macOS (comfy.org/download).",
+          "Alternativa no Windows: a versão Portable, que é só descompactar e rodar.",
+          "Abra, carregue um fluxo pronto (os modelos de exemplo são baixados na primeira vez) e gere."
+        ]},
+        {"tipo": "aviso", "texto": "Os modelos têm vários GB e vídeo exige placa NVIDIA com bastante memória. Nós personalizados (custom nodes) são código de terceiros que roda no seu PC: instale só os conhecidos. Em placas NVIDIA, o projeto pede PyTorch com CUDA 13.0 (cu130) ou mais recente."}
+      ]
+    },
+    {
+      "titulo": "Como elas se juntam",
+      "blocos": [
+        {"tipo": "passos", "itens": [
+          "Grave no celular.",
+          "Auto-Editor tira os silêncios.",
+          "Whisper gera a legenda.",
+          "DaVinci Resolve faz o acabamento.",
+          "Chatterbox e ComfyUI entram quando você quer voz ou imagens geradas por IA."
+        ]},
+        {"tipo": "dica", "texto": "Juntar tudo isso na mão dá trabalho. É exatamente esse trabalho que dá para entregar ao Claude Code: você pede em português e ele roda as ferramentas."}
+      ]
+    }
+  ],
+  "proximo_passo": "Quer que essas ferramentas trabalhem juntas sem você decorar comando? O curso Edição de Vídeo com Claude Code mostra como pedir em português e a IA rodar tudo.",
+  "oferta": {
+    "titulo": "Edição de Vídeo com Claude Code",
+    "texto": "R$29,90, pagamento único, com 7 dias de garantia. Chega no seu WhatsApp.",
+    "bullets": ["Instalação passo a passo (Windows e Mac)", "Pasta modelo com CLAUDE.md e 6 estilos", "Comandos prontos para legenda, cortes, zoom, música e lote"],
+    "cta": "Quero o curso · R$29,90",
+    "cta_link": "../kit/",
+    "cta2": "Prefiro que vocês editem pra mim",
+    "mensagem_wa2": "Oi Matheus! Vim do guia FERRAMENTAS e prefiro que vocês editem: quero saber do Pack Edição (6 Reels, R$197). Meu negócio é: "
+  },
+  "fontes": [
+    "https://github.com/WyattBlue/auto-editor",
+    "https://github.com/WyattBlue/auto-editor/releases",
+    "https://github.com/openai/whisper",
+    "https://www.blackmagicdesign.com/products/davinciresolve",
+    "https://github.com/resemble-ai/chatterbox",
+    "https://github.com/Comfy-Org/ComfyUI",
+    "https://www.comfy.org/download"
+  ],
+  "verificado_em": "2026-11-24"
+}

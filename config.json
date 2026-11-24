@@ -1,6 +1,6 @@
 {
   "marca": "Matheus Souza",
-  "instagram": "matheussouza.lisboa",
+  "instagram": "matheussouza.ia",
   "supabase_url": "https://ghqxlycouzcvtwxojrxz.supabase.co",
   "supabase_key": "sb_publishable_i_drjCxZPceojo4tSdAFtw_shrXATCb",
   "whatsapp": "+351932966085",
@@ -10,11 +10,61 @@
   "oferta": {
     "titulo": "Quer vídeos assim no seu perfil?",
     "texto": "Todos os vídeos deste perfil são editados por IA, com um clone que tem a minha voz e o meu rosto. Tem dois jeitos de ter isso também:",
-    "bullets": ["Você mesmo edita: o Kit Edição com IA ensina o ChatGPT ou o Claude a editar por você (R$29,90)", "A gente faz por você: pack de vídeos personalizados ou o seu próprio clone de IA"],
+    "bullets": [
+      "Você mesmo edita: o Kit Edição com IA ensina o ChatGPT ou o Claude a editar por você (R$29,90)",
+      "A gente faz por você: pack de vídeos personalizados ou o seu próprio clone de IA"
+    ],
     "cta": "Quero o Kit Edição com IA · R$29,90",
     "cta_link": "../kit/",
     "cta2": "Quero vídeos feitos por vocês",
     "mensagem_wa": "Oi Matheus! Vim do guia {guia} e quero o Kit Edição com IA.",
     "mensagem_wa2": "Oi Matheus! Vim do guia {guia} e quero saber do pack de vídeos personalizados / clone de IA."
+  },
+  "hub": {
+    "ocultar": [
+      "caixa"
+    ],
+    "destaque_guias": [
+      "clone",
+      "video",
+      "editar",
+      "fabrica",
+      "ferramentas"
+    ],
+    "packs": [
+      {
+        "id": "edicao",
+        "nome": "Pack Edição",
+        "qtd": "6 Reels",
+        "preco": "R$197",
+        "resumo": "Você grava no celular. A gente edita.",
+        "itens": [
+          "Legenda palavra a palavra, cortes e zoom",
+          "Música, capa e ritmo de Reels",
+          "Roteiros prontos se você não sabe o que falar",
+          "1 revisão por vídeo"
+        ],
+        "selo": "",
+        "cta": "Quero o Pack Edição",
+        "msg": "Oi Matheus! Vim do link da bio e quero o Pack Edição (6 Reels editados, R$197). Meu negócio é: "
+      },
+      {
+        "id": "clone",
+        "nome": "Pack Clone",
+        "qtd": "4 Reels",
+        "preco": "R$197",
+        "resumo": "Você não grava nada. Seu clone de IA apresenta.",
+        "itens": [
+          "Uma gravação guiada, feita uma vez só",
+          "Seu clone com rosto e voz, guardado no nosso PC",
+          "Roteiro, edição e o aviso de IA em cada vídeo",
+          "Você aprova cada vídeo antes de postar"
+        ],
+        "selo": "Preço de fundador · 5 vagas",
+        "cta": "Quero uma vaga do Pack Clone",
+        "nota": "Só com termo de consentimento assinado por quem será clonado.",
+        "msg": "Oi Matheus! Vim do link da bio e quero uma vaga de fundador do Pack Clone (4 Reels com meu clone de IA, R$197). Meu negócio é: "
+      }
+    ]
   }
 }

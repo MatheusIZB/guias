@@ -1,0 +1,100 @@
+{
+  "slug": "fabrica",
+  "codigo": "FABRICA",
+  "titulo": "O mapa da minha fábrica de vídeos com IA",
+  "destaque": "Não é mágica, é fábrica",
+  "sub": "As 6 etapas que transformam um link em Reels postado e em conversa no WhatsApp: roteiro, voz, clone, edição, agenda e funil, com as ferramentas de cada uma.",
+  "tempo_leitura_min": 7,
+  "ferramentas": [
+    {"nome": "Claude Code", "link": "https://code.claude.com/docs/en/setup", "para_que": "Disseca o vídeo de referência, escreve o roteiro e orquestra as etapas", "preco": "Plano pago da Anthropic"},
+    {"nome": "Whisper / faster-whisper", "link": "https://github.com/SYSTRAN/faster-whisper", "para_que": "Transcreve com o tempo de cada palavra (legenda e cortes)", "preco": "Grátis, licença MIT"},
+    {"nome": "Chatterbox", "link": "https://github.com/resemble-ai/chatterbox", "para_que": "A voz do clone, gerada no PC", "preco": "Grátis, licença MIT"},
+    {"nome": "LongCat-Video-Avatar", "link": "https://github.com/meituan-longcat/LongCat-Video", "para_que": "O rosto do clone, sincronizado com a voz", "preco": "Grátis; exige placa NVIDIA forte"},
+    {"nome": "FFmpeg", "link": "https://ffmpeg.org/", "para_que": "Monta, mixa e exporta o vídeo final", "preco": "Grátis"},
+    {"nome": "Supabase", "link": "https://supabase.com/", "para_que": "Banco de dados do funil: regras de DM, leads e fila de WhatsApp", "preco": "Plano gratuito"}
+  ],
+  "secoes": [
+    {
+      "titulo": "A fábrica em uma imagem",
+      "blocos": [
+        {"tipo": "codigo", "texto": "link de um viral\n  → 1. ROTEIRO   (dissecar o gancho e a estrutura, escrever na minha voz)\n  → 2. VOZ       (Chatterbox, no meu PC)\n  → 3. CLONE     (rosto animado, só nos trechos de fala)\n  → 4. EDIÇÃO    (legenda, telas, textos, efeitos, controle de qualidade)\n  → 5. AGENDA    (postagem programada nas redes)\n  → 6. FUNIL     (comentário → direct → guia → WhatsApp)", "rotulo": "O fluxo"},
+        {"tipo": "p", "texto": "Tudo é comandado de um painel no meu computador: eu colo o link, escolho o tema e a fábrica faz o resto. Enquanto a placa de vídeo faz o clone de um vídeo, o próximo já está sendo roteirizado e o anterior está sendo editado, para a GPU nunca ficar parada."}
+      ]
+    },
+    {
+      "titulo": "1. Roteiro: modelar a estrutura, nunca copiar",
+      "blocos": [
+        {"tipo": "p", "texto": "A fábrica baixa o vídeo de referência, transcreve e disseca: qual é o gancho dos 3 primeiros segundos, quantos cortes, qual o ritmo, onde entra cada tela. Depois o Claude escreve um roteiro novo, sobre o meu tema, na minha voz."},
+        {"tipo": "aviso", "texto": "Modelar é copiar a estrutura. Texto, imagens e música do original nunca entram no nosso vídeo."}
+      ]
+    },
+    {
+      "titulo": "2 e 3. Voz e clone",
+      "blocos": [
+        {"tipo": "p", "texto": "O roteiro vira áudio com a minha voz (Chatterbox, usando as minhas gravações como referência). Esse áudio anima o meu rosto (LongCat-Video-Avatar). As duas etapas rodam na GPU, uma de cada vez."},
+        {"tipo": "tabela", "colunas": ["Etapa", "Onde roda", "Custo de tempo"], "linhas": [
+          ["Roteiro e assets", "CPU + Claude", "Minutos"],
+          ["Voz", "GPU", "Minutos"],
+          ["Clone (rosto)", "GPU", "~1 min de GPU por segundo de rosto"],
+          ["Edição e controle de qualidade", "CPU + navegador", "Minutos"]
+        ]},
+        {"tipo": "dica", "texto": "Por isso o clone fala só no gancho e nos trechos de história. O resto do vídeo é tela, print e texto, que custam quase nada."}
+      ]
+    },
+    {
+      "titulo": "4. Edição e controle de qualidade",
+      "blocos": [
+        {"tipo": "p", "texto": "A montagem junta o clone, a legenda palavra a palavra (tempo de cada palavra vindo da transcrição), prints dos sites citados, textos animados e efeitos sonoros. O FFmpeg exporta em 1080x1920."},
+        {"tipo": "p", "texto": "Antes de liberar, um controle de qualidade confere duração, volume do áudio e o resultado final. Se algo estiver fora do padrão, o vídeo não é postado sozinho e volta para revisão. O aviso de IA entra automaticamente na legenda de todo post feito com o clone."}
+      ]
+    },
+    {
+      "titulo": "5. Agenda: postagem programada",
+      "blocos": [
+        {"tipo": "p", "texto": "O vídeo pronto entra numa fila com dia e hora. A postagem usa as APIs oficiais (Instagram e Facebook pela API da Meta), sem aplicativo de terceiros no meio."}
+      ]
+    },
+    {
+      "titulo": "6. Funil: do comentário à conversa",
+      "blocos": [
+        {"tipo": "passos", "itens": [
+          "Cada vídeo termina pedindo para comentar uma palavra (como esta: FABRICA).",
+          "Uma automação na nuvem lê o comentário, responde em público e manda o link no direct.",
+          "O link abre um guia como este, com captura de nome e contato.",
+          "Quem pediu recebe uma mensagem no WhatsApp perguntando o que precisa: aprender, receber vídeos prontos ou ter um clone."
+        ]},
+        {"tipo": "p", "texto": "As regras de cada palavra, os contatos e a fila de mensagens ficam num banco de dados (Supabase). Assim dá para ver qual vídeo gera conversa, não só visualização."}
+      ]
+    },
+    {
+      "titulo": "O que você pode pegar disso hoje",
+      "blocos": [
+        {"tipo": "passos", "itens": [
+          "Se você cria conteúdo: comece pela edição com Claude Code. É a etapa que mais economiza tempo e não exige GPU.",
+          "Se você tem um negócio: não precisa montar a fábrica. Contrate os vídeos prontos e use o seu tempo vendendo.",
+          "Se quer o clone: entre na lista de espera (palavra CLONE) para saber quando abrirmos turma ou vagas."
+        ]}
+      ]
+    }
+  ],
+  "proximo_passo": "Quer a fábrica trabalhando para o seu negócio, sem montar nada? A gente usa ela para fazer os seus vídeos.",
+  "oferta": {
+    "titulo": "Use a fábrica sem montar a fábrica",
+    "texto": "Escolha o caminho. A mensagem do WhatsApp já vai pronta.",
+    "bullets": ["Pack Edição: 6 Reels editados por R$197", "Pack Clone: 4 Reels com o seu clone de IA por R$197 (5 vagas de fundador)", "Quer aprender a editar você mesmo? Curso Edição de Vídeo com Claude Code, R$29,90"],
+    "cta": "Quero vídeos prontos (Pack Edição)",
+    "mensagem_wa": "Oi Matheus! Vim do guia FABRICA e quero o Pack Edição (6 Reels editados, R$197). Meu negócio é: ",
+    "cta2": "Quero o Pack Clone · 5 vagas",
+    "mensagem_wa2": "Oi Matheus! Vim do guia FABRICA e quero uma vaga de fundador do Pack Clone (4 Reels com meu clone de IA, R$197). Meu negócio é: ",
+    "cta3": "Prefiro aprender: curso R$29,90",
+    "cta3_link": "../kit/"
+  },
+  "fontes": [
+    "https://github.com/SYSTRAN/faster-whisper",
+    "https://github.com/resemble-ai/chatterbox",
+    "https://github.com/meituan-longcat/LongCat-Video",
+    "https://developers.facebook.com/docs/instagram-platform/content-publishing",
+    "https://supabase.com/docs"
+  ],
+  "verificado_em": "2026-11-24"
+}

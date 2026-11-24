@@ -1,0 +1,110 @@
+{
+  "slug": "editar",
+  "codigo": "EDITAR",
+  "titulo": "O que dá pra fazer editando vídeo com o Claude Code",
+  "destaque": "Você dá a ordem. A IA edita.",
+  "sub": "O que o Claude Code consegue fazer num vídeo hoje (cortes, legenda, 9:16, zoom, lote), o que você precisa instalar e um primeiro teste para fazer agora.",
+  "tempo_leitura_min": 6,
+  "ferramentas": [
+    {
+      "nome": "Claude Code",
+      "link": "https://code.claude.com/docs/en/setup",
+      "para_que": "O agente da Anthropic que roda no terminal, lê os seus arquivos e executa os comandos de edição por você",
+      "preco": "Exige plano pago da Anthropic (Pro ou superior, ou Console); o plano gratuito do claude.ai não inclui"
+    },
+    {
+      "nome": "FFmpeg",
+      "link": "https://ffmpeg.org/download.html",
+      "para_que": "O motor que de fato corta, redimensiona, junta áudio e exporta o vídeo",
+      "preco": "Grátis e de código aberto"
+    },
+    {
+      "nome": "OpenAI Whisper",
+      "link": "https://github.com/openai/whisper",
+      "para_que": "Transcreve a fala com o tempo de cada palavra, que vira a legenda palavra a palavra",
+      "preco": "Grátis, licença MIT; roda no seu PC"
+    }
+  ],
+  "secoes": [
+    {
+      "titulo": "A ideia em uma frase",
+      "blocos": [
+        {"tipo": "p", "texto": "O Claude Code não é um editor com timeline. Ele é um agente que entende o seu pedido em português e roda, no seu computador, as ferramentas que editam de verdade: FFmpeg para cortar e exportar, Whisper para transcrever, scripts em Python para montar a legenda."},
+        {"tipo": "p", "texto": "Você descreve o vídeo que quer. Ele escreve e executa os comandos, salva o resultado numa pasta e te mostra o resumo. Se não gostou, você pede o ajuste em português."}
+      ]
+    },
+    {
+      "titulo": "O que dá para pedir (e funciona)",
+      "blocos": [
+        {"tipo": "tabela", "colunas": ["Pedido", "O que ele usa por trás"], "linhas": [
+          ["Cortar os silêncios e as respirações longas", "Análise do volume do áudio + FFmpeg"],
+          ["Legenda palavra a palavra, com a palavra falada em destaque", "Whisper (tempo de cada palavra) + legenda .ass queimada com FFmpeg"],
+          ["Passar de horizontal para vertical 9:16", "Recorte e escala com FFmpeg"],
+          ["Zoom nos momentos fortes", "Filtro de escala por trecho"],
+          ["Música de fundo que abaixa quando você fala", "Filtro de compressão lateral (ducking) do FFmpeg"],
+          ["Achar o melhor gancho e colocar no começo", "Transcrição + leitura do texto pelo Claude"],
+          ["Editar 10 vídeos no mesmo estilo", "Um estilo salvo em arquivo + um laço que repete o processo"]
+        ]},
+        {"tipo": "dica", "texto": "O segredo não é o comando, é a pasta organizada: brutos de um lado, prontos do outro, e um arquivo CLAUDE.md dizendo o seu estilo. Assim ele não precisa adivinhar nada."}
+      ]
+    },
+    {
+      "titulo": "O que você precisa instalar",
+      "blocos": [
+        {"tipo": "codigo", "texto": "irm https://claude.ai/install.ps1 | iex", "rotulo": "Claude Code no Windows (PowerShell)"},
+        {"tipo": "codigo", "texto": "curl -fsSL https://claude.ai/install.sh | bash", "rotulo": "Claude Code no Mac ou Linux"},
+        {"tipo": "codigo", "texto": "winget install Gyan.FFmpeg", "rotulo": "FFmpeg no Windows"},
+        {"tipo": "codigo", "texto": "brew install ffmpeg", "rotulo": "FFmpeg no Mac (Homebrew)"},
+        {"tipo": "codigo", "texto": "pip install -U openai-whisper", "rotulo": "Whisper (precisa de Python instalado)"},
+        {"tipo": "aviso", "texto": "O Claude Code exige conta paga da Anthropic. O resto (FFmpeg, Python, Whisper) é grátis. Não precisa de PC gamer: a edição roda em PC comum; só a transcrição fica mais lenta sem placa de vídeo."}
+      ]
+    },
+    {
+      "titulo": "Primeiro teste: 5 minutos",
+      "blocos": [
+        {"tipo": "passos", "itens": [
+          "Crie uma pasta chamada videos e coloque dentro um vídeo gravado no celular (por exemplo, bruto.mp4).",
+          "Abra o terminal dentro dessa pasta e digite claude.",
+          "Cole o pedido abaixo, trocando o nome do arquivo se precisar.",
+          "Confira o arquivo na pasta prontos e peça os ajustes que quiser."
+        ]},
+        {"tipo": "codigo", "texto": "Edite o bruto.mp4 para Reels:\n- vertical 9:16, 1080x1920\n- corte os silêncios acima de 0,4 segundo\n- legenda palavra a palavra, caixa alta, palavra falada em destaque\n- a frase mais forte nos 3 primeiros segundos\n- salve em prontos/ e me mostre um resumo do que fez", "rotulo": "Pedido para o Claude Code"},
+        {"tipo": "p", "texto": "Quer ver o FFmpeg sozinho, sem IA? Este comando recorta o centro de um vídeo horizontal e entrega em 9:16:"},
+        {"tipo": "codigo", "texto": "ffmpeg -i bruto.mp4 -vf \"crop=ih*9/16:ih,scale=1080:1920\" -c:a copy vertical.mp4", "rotulo": "Terminal"}
+      ]
+    },
+    {
+      "titulo": "Os limites (para não se frustrar)",
+      "blocos": [
+        {"tipo": "passos", "itens": [
+          "Ele não vê o vídeo como você: decide pelo áudio, pela transcrição e por quadros que extrai. Para escolher a melhor cena visual, você ainda dá a direção.",
+          "A primeira vez leva mais tempo: instalar e acertar o estilo. Depois, cada vídeo é um pedido.",
+          "Pedidos vagos dão resultados vagos. \"Deixa bonito\" não funciona; \"legenda amarela, caixa alta, 3 palavras por vez\" funciona.",
+          "Sempre revise antes de postar: nome próprio e termo técnico às vezes saem errados na legenda."
+        ]}
+      ]
+    },
+    {
+      "titulo": "O atalho: os comandos prontos",
+      "blocos": [
+        {"tipo": "p", "texto": "Eu juntei tudo o que uso num kit: o passo a passo de instalação, a pasta modelo com o CLAUDE.md, os comandos prontos (legenda, cortes, zoom, música, gancho, lote), 6 estilos e o checklist antes de postar. Funciona no Claude Code e também no Codex do ChatGPT."}
+      ]
+    }
+  ],
+  "proximo_passo": "Não quer montar os comandos do zero? O curso Edição de Vídeo com Claude Code traz a pasta pronta e os comandos testados, para você editar o primeiro vídeo hoje.",
+  "oferta": {
+    "titulo": "Edição de Vídeo com Claude Code",
+    "texto": "R$29,90, pagamento único, com 7 dias de garantia. Chega no seu WhatsApp.",
+    "bullets": ["Instalação passo a passo (Windows e Mac)", "Pasta modelo com CLAUDE.md e 6 estilos", "Comandos prontos: legenda, cortes, zoom, música, gancho, edição em lote", "Checklist de revisão antes de postar"],
+    "cta": "Quero o curso · R$29,90",
+    "cta_link": "../kit/",
+    "cta2": "Prefiro que vocês editem pra mim",
+    "mensagem_wa2": "Oi Matheus! Vim do guia EDITAR e prefiro que vocês editem: quero saber do Pack Edição (6 Reels, R$197). Meu negócio é: "
+  },
+  "fontes": [
+    "https://code.claude.com/docs/en/setup",
+    "https://ffmpeg.org/ffmpeg-filters.html",
+    "https://github.com/openai/whisper"
+  ],
+  "verificado_em": "2026-11-24"
+}

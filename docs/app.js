@@ -39,6 +39,44 @@
     });
   }
 
+  /* ---------- hub: lista de espera do clone (mesma tabela guia_leads, guia "clone") ---------- */
+  const formEsp = $("#form-espera");
+  if (formEsp) {
+    const ddi = $("#e-ddi");
+    PAISES.forEach(([v, t]) => ddi.append(el("option", { value: v }, t)));
+    formEsp.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const erro = $("#e-erro"), bt = $("#e-bt");
+      erro.textContent = "";
+      const nome = $("#e-nome").value.trim(), email = $("#e-email").value.trim().toLowerCase();
+      const whatsapp = ddi.value + $("#e-tel").value.replace(/\D/g, "");
+      if (nome.length < 2) return (erro.textContent = "Escreva o seu nome.");
+      if (!/^\+[0-9]{8,16}$/.test(whatsapp)) return (erro.textContent = "WhatsApp inválido: só números, com DDD.");
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return (erro.textContent = "E-mail inválido.");
+      if (!$("#e-consent").checked) return (erro.textContent = "Marque a caixa para entrar na lista.");
+      if ($("#e-site").value) return; // honeypot
+      bt.disabled = true; bt.textContent = "Entrando…";
+      try {
+        const r = await fetch(`${CFG.supabase_url}/rest/v1/guia_leads`, {
+          method: "POST",
+          headers: { apikey: CFG.supabase_key, "Content-Type": "application/json", Prefer: "return=minimal" },
+          body: JSON.stringify({ guia: "clone", interesse: "lista_espera_clone", nome, email, whatsapp, consentimento: true,
+            utm_source: "hub", ...utm() }),
+        });
+        if (!r.ok) throw new Error(await r.text());
+        guardar(CHAVE, "1");
+        pixel("Lead", { content_name: "lista_espera_clone" });
+        $("#fe-campos").classList.add("oculto");
+        $("#fe-feito").classList.remove("oculto");
+      } catch (err) {
+        erro.textContent = "Não foi possível entrar na lista agora. Confira os dados e tente de novo.";
+        bt.disabled = false; bt.textContent = "Entrar na lista de espera";
+      }
+    });
+  }
+  document.querySelectorAll("[data-ev]").forEach((a) =>
+    a.addEventListener("click", () => pixel("Contact", { content_name: a.dataset.ev })));
+
   /* ---------- página de guia ---------- */
   const formLead = $("#form-lead");
   if (!formLead) return;
