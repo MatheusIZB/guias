@@ -1,0 +1,45 @@
+{
+  "slug": "local",
+  "codigo": "LOCAL",
+  "titulo": "Ollama: a IA tipo ChatGPT que roda no seu PC, grátis",
+  "destaque": "IA no seu computador, sem internet e sem mensalidade",
+  "sub": "Como instalar o Ollama, qual modelo baixar, o que ele faz bem, o que não faz, e quanto de máquina você precisa.",
+  "tempo_leitura_min": 5,
+  "ferramentas": [
+    {"nome": "Ollama", "link": "https://ollama.com/download", "para_que": "Baixa e roda modelos de IA abertos no seu PC", "preco": "Grátis, licença MIT"},
+    {"nome": "Qwen 3", "link": "https://ollama.com/library/qwen3", "para_que": "Modelo aberto bom em português", "preco": "Grátis, licença Apache-2.0"},
+    {"nome": "Llama 3.2", "link": "https://ollama.com/library/llama3.2", "para_que": "Modelo aberto da Meta, leve e rápido", "preco": "Grátis, licença própria da Meta"}
+  ],
+  "secoes": [
+    {"titulo": "Instalar em 3 passos", "blocos": [
+      {"tipo": "passos", "itens": ["Baixe o instalador em ollama.com/download (Windows, Mac ou Linux).", "Abra o terminal (no Windows: PowerShell).", "Rode o comando abaixo. Na primeira vez ele baixa o modelo; depois funciona sem internet."]},
+      {"tipo": "codigo", "texto": "ollama run qwen3", "rotulo": "Baixar e conversar com o Qwen 3"},
+      {"tipo": "codigo", "texto": "ollama run llama3.2", "rotulo": "Alternativa mais leve"},
+      {"tipo": "dica", "texto": "Para sair da conversa, escreva /bye. Para ver os modelos baixados: ollama list."}
+    ]},
+    {"titulo": "Quanto de máquina precisa", "blocos": [
+      {"tipo": "tabela", "colunas": ["Tamanho do modelo", "Memória (aprox.)", "Na prática"], "linhas": [
+        ["até 4B", "8 GB de RAM", "Roda em quase qualquer PC, respostas simples"],
+        ["7B a 8B", "8 a 16 GB", "Bom para ideias e rascunhos"],
+        ["14B ou mais", "16 a 32 GB ou placa de vídeo boa", "Melhor qualidade, lento sem placa"]
+      ]},
+      {"tipo": "aviso", "texto": "Sem placa de vídeo ele roda no processador, mas fica lento. Quanto melhor a placa, mais rápido ele responde."}
+    ]},
+    {"titulo": "Para que usar (e para que não)", "blocos": [
+      {"tipo": "p", "texto": "Ótimo para gerar ideias, rascunhos de roteiro, legendas e resumos sem gastar crédito, e para mexer em textos com dados de clientes, porque nada sai da sua máquina."},
+      {"tipo": "aviso", "texto": "Modelos locais pequenos erram mais que o ChatGPT ou o Claude e não pesquisam na internet. Confira fatos e números antes de publicar."}
+    ]}
+  ],
+  "proximo_passo": "Quer ir além de conversar e fazer a IA editar os seus vídeos? O curso Edição de Vídeo com Claude Code mostra como pedir em português e a IA rodar tudo.",
+  "oferta": {
+    "titulo": "Edição de Vídeo com Claude Code",
+    "texto": "R$29,90, pagamento único, com 7 dias de garantia. Chega no seu WhatsApp.",
+    "bullets": ["Instalação passo a passo (Windows e Mac)", "Pasta modelo com CLAUDE.md e 6 estilos", "Comandos prontos para legenda, cortes, zoom, música e lote"],
+    "cta": "Quero o curso · R$29,90",
+    "cta_link": "../kit/",
+    "cta2": "Prefiro que vocês façam os vídeos",
+    "mensagem_wa2": "Oi Matheus! Vim do guia LOCAL e prefiro que vocês façam os meus vídeos. Meu negócio é: "
+  },
+  "fontes": ["https://ollama.com", "https://github.com/ollama/ollama", "https://ollama.com/library/qwen3", "https://ollama.com/library/llama3.2"],
+  "verificado_em": "2026-11-24"
+}

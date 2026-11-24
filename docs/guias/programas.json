@@ -1,0 +1,50 @@
+{
+  "slug": "programas",
+  "codigo": "PROGRAMAS",
+  "titulo": "5 programas grátis que substituem app de vídeo pago",
+  "destaque": "5 programas grátis, todos de código aberto",
+  "sub": "OBS Studio, LosslessCut, HandBrake, Audacity e Upscayl: o que cada um faz, onde baixar o oficial e o limite de cada um.",
+  "tempo_leitura_min": 5,
+  "ferramentas": [
+    {"nome": "OBS Studio", "link": "https://obsproject.com", "para_que": "Grava tela e webcam (e faz live) sem marca d'água", "preco": "Grátis, licença GPL-2.0"},
+    {"nome": "LosslessCut", "link": "https://github.com/mifi/lossless-cut/releases", "para_que": "Corta trechos do vídeo sem recodificar, em segundos", "preco": "Grátis no GitHub (GPL-2.0); nas lojas de apps é pago"},
+    {"nome": "HandBrake", "link": "https://handbrake.fr", "para_que": "Comprime e converte vídeo pesado", "preco": "Grátis, licença GPL-2.0"},
+    {"nome": "Audacity", "link": "https://www.audacityteam.org", "para_que": "Edita áudio e tira ruído de fundo", "preco": "Grátis, licença GPL-3.0"},
+    {"nome": "Upscayl", "link": "https://upscayl.org", "para_que": "Aumenta a resolução de fotos com IA, no seu PC", "preco": "Grátis, licença AGPL-3.0"}
+  ],
+  "secoes": [
+    {"titulo": "OBS Studio: gravar tela e webcam", "blocos": [
+      {"tipo": "p", "texto": "O programa que a maioria dos streamers usa. Você monta uma cena com a tela e a webcam num canto e grava em alta qualidade, sem limite de tempo e sem marca d'água."},
+      {"tipo": "passos", "itens": ["Em Fontes, clique em + e adicione Captura de tela.", "Adicione Dispositivo de captura de vídeo para a webcam e arraste para o canto.", "Em Configurações > Saída, escolha MP4 e clique em Iniciar gravação."]},
+      {"tipo": "aviso", "texto": "Para Reels, em Configurações > Vídeo use resolução 1080x1920 (vertical). Baixe só do site oficial: há cópias com vírus circulando."}
+    ]},
+    {"titulo": "LosslessCut: cortar sem perder qualidade", "blocos": [
+      {"tipo": "p", "texto": "Corta o começo, o fim ou trechos do meio sem recodificar o vídeo. Por isso é instantâneo e a qualidade fica idêntica à original."},
+      {"tipo": "aviso", "texto": "Como não recodifica, o corte encosta no quadro-chave mais próximo e pode sair uns décimos de segundo antes. Para corte exato ao quadro, use um editor como o DaVinci Resolve."}
+    ]},
+    {"titulo": "HandBrake: vídeo pesado que cabe no WhatsApp", "blocos": [
+      {"tipo": "passos", "itens": ["Abra o vídeo no HandBrake.", "Em Predefinições, escolha Fast 1080p30.", "Em Vídeo, use Qualidade Constante entre 22 e 24 (número maior = arquivo menor).", "Clique em Iniciar codificação."]},
+      {"tipo": "dica", "texto": "Um vídeo de 1 GB do celular costuma cair para menos de 100 MB com quase nenhuma diferença visível no celular."}
+    ]},
+    {"titulo": "Audacity: limpar o ruído do áudio", "blocos": [
+      {"tipo": "passos", "itens": ["Selecione um trecho só com ruído (sem fala).", "Efeito > Remoção de ruído > Obter perfil de ruído.", "Selecione o áudio todo, volte ao efeito e clique em OK."]},
+      {"tipo": "aviso", "texto": "Exagerar na redução deixa a voz metálica. Comece com 12 dB e só aumente se precisar."}
+    ]},
+    {"titulo": "Upscayl: foto borrada fica nítida", "blocos": [
+      {"tipo": "p", "texto": "Usa modelos de IA para aumentar a resolução de imagens, direto no seu computador, sem mandar a foto para nenhum site."},
+      {"tipo": "aviso", "texto": "Precisa de placa de vídeo compatível com Vulkan (a maioria das placas dedicadas). Ele inventa detalhes: ótimo para fotos e thumbnails, não use como prova de nada."}
+    ]}
+  ],
+  "proximo_passo": "Quer que esses programas trabalhem juntos sem você decorar menus? O curso Edição de Vídeo com Claude Code mostra como pedir em português e a IA fazer o trabalho.",
+  "oferta": {
+    "titulo": "Edição de Vídeo com Claude Code",
+    "texto": "R$29,90, pagamento único, com 7 dias de garantia. Chega no seu WhatsApp.",
+    "bullets": ["Instalação passo a passo (Windows e Mac)", "Pasta modelo com CLAUDE.md e 6 estilos", "Comandos prontos para legenda, cortes, zoom, música e lote"],
+    "cta": "Quero o curso · R$29,90",
+    "cta_link": "../kit/",
+    "cta2": "Prefiro que vocês editem pra mim",
+    "mensagem_wa2": "Oi Matheus! Vim do guia PROGRAMAS e prefiro que vocês editem: quero saber do Pack Edição (6 Reels, R$197). Meu negócio é: "
+  },
+  "fontes": ["https://obsproject.com", "https://github.com/mifi/lossless-cut", "https://handbrake.fr", "https://www.audacityteam.org", "https://github.com/upscayl/upscayl"],
+  "verificado_em": "2026-11-24"
+}

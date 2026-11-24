@@ -1,0 +1,43 @@
+{
+  "slug": "camera",
+  "codigo": "CAMERA",
+  "titulo": "O mapa para postar todo dia sem gravar todo dia",
+  "destaque": "Constância não é força de vontade, é sistema",
+  "sub": "O processo que eu uso para sair de gravar, regravar e editar para escrever e aprovar: as 4 etapas da fábrica e como começar com o que você já tem.",
+  "tempo_leitura_min": 4,
+  "ferramentas": [],
+  "secoes": [
+    {"titulo": "Por que quase todo mundo desiste", "blocos": [
+      {"tipo": "p", "texto": "Cada vídeo do jeito normal custa: ter ideia, gravar, regravar, editar e postar. Multiplica por 5 vezes por semana. O problema nunca foi preguiça: é um processo que depende de você em todas as etapas."}
+    ]},
+    {"titulo": "A fábrica em 4 etapas", "blocos": [
+      {"tipo": "passos", "itens": [
+        "Roteiro: escreva em lote, 5 a 10 de uma vez, com o gancho nas 3 primeiras palavras.",
+        "Voz e imagem: grave tudo num dia só, ou use um clone de IA com o seu consentimento.",
+        "Edição: cortes, legenda e zoom feitos por IA a partir de uma ordem em português.",
+        "Aprovação e agenda: você só assiste, aprova e deixa agendado."
+      ]},
+      {"tipo": "dica", "texto": "O segredo está na etapa 1: quem escreve em lote nunca fica sem o que postar."}
+    ]},
+    {"titulo": "Como começar esta semana", "blocos": [
+      {"tipo": "passos", "itens": [
+        "Escreva 5 roteiros curtos (30 a 40 segundos) sobre as perguntas que os seus clientes mais fazem.",
+        "Grave os 5 seguidos, no mesmo dia, com a luz da janela.",
+        "Edite com IA ou mande editar, e agende um por dia."
+      ]},
+      {"tipo": "aviso", "texto": "Se usar clone de IA, avise no post que é um avatar de IA. Transparência é regra (e na Europa é lei)."}
+    ]}
+  ],
+  "proximo_passo": "Quer a fábrica pronta para o seu negócio? A gente edita os seus vídeos ou monta o seu clone de IA, e você só aprova.",
+  "oferta": {
+    "titulo": "Vídeos prontos para o seu negócio",
+    "texto": "Escolha o pack e chame no WhatsApp. A mensagem já vai pronta.",
+    "bullets": ["Pack Edição: 6 Reels editados por R$197", "Pack Clone: 4 Reels com o seu clone de IA por R$197 (5 vagas de fundador)"],
+    "cta": "Quero o Pack Edição · 6 Reels",
+    "mensagem_wa": "Oi Matheus! Vim do guia CAMERA e quero o Pack Edição (6 Reels editados, R$197). Meu negócio é: ",
+    "cta2": "Quero o Pack Clone · 4 Reels",
+    "mensagem_wa2": "Oi Matheus! Vim do guia CAMERA e quero uma vaga de fundador do Pack Clone (4 Reels com meu clone de IA, R$197). Meu negócio é: "
+  },
+  "fontes": ["https://artificialintelligenceact.eu/article/50/"],
+  "verificado_em": "2026-11-24"
+}
