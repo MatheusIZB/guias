@@ -327,6 +327,11 @@ footer.site .wrap{display:grid;gap:8px}
       </h1>
       <p class="lede">Um guia passo a passo que transforma o <b>ChatGPT (Codex)</b> ou o <b>Claude Code</b> no seu editor de vídeo. Você escreve o que quer: legenda, cortes, zoom, ritmo. A IA monta o vídeo.</p>
       <div class="price-line"><strong>R$29,90</strong><span>pagamento único · o kit chega no seu WhatsApp</span></div>
+      <div class="black" id="black" style="margin:14px 0 18px;padding:14px 16px;border-radius:14px;border:2px solid #C6F432;background:rgba(198,244,50,.08);font-weight:700;line-height:1.35">
+        <div style="font-size:.78em;letter-spacing:.12em;text-transform:uppercase;color:#C6F432">Black Friday · preço de lançamento</div>
+        <div>R$29,90 até domingo, 30/11. A partir de 1/12 o kit passa para R$77.</div>
+        <div class="mono" id="black-timer" style="font-size:1.25em;margin-top:6px">acaba em --</div>
+      </div>
       <a class="cta" data-wa="hero" href="#"><svg><use href="#wa"/></svg><span>Quero editar com IA<span class="sub">Falar no WhatsApp agora</span></span></a>
       <div class="cta-meta"><span>Pix na hora</span><span>Entrega no WhatsApp</span><span>7 dias de garantia</span></div>
     </div>
@@ -656,6 +661,18 @@ footer.site .wrap{display:grid;gap:8px}
     const fallback = () => { const r = document.createRange(); r.selectNodeContents(cmd); const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r); copyBtn.textContent = "Selecionado"; };
     try { navigator.clipboard.writeText(cmd.innerText).then(done, fallback); } catch { fallback(); }
   });
+})();
+(() => {
+  const box = document.getElementById("black"), out = document.getElementById("black-timer");
+  if (!box || !out) return;
+  const fim = new Date("2026-11-30T23:59:59-03:00").getTime();
+  const tick = () => {
+    const s = Math.floor((fim - Date.now()) / 1000);
+    if (s <= 0) { box.remove(); return; }
+    const d = Math.floor(s / 86400), h = Math.floor(s % 86400 / 3600), m = Math.floor(s % 3600 / 60), ss = s % 60;
+    out.textContent = `acaba em ${d}d ${String(h).padStart(2, "0")}h ${String(m).padStart(2, "0")}m ${String(ss).padStart(2, "0")}s`;
+  };
+  tick(); setInterval(tick, 1000);
 })();
 </script>
 </body>
