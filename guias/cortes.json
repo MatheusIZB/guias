@@ -1,0 +1,50 @@
+{
+  "slug": "cortes",
+  "codigo": "CORTES",
+  "titulo": "AutoClip: 1 link de vídeo longo vira 10 Reels",
+  "destaque": "Cortes automáticos, grátis e no seu computador",
+  "sub": "Como instalar o AutoClip, configurar sem chave de API (Ollama + Whisper) e transformar podcast, live ou aula em cortes com legenda e capa.",
+  "tempo_leitura_min": 5,
+  "ferramentas": [
+    {"nome": "AutoClip", "link": "https://github.com/zhouxiaoka/autoclip/releases/latest", "para_que": "Acha os melhores trechos, corta, legenda e faz a capa", "preco": "Grátis, licença MIT"},
+    {"nome": "Ollama", "link": "https://ollama.com/download", "para_que": "IA local que analisa a transcrição sem chave de API", "preco": "Grátis, licença MIT"}
+  ],
+  "secoes": [
+    {"titulo": "Instalar", "blocos": [
+      {"tipo": "passos", "itens": [
+        "Baixe o instalador na página de Releases do GitHub: x64-setup.exe para Windows 10/11 ou o .dmg para Mac com chip Apple.",
+        "Python e FFmpeg já vêm dentro do instalador, não precisa instalar à parte.",
+        "Abra o app e clique em Try the built-in example para testar sem configurar nada."
+      ]},
+      {"tipo": "aviso", "texto": "Baixe só pelo GitHub oficial (zhouxiaoka/autoclip). Mac com processador Intel ou Linux usam a versão em Docker."}
+    ]},
+    {"titulo": "Configurar sem chave de API", "blocos": [
+      {"tipo": "passos", "itens": [
+        "Instale o Ollama e rode no terminal: ollama run qwen3 (baixa o modelo uma vez).",
+        "No AutoClip, abra Settings e escolha Ollama como provedor. Clique em testar a conexão e salve.",
+        "Para a legenda, escolha Whisper local. Tudo roda no seu PC, sem mandar o vídeo para a nuvem."
+      ]},
+      {"tipo": "dica", "texto": "Se o seu PC for fraco, dá para usar uma chave de API de nuvem só para a análise do texto. O corte e a renderização continuam no seu computador."}
+    ]},
+    {"titulo": "Do vídeo longo aos cortes", "blocos": [
+      {"tipo": "passos", "itens": [
+        "Cole o link do vídeo (podcast, entrevista, aula ou replay de live) ou solte o arquivo.",
+        "Escolha a plataforma de destino: Reels, TikTok ou Shorts.",
+        "Revise os trechos que a IA escolheu, ajuste o que quiser e exporte com legenda e capa."
+      ]},
+      {"tipo": "aviso", "texto": "Corte só vídeos seus ou com autorização do dono. Repostar conteúdo alheio pode derrubar a sua conta."}
+    ]}
+  ],
+  "proximo_passo": "Prefere receber os cortes prontos, no padrão dos grandes perfis? A gente edita para você e você só aprova.",
+  "oferta": {
+    "titulo": "Vídeos prontos para o seu negócio",
+    "texto": "Escolha o pack e chame no WhatsApp. A mensagem já vai pronta.",
+    "bullets": ["Pack Edição: 6 Reels editados por R$197", "Pack Clone: 4 Reels com o seu clone de IA por R$197 (5 vagas de fundador)"],
+    "cta": "Quero o Pack Edição · 6 Reels",
+    "mensagem_wa": "Oi Matheus! Vim do guia CORTES e quero o Pack Edição (6 Reels editados, R$197). Meu negócio é: ",
+    "cta2": "Quero o Pack Clone · 4 Reels",
+    "mensagem_wa2": "Oi Matheus! Vim do guia CORTES e quero uma vaga de fundador do Pack Clone (4 Reels com meu clone de IA, R$197). Meu negócio é: "
+  },
+  "fontes": ["https://github.com/zhouxiaoka/autoclip", "https://ollama.com"],
+  "verificado_em": "2026-11-24"
+}

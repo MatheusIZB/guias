@@ -1,0 +1,41 @@
+{
+  "slug": "heygen",
+  "codigo": "HEYGEN",
+  "titulo": "HyperFrames: o editor de vídeo grátis da HeyGen",
+  "destaque": "Vídeo escrito como página da internet, renderizado em MP4",
+  "sub": "O que é o HyperFrames, como usar com o Claude Code ou o Codex, e quando vale o Studio grátis.",
+  "tempo_leitura_min": 4,
+  "ferramentas": [
+    {"nome": "HyperFrames", "link": "https://github.com/heygen-com/hyperframes", "para_que": "Edita o seu vídeo ou cria um do zero com IA", "preco": "Grátis, licença Apache-2.0"}
+  ],
+  "secoes": [
+    {"titulo": "Como funciona", "blocos": [
+      {"tipo": "p", "texto": "Cada vídeo é escrito como uma página HTML: textos, legendas, animações e telas de produto. Depois o HyperFrames renderiza essa página quadro a quadro e entrega um MP4. Como é texto, uma IA consegue escrever e mudar o vídeo inteiro a partir de um pedido seu."},
+      {"tipo": "dica", "texto": "Funciona para editar o seu próprio vídeo gravado (cortes, legenda, zoom) e para criar vídeos animados do zero."}
+    ]},
+    {"titulo": "3 jeitos de usar", "blocos": [
+      {"tipo": "passos", "itens": [
+        "Com o Claude Code ou o Codex: abra uma pasta, peça o vídeo em português e a IA escreve e renderiza.",
+        "Com o Studio: o aplicativo grátis da HeyGen, para quem não quer usar terminal.",
+        "Direto em código: para quem quer montar templates próprios e produzir em lote."
+      ]},
+      {"tipo": "aviso", "texto": "As instruções de instalação mudam com as versões. Siga sempre o README do repositório oficial (heygen-com/hyperframes)."}
+    ]},
+    {"titulo": "Pedidos que funcionam bem", "blocos": [
+      {"tipo": "codigo", "texto": "Corta os silêncios deste vídeo, coloca legenda palavra por palavra e zoom nos momentos de destaque.", "rotulo": "Editar um vídeo gravado"},
+      {"tipo": "codigo", "texto": "Cria um Reels vertical de 20 segundos apresentando o meu produto, com o logo, 3 benefícios animados e um CTA no fim.", "rotulo": "Criar do zero"}
+    ]}
+  ],
+  "proximo_passo": "Quer aprender a pedir vídeos em português para a IA editar? O curso Edição de Vídeo com Claude Code mostra o passo a passo.",
+  "oferta": {
+    "titulo": "Edição de Vídeo com Claude Code",
+    "texto": "R$29,90, pagamento único, com 7 dias de garantia. Chega no seu WhatsApp.",
+    "bullets": ["Instalação passo a passo (Windows e Mac)", "Pasta modelo com CLAUDE.md e 6 estilos", "Comandos prontos para legenda, cortes, zoom, música e lote"],
+    "cta": "Quero o curso · R$29,90",
+    "cta_link": "../kit/",
+    "cta2": "Prefiro que vocês façam os vídeos",
+    "mensagem_wa2": "Oi Matheus! Vim do guia HEYGEN e prefiro que vocês façam os meus vídeos. Meu negócio é: "
+  },
+  "fontes": ["https://github.com/heygen-com/hyperframes"],
+  "verificado_em": "2026-11-24"
+}

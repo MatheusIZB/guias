@@ -1,0 +1,39 @@
+{
+  "slug": "poder",
+  "codigo": "PODER",
+  "titulo": "Superpowers: o seu agente de código trabalhando como um time sênior",
+  "destaque": "Mais de 300 mil estrelas no GitHub, grátis",
+  "sub": "O que o Superpowers muda no Claude Code, no Codex e no Cursor, como instalar e como é o fluxo de trabalho.",
+  "tempo_leitura_min": 4,
+  "ferramentas": [
+    {"nome": "Superpowers", "link": "https://github.com/obra/superpowers", "para_que": "Habilidades que fazem o agente planejar, testar e revisar", "preco": "Grátis, licença MIT"}
+  ],
+  "secoes": [
+    {"titulo": "O que ele muda", "blocos": [
+      {"tipo": "passos", "itens": [
+        "Antes de programar, o agente pergunta o que você quer de verdade.",
+        "Mostra o plano em partes curtas para você ler e aprovar.",
+        "Divide o trabalho entre subagentes, com testes primeiro e revisão de cada tarefa.",
+        "Consegue trabalhar sozinho por horas sem fugir do plano."
+      ]},
+      {"tipo": "dica", "texto": "As habilidades disparam sozinhas: depois de instalado, você usa o agente normalmente."}
+    ]},
+    {"titulo": "Instalar no Claude Code", "blocos": [
+      {"tipo": "p", "texto": "O Superpowers está no marketplace oficial de plugins do Claude. No Claude Code, digite /plugin, procure por superpowers e instale."},
+      {"tipo": "p", "texto": "Também tem instruções para Codex, Cursor, Gemini CLI, GitHub Copilot CLI, OpenCode e outros no README oficial."},
+      {"tipo": "aviso", "texto": "Ele deixa o agente mais cuidadoso, então tarefas pequenas podem levar mais perguntas. Vale muito para projetos maiores."}
+    ]}
+  ],
+  "proximo_passo": "Quer usar o Claude Code para editar vídeos, não só para programar? O curso mostra como pedir em português e a IA fazer tudo.",
+  "oferta": {
+    "titulo": "Edição de Vídeo com Claude Code",
+    "texto": "R$29,90, pagamento único, com 7 dias de garantia. Chega no seu WhatsApp.",
+    "bullets": ["Instalação passo a passo (Windows e Mac)", "Pasta modelo com CLAUDE.md e 6 estilos", "Comandos prontos para legenda, cortes, zoom, música e lote"],
+    "cta": "Quero o curso · R$29,90",
+    "cta_link": "../kit/",
+    "cta2": "Prefiro que vocês façam os vídeos",
+    "mensagem_wa2": "Oi Matheus! Vim do guia PODER e prefiro que vocês façam os meus vídeos. Meu negócio é: "
+  },
+  "fontes": ["https://github.com/obra/superpowers"],
+  "verificado_em": "2026-11-24"
+}

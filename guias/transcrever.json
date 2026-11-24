@@ -1,0 +1,41 @@
+{
+  "slug": "transcrever",
+  "codigo": "TRANSCREVER",
+  "titulo": "VibeVoice: a IA grátis da Microsoft que transcreve 1 hora de uma vez",
+  "destaque": "Quem falou, quando e o quê",
+  "sub": "Como testar o VibeVoice sem instalar nada, onde baixar os modelos e qual versão usar se você não tem placa de vídeo.",
+  "tempo_leitura_min": 4,
+  "ferramentas": [
+    {"nome": "VibeVoice", "link": "https://github.com/microsoft/VibeVoice", "para_que": "Transcrição longa com quem falou e o tempo de cada fala", "preco": "Grátis, licença MIT"},
+    {"nome": "VibeASR.cpp", "link": "https://github.com/microsoft/VibeASR.cpp", "para_que": "Versão que roda no processador, sem placa de vídeo", "preco": "Grátis"}
+  ],
+  "secoes": [
+    {"titulo": "O que ele entrega", "blocos": [
+      {"tipo": "p", "texto": "Você manda até 60 minutos de áudio de uma vez e recebe a transcrição organizada: quem falou (Pessoa 1, Pessoa 2), em que minuto e o que foi dito. Entende mais de 50 idiomas e lida com mistura de línguas na mesma frase."}
+    ]},
+    {"titulo": "Testar sem instalar", "blocos": [
+      {"tipo": "passos", "itens": [
+        "Abra o Playground oficial: aka.ms/vibevoice-asr.",
+        "Envie um áudio curto de teste (uma reunião ou entrevista).",
+        "Confira se o resultado serve para o seu uso antes de instalar no PC."
+      ]},
+      {"tipo": "aviso", "texto": "Não envie áudios com dados sensíveis de clientes no site de teste. Para isso, use a versão instalada no seu computador."}
+    ]},
+    {"titulo": "Rodar no seu computador", "blocos": [
+      {"tipo": "p", "texto": "Com placa de vídeo: siga a documentação do VibeVoice-ASR no repositório (modelos no Hugging Face). Sem placa de vídeo: use o VibeASR.cpp, que comprime o modelo para cerca de 1,6 GB e roda em tempo real com 3 ou mais núcleos do processador."},
+      {"tipo": "dica", "texto": "Usos que pagam a instalação: reunião vira ata, entrevista vira artigo, live vira legenda."}
+    ]}
+  ],
+  "proximo_passo": "Quer transformar suas lives e reuniões em Reels? A gente edita para você e você só aprova.",
+  "oferta": {
+    "titulo": "Vídeos prontos para o seu negócio",
+    "texto": "Escolha o pack e chame no WhatsApp. A mensagem já vai pronta.",
+    "bullets": ["Pack Edição: 6 Reels editados por R$197", "Pack Clone: 4 Reels com o seu clone de IA por R$197 (5 vagas de fundador)"],
+    "cta": "Quero o Pack Edição · 6 Reels",
+    "mensagem_wa": "Oi Matheus! Vim do guia TRANSCREVER e quero o Pack Edição (6 Reels editados, R$197). Meu negócio é: ",
+    "cta2": "Quero o Pack Clone · 4 Reels",
+    "mensagem_wa2": "Oi Matheus! Vim do guia TRANSCREVER e quero uma vaga de fundador do Pack Clone (4 Reels com meu clone de IA, R$197). Meu negócio é: "
+  },
+  "fontes": ["https://github.com/microsoft/VibeVoice", "https://github.com/microsoft/VibeASR.cpp"],
+  "verificado_em": "2026-11-24"
+}
