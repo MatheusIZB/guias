@@ -1,0 +1,97 @@
+{
+  "slug": "sistema",
+  "codigo": "SISTEMA",
+  "titulo": "O sistema que responde, qualifica e regista cada cliente sozinho",
+  "destaque": "Você acabou de testar ele",
+  "sub": "Você comentou uma palavra, recebeu uma mensagem no direct e abriu esta página. Isso é um sistema de vendas a funcionar. Aqui está como ele é montado, peça por peça, e como ter um igual no seu negócio.",
+  "tempo_leitura_min": 5,
+  "ferramentas": [
+    {
+      "nome": "API oficial do Instagram (Meta)",
+      "link": "https://developers.facebook.com/docs/instagram-platform",
+      "para_que": "Ler os comentários e mandar a mensagem no direct de forma oficial, sem risco de bloqueio por automação pirata",
+      "preco": "Grátis"
+    },
+    {
+      "nome": "Supabase",
+      "link": "https://supabase.com",
+      "para_que": "Banco de dados e CRM: cada contato fica registado com nome, WhatsApp, origem e etapa da venda",
+      "preco": "Plano grátis chega para começar"
+    },
+    {
+      "nome": "Claude Code",
+      "link": "https://claude.com/claude-code",
+      "para_que": "A IA que escreveu e mantém todo o sistema: regras, páginas, painel e automações",
+      "preco": "Assinatura do Claude (paga direto a eles)"
+    },
+    {
+      "nome": "WhatsApp Cloud API",
+      "link": "https://developers.facebook.com/docs/whatsapp/cloud-api",
+      "para_que": "Mensagens automáticas e atendimento no WhatsApp pela via oficial",
+      "preco": "Grátis para começar; a Meta cobra por conversa a partir de certo volume"
+    }
+  ],
+  "secoes": [
+    {
+      "titulo": "O que aconteceu quando você comentou",
+      "blocos": [
+        {"tipo": "passos", "itens": [
+          "Você comentou a palavra SISTEMA no vídeo.",
+          "Em instantes, o sistema leu o comentário, respondeu em público e mandou a mensagem no seu direct com o link.",
+          "Você abriu esta página e deixou o nome e o WhatsApp.",
+          "O seu contato entrou no CRM, com a palavra que você comentou e a hora. Quando eu te chamar, já sei o que você procura.",
+          "Nada disso precisou de mim no celular."
+        ]},
+        {"tipo": "dica", "texto": "O mesmo fluxo funciona para qualquer negócio: a palavra pode ser ORÇAMENTO, AGENDA, CARDÁPIO, PREÇO. Quem comenta já está a levantar a mão."}
+      ]
+    },
+    {
+      "titulo": "Por que isso vende mais",
+      "blocos": [
+        {"tipo": "p", "texto": "A maioria dos negócios perde clientes no intervalo entre o interesse e a resposta. A pessoa pergunta o preço num comentário, ninguém responde por horas, e ela compra de quem respondeu primeiro."},
+        {"tipo": "tabela", "colunas": ["Sem sistema", "Com sistema"], "linhas": [
+          ["Resposta quando der tempo", "Resposta em instantes, 24 horas por dia"],
+          ["Contato perdido no meio dos comentários", "Contato registado no CRM com a origem"],
+          ["Você não sabe que post trouxe cliente", "Você vê qual vídeo e qual palavra geraram cada contato"],
+          ["Follow-up depende da memória", "Lista de quem chamar hoje, por etapa"]
+        ]}
+      ]
+    },
+    {
+      "titulo": "As peças do sistema",
+      "blocos": [
+        {"tipo": "passos", "itens": [
+          "Regras de palavra-chave: cada palavra tem a sua mensagem e o seu link.",
+          "Página de captura: pede nome e WhatsApp e entrega o conteúdo prometido.",
+          "CRM: guarda cada contato, a etapa (novo, conversa, proposta, cliente) e o próximo contacto.",
+          "WhatsApp: mensagem automática de boas-vindas e atendimento com aprovação humana.",
+          "Painel: quantos comentários, contatos e vendas cada vídeo trouxe."
+        ]},
+        {"tipo": "aviso", "texto": "Usamos só as vias oficiais da Meta para clientes. Ferramentas não oficiais de WhatsApp podem levar ao bloqueio do número."}
+      ]
+    },
+    {
+      "titulo": "Para quem faz sentido",
+      "blocos": [
+        {"tipo": "p", "texto": "Clínicas, restaurantes, corretores, prestadores de serviço, lojas e criadores que recebem perguntas no Instagram e no WhatsApp e não conseguem responder tudo a tempo."},
+        {"tipo": "p", "texto": "Se hoje você responde clientes de madrugada ou perde mensagens no meio do dia, este sistema paga-se com poucos clientes recuperados."}
+      ]
+    }
+  ],
+  "proximo_passo": "Quer este sistema no seu negócio? Fazemos um diagnóstico grátis de 30 minutos: vejo como os seus clientes chegam hoje e digo exatamente o que montar, com prazo e preço fechados.",
+  "oferta": {
+    "titulo": "Máquina de Atendimento e Vendas",
+    "texto": "O mesmo sistema deste perfil, montado para o seu negócio, na sua conta. Começa por um diagnóstico grátis.",
+    "bullets": ["Palavra-chave → direct → página → CRM, tudo automático", "Mensagem automática no WhatsApp pela API oficial", "Painel para ver de onde vem cada cliente", "O sistema fica na sua conta, não refém de mim"],
+    "cta": "Quero o diagnóstico grátis",
+    "mensagem_wa": "Oi Matheus! Vim do guia SISTEMA e quero o diagnóstico grátis da Máquina de Atendimento. Meu negócio é: ",
+    "cta2": "Prefiro vídeos prontos para o meu negócio",
+    "mensagem_wa2": "Oi Matheus! Vim do guia SISTEMA e quero saber dos packs de vídeo para o meu negócio. Meu negócio é: "
+  },
+  "fontes": [
+    "https://developers.facebook.com/docs/instagram-platform",
+    "https://developers.facebook.com/docs/whatsapp/cloud-api",
+    "https://supabase.com/docs"
+  ],
+  "verificado_em": "2026-11-25"
+}
