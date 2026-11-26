@@ -3,7 +3,7 @@
   "codigo": "SISTEMA",
   "titulo": "O sistema que responde, qualifica e regista cada cliente sozinho",
   "destaque": "Você acabou de testar ele",
-  "sub": "Você comentou uma palavra, recebeu uma mensagem no direct e abriu esta página. Isso é um sistema de vendas a funcionar. Aqui está como ele é montado, peça por peça, e como ter um igual no seu negócio.",
+  "sub": "Você comentou uma palavra, recebeu uma mensagem no direct e abriu esta página. Isso é um sistema de vendas funcionando. Aqui está como ele é montado, peça por peça, e como ter um igual no seu negócio.",
   "tempo_leitura_min": 5,
   "ferramentas": [
     {
@@ -42,7 +42,7 @@
           "O seu contato entrou no CRM, com a palavra que você comentou e a hora. Quando eu te chamar, já sei o que você procura.",
           "Nada disso precisou de mim no celular."
         ]},
-        {"tipo": "dica", "texto": "O mesmo fluxo funciona para qualquer negócio: a palavra pode ser ORÇAMENTO, AGENDA, CARDÁPIO, PREÇO. Quem comenta já está a levantar a mão."}
+        {"tipo": "dica", "texto": "O mesmo fluxo funciona para qualquer negócio: a palavra pode ser ORÇAMENTO, AGENDA, CARDÁPIO, PREÇO. Quem comenta já está levantando a mão."}
       ]
     },
     {
@@ -74,7 +74,7 @@
       "titulo": "Para quem faz sentido",
       "blocos": [
         {"tipo": "p", "texto": "Clínicas, restaurantes, corretores, prestadores de serviço, lojas e criadores que recebem perguntas no Instagram e no WhatsApp e não conseguem responder tudo a tempo."},
-        {"tipo": "p", "texto": "Se hoje você responde clientes de madrugada ou perde mensagens no meio do dia, este sistema paga-se com poucos clientes recuperados."}
+        {"tipo": "p", "texto": "Se hoje você responde clientes de madrugada ou perde mensagens no meio do dia, este sistema se paga com poucos clientes recuperados."}
       ]
     }
   ],
