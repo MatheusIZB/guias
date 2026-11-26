@@ -1,0 +1,60 @@
+{
+  "slug": "black",
+  "codigo": "BLACK",
+  "titulo": "Black Friday da Fábrica: edição com IA e vídeos prontos",
+  "destaque": "Só até segunda-feira, 30/11",
+  "sub": "Duas ofertas, preço de lançamento porque estamos a começar. Uma para quem quer editar sozinho com IA, outra para quem quer os vídeos prontos sem editar nada.",
+  "tempo_leitura_min": 2,
+  "ferramentas": [],
+  "secoes": [
+    {
+      "titulo": "Oferta 1 · Combo Black: R$27",
+      "blocos": [
+        {"tipo": "p", "texto": "Para quem quer editar os próprios vídeos dando ordens em português ao Claude Code ou ao Codex, sem abrir editor."},
+        {"tipo": "passos", "itens": [
+          "Kit Edição com IA: instalação passo a passo, 38 comandos testados (cortar silêncios, legenda palavra por palavra, zoom, música, edição em lote), pasta pronta, 6 estilos, checklist e guia de estilos.",
+          "Pacote 50 Ganchos + 10 roteiros: os ganchos que prendem nos primeiros segundos, as estruturas de 30–45 s e o prompt para o Claude escrever no seu tom.",
+          "Chega no seu WhatsApp logo depois do pagamento.",
+          "7 dias de garantia: não gostou, devolvo o valor inteiro."
+        ]},
+        {"tipo": "tabela", "colunas": ["Fora da Black", "Na Black"], "linhas": [
+          ["Kit R$29,90 + Pacote R$19,90 = R$49,80", "R$27 tudo junto"]
+        ]},
+        {"tipo": "aviso", "texto": "A assinatura do Claude Code ou do Codex não está incluída: é contratada direto com eles."}
+      ]
+    },
+    {
+      "titulo": "Oferta 2 · Pack Edição Black: 6 Reels por R$147",
+      "blocos": [
+        {"tipo": "p", "texto": "Para dono de negócio ou criador que não tem tempo de editar. Você grava no celular do jeito que der; a gente devolve os vídeos prontos para postar."},
+        {"tipo": "passos", "itens": [
+          "6 Reels com legenda palavra por palavra, cortes, zoom, música e capa.",
+          "Roteiros prontos se você não sabe o que falar.",
+          "1 revisão por vídeo e entrega em até 5 dias úteis.",
+          "Só 10 vagas na Black: é o que conseguimos entregar bem nesta semana."
+        ]},
+        {"tipo": "tabela", "colunas": ["Fora da Black", "Na Black"], "linhas": [
+          ["R$197", "R$147"]
+        ]}
+      ]
+    },
+    {
+      "titulo": "E se eu não quiser gravar nada?",
+      "blocos": [
+        {"tipo": "p", "texto": "Existe o Pack Clone: fazemos o seu clone de IA, com a sua autorização por escrito, e ele apresenta 4 Reels por você. R$197, preço de fundador, poucas vagas. Todo vídeo leva o aviso de avatar de IA e só vai ao ar depois da sua aprovação."}
+      ]
+    }
+  ],
+  "proximo_passo": "Escolha a oferta e chame no WhatsApp: a mensagem já vai pronta e eu te mando o Pix na hora.",
+  "oferta": {
+    "titulo": "Black Friday · só até segunda (30/11)",
+    "texto": "Combo Black R$27 ou Pack Edição Black R$147. Pagamento por Pix, entrega pelo WhatsApp.",
+    "bullets": ["Combo Black: Kit Edição com IA + 50 Ganchos por R$27", "Pack Edição Black: 6 Reels prontos por R$147 (10 vagas)", "7 dias de garantia no Combo; revisão em cada vídeo do Pack"],
+    "cta": "Quero o Combo Black · R$27",
+    "mensagem_wa": "Oi Matheus! Vim da Black Friday e quero o Combo Black (Kit Edição com IA + 50 Ganchos) por R$27.",
+    "cta2": "Quero o Pack Edição Black · R$147",
+    "mensagem_wa2": "Oi Matheus! Vim da Black Friday e quero uma vaga do Pack Edição Black (6 Reels por R$147). Meu negócio/perfil é: "
+  },
+  "fontes": [],
+  "verificado_em": "2026-11-26"
+}
